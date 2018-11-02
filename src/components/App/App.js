@@ -26,9 +26,8 @@ class App extends Component{
 
     fullScreen = () => {
         if (screenfull.enabled) {
-            screenfull.request()
+            screenfull.toggle()
         }
-
     }
 
     render() {
