@@ -27,6 +27,7 @@
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.2",
     "react-hot-loader": "next",
+    "screenfull": "^3.3.3",
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^2.0.0",
     "url-loader": "^1.1.1",
