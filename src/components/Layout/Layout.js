@@ -13,8 +13,7 @@ class Layout extends Component{
             collapsed: false
         }
     }
-
-
+    
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed
