@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Nav from '@/components/Nav/Nav'
+// import Nav from '@/components/Nav/Nav'
 import getRouter from '@/router/router'
 
 import { Layout, Menu, Icon, } from 'antd'
@@ -13,7 +13,7 @@ class Layout extends Component{
             collapsed: false
         }
     }
-    
+
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed
