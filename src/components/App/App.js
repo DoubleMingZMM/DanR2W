@@ -38,7 +38,7 @@ class App extends Component{
                     collapsible
                     collapsed={this.state.collapsed}
                 >
-                    <div className="app-icon"/>
+                    <div className="app-title">DanR2W</div>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1">
                             <Icon type="dashboard" />
@@ -68,11 +68,11 @@ class App extends Component{
                             mode="horizontal"
                             style={{ lineHeight: '62px', float: 'right', borderBottom: 'none' }}
                         >
-                            <Menu.Item key="full">
+                            <Menu.Item key="full" className="border-bt-none-force">
                                 <i className="iconfont icon-fullscreen" onClick={this.fullScreen}/>
                             </Menu.Item>
-                            <SubMenu title={<span className="avatar"><img src={avater} alt="头像" style={{height: 40, width: 40, borderRadius: '50%'}}/>
-                                <i className="on bottom b-white" /></span>}>
+                            <SubMenu className="border-bt-none-force" title={<span className="avatar"><img src={avater} alt="头像"
+                                style={{height: 40, width: 40, borderRadius: '50%'}}/><i className="on bottom b-white" /></span>}>
                                 <MenuItemGroup title="用户中心">
                                     <Menu.Item key="setting:1">你好 - Daniel</Menu.Item>
                                     <Menu.Item key="setting:2">个人信息</Menu.Item>
@@ -90,12 +90,12 @@ class App extends Component{
                             <Breadcrumb.Item>User</Breadcrumb.Item>
                             <Breadcrumb.Item>Bill</Breadcrumb.Item>
                         </Breadcrumb>
-                        <div style={{ padding: 24, background: '#fff', minHeight: 750 }}>
+                        <div style={{ padding: 24, background: '#fff', minHeight: 'calc(100vh - 200px)' }}>
                             {getRouter()}
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
-                        React redux webpack ©2018 Created by Daniel
+                        DanR2W ©2018 Created by Daniel
                     </Footer>
                 </Layout>
             </Layout>

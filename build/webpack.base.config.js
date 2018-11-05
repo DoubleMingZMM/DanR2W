@@ -9,7 +9,7 @@ function resolvePath(dir) {
 }
 
 commonConfig = {
-    // 入口 
+    // 入口
     entry: {
         app: [
             'babel-polyfill',
@@ -50,7 +50,9 @@ commonConfig = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template:  resolvePath('src/index.html')
+            template:  resolvePath('src/index.html'),
+            favicon: resolvePath('favicon.ico'),
+            title: 'DanR2W'
         })
     ],
     resolve: {

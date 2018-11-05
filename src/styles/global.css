@@ -1,12 +1,32 @@
-.app-icon{
-  height: 32px;
-  background: rgba(255,255,255,.2);
-  margin: 16px;
-}
 .trigger-icon{
   font-size: 18px;
   line-height: 64px;
   padding: 0 24px;
   cursor: pointer;
   transition: color .3s;
+}
+
+.app-title{
+  height: 32px;
+  line-height: 32px;
+  margin: 16px;
+  text-align: center;
+  background-image: -webkit-linear-gradient(left, #24ef0a, #3c80e6 25%, #24ef0a 50%, #3c80e6 75%, #ffffff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-background-size: 200% 100%;
+  -webkit-animation: app-title-animation 4s infinite linear;
+  font-size: 24px;
+  font-weight: bolder;
+  font-style: italic;
+  overflow: hidden;
+}
+
+@-webkit-keyframes app-title-animation {
+  0%{ background-position: 0 0;}
+  100% { background-position: -100% 0;}
+}
+
+.border-bt-none-force{
+  border-bottom: none!important;
 }
