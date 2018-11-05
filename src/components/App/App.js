@@ -20,7 +20,7 @@ class App extends Component{
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const _this = this
         let dragDeltaX, dragDeltaY
         const items = d3.select(".drag-cursor")
@@ -29,10 +29,10 @@ class App extends Component{
                 const mousePosition = d3.mouse(this)
                 dragDeltaX = mousePosition[0]
                 dragDeltaY = mousePosition[1]
-                _this.getItemPosition(d3.event.sourceEvent.x - dragDeltaX, d3.event.sourceEvent.y - dragDeltaY)
+                console.log('===============>', mousePosition)
             })
             .on('drag', function() {
-                _this.getItemPosition(d3.event.sourceEvent.x - dragDeltaX, d3.event.sourceEvent.y - dragDeltaY)
+                _this.getItemPosition(dragDeltaX, dragDeltaY)
             })
             .on('end', function() {
                 const $container = document.getElementById('app')
@@ -47,7 +47,7 @@ class App extends Component{
     getItemPosition = (x, y) => {
         debugger
         const item = d3.select(".drag-cursor")
-        item.attr('style', `position:absolute;transform:translate(${x}px, ${y}px)`)
+        item.attr('style', `transform:translate(${x}px, ${y}px)`)
     }
 
     toggle = () => {
