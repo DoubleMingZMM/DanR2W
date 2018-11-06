@@ -22,20 +22,30 @@ class App extends Component{
 
     componentDidMount() {
         const _this = this
-        let dragDeltaX, dragDeltaY
+        let dragDeltaX, dragDeltaY, sourceX, sourceY, winWidth, winHeight
+        // 获取窗口宽度
+        if (window.innerWidth) winWidth = window.innerWidth - 40;
+        else if ((document.body) && (document.body.clientWidth)) winWidth = document.body.clientWidth - 40;
+        // 获取窗口高度
+        if (window.innerHeight) winHeight = window.innerHeight - 40;
+        else if ((document.body) && (document.body.clientHeight)) winHeight = document.body.clientHeight - 40;
         const items = d3.select(".drag-cursor")
         let drag = d3.drag()
             .on('start', function() {
-                const mousePosition = d3.mouse(this)
-                dragDeltaX = mousePosition[0]
-                dragDeltaY = mousePosition[1]
-                console.log('===============>', mousePosition)
+                sourceX = d3.event.sourceEvent.pageX > winWidth ? winWidth : d3.event.sourceEvent.pageX
+                sourceY = d3.event.sourceEvent.pageY > winHeight ? winHeight : d3.event.sourceEvent.pageY
             })
             .on('drag', function() {
+                let x_tem = d3.event.sourceEvent.pageX > winWidth ? winWidth : d3.event.sourceEvent.pageX
+                dragDeltaX = x_tem - sourceX
+                let y_tem = d3.event.sourceEvent.pageY > winHeight ? winHeight : d3.event.sourceEvent.pageY
+                dragDeltaY = y_tem - sourceY
                 _this.getItemPosition(dragDeltaX, dragDeltaY)
             })
             .on('end', function() {
+
                 const $container = document.getElementById('app')
+                // console.log('winHeight===========================>', winHeight)
                 const position = {
                     x: d3.event.sourceEvent.x - dragDeltaX - $container.offsetLeft,
                     y: d3.event.sourceEvent.y - dragDeltaY - $container.offsetTop
@@ -45,7 +55,6 @@ class App extends Component{
     }
 
     getItemPosition = (x, y) => {
-        debugger
         const item = d3.select(".drag-cursor")
         item.attr('style', `transform:translate(${x}px, ${y}px)`)
     }
