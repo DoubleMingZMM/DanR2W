@@ -1,3 +1,6 @@
+export const GET_INFO_SUCCESS = 'page2/GET_INFO_SUCCESS'
+export const GET_INFO_FAIL = 'page2/GET_INFO_FAIL'
+
 export function getInfo() {
     return function (dispatch) {
         return fetch('http://localhost:9999/api/user.json')
@@ -6,14 +9,14 @@ export function getInfo() {
             }))
             .then((json) => {
                     dispatch({
-                        type: 'GET_INFO_SUCCESS',
+                        type: GET_INFO_SUCCESS,
                         payload: json
                     })
                 }
             ).catch(
                 () => {
                     dispatch({
-                        type: 'GET_INFO_FAIL'
+                        type: GET_INFO_FAIL
                     })
                 }
             )

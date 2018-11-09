@@ -1,3 +1,5 @@
+import { INCREMENT, DECREMENT, RESET } from './action'
+
 /*
 * Daniel
 * 初始化state
@@ -7,23 +9,19 @@ const initState = {
 }
 
 /*
-* actions
-*/
-
-/*
 *reducers
 */
 export default function reducer (state = initState, action) {
     switch(action.type) {
-        case 'INCREMENT':
+        case INCREMENT:
             return {
                 count: state.count + 1
             }
-        case 'DECREMENT':
+        case DECREMENT:
             return {
                 count: state.count - 1
             }
-        case 'RESET':
+        case RESET:
             return {
                 count: 0
             }

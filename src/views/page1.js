@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { Button } from 'antd'
-
+import {increment, decrement, reset} from '@/redux/page1/action'
 import './page1.css'
 
 class Page1 extends Component{
@@ -11,7 +11,7 @@ class Page1 extends Component{
             count: 0
         }
     }
-    
+
     handleClick() {
         this.setState({
             count: ++this.state.count
@@ -29,7 +29,7 @@ class Page1 extends Component{
             this.props.reset()
         }
     }
-    
+
     render() {
         return (
             <div>
@@ -39,9 +39,9 @@ class Page1 extends Component{
 
                 <br/>page1里面的redux计数为：{this.props.page1.count}<br/>
                 <button onClick={() => this.handleReduxClick('increment')}>自增redux</button>
-                
+
                 <button onClick={() => this.handleReduxClick('decrement')}>自减redux</button>
-                
+
                 <button onClick={() => this.handleReduxClick('reset')} className="red-style">重置222222redux</button>
             </div>
         )
@@ -57,19 +57,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         increment: () => {
-            dispatch({
-                type: 'INCREMENT'
-            })
+            dispatch(increment())
         },
         decrement: () => {
-            dispatch({
-                type: 'DECREMENT'
-            })
+            dispatch(decrement())
         },
         reset: () => {
-            dispatch({
-                type: 'RESET'
-            })
+            dispatch(reset())
         }
     }
 }

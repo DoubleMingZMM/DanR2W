@@ -1,3 +1,5 @@
+import { GET_INFO_SUCCESS, GET_INFO_FAIL } from './action'
+
 /*
  * Daniel
  * 初始化state
@@ -8,20 +10,16 @@ const initState = {
 }
 
 /*
- * actions
- */
-
-/*
  *reducers
  */
 export default function reducer (state = initState, action) {
     switch(action.type) {
-        case 'GET_INFO_SUCCESS':
+        case GET_INFO_SUCCESS:
             return {
                 ...state,
                 ...action.payload
             }
-        case 'GET_INFO_FAIL':
+        case GET_INFO_FAIL:
             return {
                 ...state,
                 name: '姓名请求错误',

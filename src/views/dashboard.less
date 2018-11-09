@@ -1,0 +1,163 @@
+#main_bgt{
+    background: url('../static/images/mainLogin/YT.jpg') no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.bgimgfiex(@w,@h,@top,@left ,@bg){
+    transition: transform 0.3s linear,filter 0.3s;
+    position: absolute;
+    width:@w;
+    height: @h;
+    background: url(@bg) no-repeat;
+    background-size: contain;
+    top:@top;
+    left:@left;
+    cursor: pointer;
+    &:hover{
+        -webkit-filter: contrast(200%) saturate(200%);
+        filter: contrast(200%)  saturate(150%);
+        transform:scale(1.1);
+    }
+}
+/*基础平台
+div.fixe_img1{
+  .bgimgfiex(153px,116px,235px,248px,'../../static/images/mainLogin/JC/J-y.png');
+}
+div.fixe_img2{
+  .bgimgfiex(155px,123px,170px,347px,'../../static/images/mainLogin/JC/J-p.png');
+}
+div.fixe_img3{
+  .bgimgfiex(138px,124px,112px,454px,'../../static/images/mainLogin/JC/J-f.png');
+}
+div.fixe_img4{
+  .bgimgfiex(138px,124px,61px,540px,'../../static/images/mainLogin/JC/J-yd.png');
+}
+div.fixe_img5{
+  .bgimgfiex(138px,124px,10px,630px,'../../static/images/mainLogin/JC/J-z.png');
+}
+div.fixe_img6{
+  .bgimgfiex(154px,115px,293px,148px,'../../static/images/mainLogin/JC/J-d.png');
+}
+综合管理
+div.fixe_img7{
+  .bgimgfiex(138px,124px,83px,1036px,'../../static/images/mainLogin/ZH/Z-zh.png');
+}
+div.fixe_img8{
+  .bgimgfiex(131px,152px,130px,911px,'../../static/images/mainLogin/ZH/Z-tj.png');
+}
+div.fixe_img9{
+  .bgimgfiex(150px,141px,218px,1030px,'../../static/images/mainLogin/ZH/Z-ss.png');
+}
+div.fixe_img10{
+  .bgimgfiex(132px,150px,136px,1177px,'../../static/images/mainLogin/ZH/Z-xm.png');
+}
+div.fixe_img11{
+  .bgimgfiex(175px,163px,256px,1179px,'../../static/images/mainLogin/ZH/Z-jc.png');
+}
+项目审批
+div.fixe_img12{
+  .bgimgfiex(170px,163px,325px,470px,'../../static/images/mainLogin/XM/X-gh.png');
+}
+div.fixe_img13{
+  .bgimgfiex(194px,140px,275px,621px,'../../static/images/mainLogin/XM/X-yzt.png');
+}
+div.fixe_img14{
+  .bgimgfiex(202px,158px,352px,778px,'../../static/images/mainLogin/XM/X-bl.png');
+}
+div.fixe_img15{
+  .bgimgfiex(190px,153px,422px,600px,'../../static/images/mainLogin/XM/X-yd.png');
+}*/
+/*数据管理*/
+div.fixe_img16{
+    .bgimgfiex(159px,147px,443px,1070px,'../static/images/mainLogin/SJ/S-cg.png');
+}
+div.fixe_img17{
+    .bgimgfiex(166px,145px,524px,908px,'../static/images/mainLogin/SJ/S-zj.png');
+}
+/*规划编写
+div.fixe_img18{
+  .bgimgfiex(160px,165px,586px,415px,'../../static/images/mainLogin/GH/G-pj.png');
+}
+div.fixe_img19{
+  .bgimgfiex(160px,165px,676px,554px,'../../static/images/mainLogin/GH/G-xt.png');
+}
+div.fixe_img20{
+  .bgimgfiex(196px,137px,504px,447px,'../../static/images/mainLogin/QT/YSC.png');
+}*/
+/*公众应用
+div.fixe_img21{
+  .bgimgfiex(203px,201px,380px,114px,'../../static/images/mainLogin/GZ/G-wx.png');
+}
+div.fixe_img22{
+  .bgimgfiex(129px,105px,537px,191px,'../../static/images/mainLogin/GZ/G-ww.png');
+}
+div.fixe_img23{
+  .bgimgfiex(125px,101px,483px,290px,'../../static/images/mainLogin/GZ/G-mh.png');
+}
+div.fixe_img24{
+  .bgimgfiex(198px,156px,557px,1236px,'../../static/images/mainLogin/QT/ZY-gx1.png');
+}*/
+/*定义动画*/
+.jtimgfixe(@w,@h,@top,@left,@bg,@moveName,@time){
+    width: @w;
+    height: @h;
+    position: absolute;
+    background:url(@bg)  no-repeat;
+    background-size: contain;
+    top: @top;
+    left: @left;
+    animation:  @moveName 5s linear @time infinite;
+}
+.anima(@x,@y,@name){
+    @-webkit-keyframes @name{
+        0%{
+            transform: translate(0,0);
+        }
+        90%{
+            opacity: 0.7;
+        }
+        100%{
+            transform: translate(@x,@y);
+            opacity: 0;
+        }
+    }
+}
+/*箭头*/
+div.jt_img1{
+    .jtimgfixe(43px,25px,449px,348px,'../static/images/mainLogin/JT/dt1.png',move1,0s);
+}
+/*第一个比较特殊*/
+@-webkit-keyframes move1{
+    0%{
+        transform: translate(0,0);
+    }
+    30%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    95%{
+        opacity: 0.6;
+    }
+    100%{
+        transform: translate(316px,183px);
+        opacity: 0;
+    }
+}
+div.jt_img2{
+    .jtimgfixe(41px,25px,616px,751px,'../static/images/mainLogin/JT/dt2.png',move2,3s);
+    .anima(278px,-161px,move2);
+}
+div.jt_img3{
+    .jtimgfixe(37px,23px,385px,1017px,'../static/images/mainLogin/JT/dt3.png',move3,5s);
+    .anima(-281px,-163px,move3);
+}
+div.jt_img4{
+    .jtimgfixe(39px,25px,161px,764px,'../static/images/mainLogin/JT/dt4.png',move4,4s);
+    .anima(228px,-132px,move4);
+}
+div.jt_img5{
+    .jtimgfixe(41px,24px,58px,1128px,'../static/images/mainLogin/JT/dt5.png',move5,2s);
+    .anima(300px,172px,move5);
+}
