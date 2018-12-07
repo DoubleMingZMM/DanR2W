@@ -12,7 +12,7 @@ function resolvePath(dir) {
 
 const devConfig = {
     mode: 'development',
-    // 入口 
+    // 入口
     entry: {
        app: [
            'babel-polyfill',
@@ -37,7 +37,17 @@ const devConfig = {
         contentBase:  resolvePath('dist'),
         open: true,
         port: 9999,
-        hot: true
+        hot: true,
+        proxy: {
+            '/api/v1': {
+                target: 'http://106.12.132.170',// 接口的域名
+                // secure: false, // 如果是https接口，需要配置这个参数
+                changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
+                pathRewrite: { // 如果接口本身没有/api需要通过pathRewrite来重写了地址
+                    '^/api/v1': ''
+                }
+            }
+        }
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
