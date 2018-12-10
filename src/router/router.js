@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Bundle from './Bundle'
 
 
+import Login from 'bundle-loader?lazy&name=login!@/views/login'
 import Page1 from 'bundle-loader?lazy&name=page1!@/views/page1'
 import Page2 from 'bundle-loader?lazy&name=page2!@/views/page2'
 import Dashboard from 'bundle-loader?lazy&name=dashboard!@/views/Index'
@@ -21,6 +22,7 @@ const getRouter = () => (
         <Route path="/page1" component={createComponent(Page1)}/>
         <Route path="/page2" component={createComponent(Page2)}/>
         <Route path="/dashboard" component={createComponent(Dashboard)}/>
+        <Route path="/login" component={createComponent(Login)}/>
     </Switch>
 )
 
