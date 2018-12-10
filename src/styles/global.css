@@ -74,3 +74,15 @@
 .ant-menu-horizontal > .ant-menu-item:hover, .ant-menu-horizontal > .ant-menu-submenu:hover{
   background: rgba(0, 0, 0, 0.025);
 }
+
+.login-modal-form{
+  width: 600px;
+  height: 450px;
+  background-color: white;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}

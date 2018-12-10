@@ -6,7 +6,7 @@ import { LOGIN_SUCCESS, LOGIN_FAILED } from './action'
  */
 const initState = {
     islogin: false,
-    user: 'Daniel'
+    user: ''
 }
 
 /*
@@ -22,7 +22,7 @@ export default function reducer (state = initState, action) {
         case LOGIN_FAILED:
             return {
                 islogin: false,
-                user: 'Daniel'
+                user: ''
             }
         default:
             return state
