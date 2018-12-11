@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { Button } from 'antd'
+import { Form, Checkbox, Button, Input, Icon } from 'antd'
 // import {increment, decrement, reset} from '@/redux/login/action'
-import './index.less'
+import styles from './index.less'
+
+const FormItem = Form.Item
 
 let canvasEl = ''
 let ctx = ''
@@ -180,14 +182,55 @@ class Login extends Component{
         mousePos[1] = e.clientY
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
+    }
+
 
     render() {
+        const { getFieldDecorator  } = this.props.form
+
+
+
         return (
-            <div>
+            <div className={styles.login}>
                 <canvas height="620" width="1360" id="canvas"
                         style={{position: 'absolute',height: '100%'}} />
                 <div className="login-modal-form">
-
+                    <Form onSubmit={this.handleSubmit} className="login-form">
+                        <FormItem>
+                            {getFieldDecorator('userName', {
+                                rules: [{ required: true, message: 'Please input your username!' }],
+                            })(
+                                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                            )}
+                        </FormItem>
+                        <FormItem>
+                            {getFieldDecorator('password', {
+                                rules: [{ required: true, message: 'Please input your Password!' }],
+                            })(
+                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                            )}
+                        </FormItem>
+                        <FormItem>
+                            {getFieldDecorator('remember', {
+                                valuePropName: 'checked',
+                                initialValue: true,
+                            })(
+                                <Checkbox>Remember me</Checkbox>
+                            )}
+                            <a className="login-form-forgot" href="">Forgot password</a>
+                            <Button type="primary" htmlType="submit" className="login-form-button">
+                                Log in
+                            </Button>
+                            Or <a href="">register now!</a>
+                        </FormItem>
+                    </Form>
                 </div>
             </div>
         )
@@ -202,16 +245,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        increment: () => {
-            dispatch(increment())
-        },
-        decrement: () => {
-            dispatch(decrement())
-        },
-        reset: () => {
-            dispatch(reset())
-        }
+
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(Login))
