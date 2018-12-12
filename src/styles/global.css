@@ -76,13 +76,34 @@
 }
 
 .login-modal-form{
-  width: 600px;
-  height: 450px;
-  background-color: white;
+  width: 570px;
+  height: 400px;
   position: absolute;
   margin: auto;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
+  border-radius: 5px;
+  background-color: whitesmoke;
+}
+
+.login-form{
+  width: 350px;
+  height: 290px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.login-form-button{
+  display: block;
+  width: 100%;
+}
+
+.float-r{
+  float: right;
 }
