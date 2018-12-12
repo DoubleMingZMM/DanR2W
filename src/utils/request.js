@@ -1,3 +1,4 @@
+import { message } from 'antd'
 
 const checkHttpStatus = (response) => {
     // 只接收200范围段的，其他的均抛错
@@ -28,7 +29,7 @@ const checkToken = (response) => {
 
 
 export default function request(uri, options, param) {
-    const prefixUrl = 'api/v1'
+    const prefixUrl = 'api/v1/'
     const url = prefixUrl + uri
     const method = (options.method).toUpperCase()
 
@@ -41,11 +42,16 @@ export default function request(uri, options, param) {
         }
     }
 
-    fetch(url,defaults)
+    if (method === 'POST' || method === 'PATCH' || method === 'DELETE' || method === 'UPLOAD') {
+        defaults['body'] = JSON.stringify(options.data)
+    }
+
+    return fetch(url,defaults)
         .then(checkHttpStatus)
         .then(parseJson)
         .then(checkToken)
         .catch(error => {
+            message.error(error.message || '请求错误(前端报错)')
             return {error: error.message || '请求错误(前端报错)'}
         })
 }

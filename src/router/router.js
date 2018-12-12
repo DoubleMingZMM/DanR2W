@@ -22,8 +22,17 @@ const getRouter = () => (
         <Route path="/page1" component={createComponent(Page1)}/>
         <Route path="/page2" component={createComponent(Page2)}/>
         <Route path="/dashboard" component={createComponent(Dashboard)}/>
+    </Switch>
+)
+
+const getNoAppRouter = () => (
+    /*A <Router> may have only one child element*/
+    <Switch>
         <Route path="/login" component={createComponent(Login)}/>
     </Switch>
 )
 
-export default getRouter
+module.exports = {
+    getRouter,
+    getNoAppRouter
+}

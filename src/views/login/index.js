@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { Form, Checkbox, Button, Input, Icon } from 'antd'
-// import {increment, decrement, reset} from '@/redux/login/action'
+import { LoginByPassword } from '@/redux/login/action'
 import styles from './index.less'
 
 const FormItem = Form.Item
@@ -189,6 +191,10 @@ class Login extends Component{
                 return false
             }
 
+            this.props.LoginByPassword(values)
+
+            console.log("=======>context", this.context)
+            console.log("=======>props", this.props)
 
         })
     }
@@ -204,7 +210,8 @@ class Login extends Component{
                 <div className="login-modal-form">
                     <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
                         <FormItem>
-                            {getFieldDecorator('userName', {
+                            {getFieldDecorator('name', {
+                                initialValue: 'Daniel',
                                 rules: [{ required: true, message: 'Please input your username!' }]
                             })(
                                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
@@ -212,6 +219,7 @@ class Login extends Component{
                         </FormItem>
                         <FormItem>
                             {getFieldDecorator('password', {
+                                initialValue: 'Aa123456',
                                 rules: [{ required: true, message: 'Please input your Password!' }]
                             })(
                                 <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
@@ -243,10 +251,15 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = () => {
     return {
-
+        LoginByPassword
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(Login))
+Login.contextTypes = {
+    router: PropTypes.object.isRequired
+}
+
+// 写{LoginByPassword}和mapDispatchToProps在于前者是返回之后的内容，后者是一个函数，所以mapDispatchToProps()
+export default connect(mapStateToProps, mapDispatchToProps())(Form.create()(Login))

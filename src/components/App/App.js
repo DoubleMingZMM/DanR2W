@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 // import Nav from '@/components/Nav/Nav'
 import * as d3 from 'd3'
-import getRouter from '@/router/router'
+import { getRouter, getNoAppRouter } from '@/router/router'
 import screenfull from 'screenfull'
 import { Layout, Menu, Icon, Breadcrumb, Badge, Drawer } from 'antd'
 import avater from '../../static/images/avater.jpg';
@@ -170,7 +170,7 @@ class App extends Component{
                                 DanR2W ©2018 Created by Daniel
                             </Footer>
                         </Layout>
-                    </Layout>) : <Login />
+                    </Layout>) : getNoAppRouter()
                 }
 
             </div>
