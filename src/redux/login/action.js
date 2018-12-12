@@ -1,6 +1,10 @@
 import { browserRouter } from 'react-router-dom'
 import { loginByPassword } from '@/api/login/'
 
+import { Cache } from '@/utils/'
+const { LocalStorage } = Cache
+const localStorage = new LocalStorage()
+
 export const LOGIN_SUCCESS = 'login/LOGIN_SUCCESS'
 export const LOGIN_FAILED = 'login/LOGIN_FAILED'
 
@@ -27,6 +31,7 @@ export const LoginByPassword = (payload) => async (dispatch) => {
             type: LOGIN_SUCCESS,
             payload: response.data
         })
+        localStorage.put('isLogin', true)
         window.location.href = '/dashboard'
     } else {
         dispatch({

@@ -1,4 +1,4 @@
-import Cache from './cache'
+import Cache from './cache/'
 import Logger from './logger'
 import Constant from './constant'
 import Request from './request'

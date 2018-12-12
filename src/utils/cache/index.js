@@ -13,5 +13,5 @@ import LocalStorage from './localStorage'
 
 module.exports = {
     Cookie,
-    LocalStorage,
+    LocalStorage
 }

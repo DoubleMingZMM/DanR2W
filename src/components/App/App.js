@@ -6,8 +6,16 @@ import { getRouter, getNoAppRouter } from '@/router/router'
 import screenfull from 'screenfull'
 import { Layout, Menu, Icon, Breadcrumb, Badge, Drawer } from 'antd'
 import avater from '../../static/images/avater.jpg';
-import Login from '@/views/login'
-const { Header, Sider, Content, Footer } = Layout
+// import Login from '@/views/login'
+
+import { Cache } from '@/utils/'
+const { LocalStorage } = Cache
+const localStorage = new LocalStorage()
+
+import { Content as ContentProps } from '@/components/Layout/'
+console.log("=====================>", ContentProps)
+
+const { Header, Sider, Footer, Content } = Layout
 const SubMenu = Menu.SubMenu
 const MenuItemGroup = Menu.ItemGroup
 
@@ -89,7 +97,7 @@ class App extends Component{
             <div>
                 {
 
-                    Boolean(localStorage.getItem('isLogin')) ? (<Layout className="layout-style">
+                    Boolean(localStorage.get('isLogin')) ? (<Layout className="layout-style">
                         <div className="drag-cursor">
                             <Icon type="setting" onClick={this.showDrawer}/>
                         </div>
@@ -158,13 +166,10 @@ class App extends Component{
                                 </Menu>
                             </Header>
                             <Content style={{ margin: '0 16px' }}>
-                                <Breadcrumb style={{ margin: '16px 0' }}>
-                                    <Breadcrumb.Item>User</Breadcrumb.Item>
-                                    <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                                </Breadcrumb>
-                                <div className="content-style">
-                                    {getRouter()}
+                                <div>
+                                    <ContentProps />
                                 </div>
+
                             </Content>
                             <Footer style={{ textAlign: 'center' }}>
                                 DanR2W ©2018 Created by Daniel
