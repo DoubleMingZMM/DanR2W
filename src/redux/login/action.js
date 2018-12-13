@@ -1,6 +1,5 @@
-import { browserRouter } from 'react-router-dom'
 import { loginByPassword } from '@/api/login/'
-
+// import { push } from 'connected-react-router'
 import { Cache } from '@/utils/'
 const { LocalStorage } = Cache
 const localStorage = new LocalStorage()
@@ -33,7 +32,7 @@ export const LoginByPassword = (payload) => async (dispatch) => {
         })
         localStorage.put('isLogin', true)
         localStorage.put('menus', response.data.menus)
-        window.location.href = '/dashboard'
+        // dispatch(push('/dashboard'))
     } else {
         localStorage.flush()
         dispatch({

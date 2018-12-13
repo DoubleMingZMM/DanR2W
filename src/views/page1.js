@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { Button } from 'antd'
 import {increment, decrement, reset} from '@/redux/page1/action'
+import { createBrowserHistory } from 'history'
 import './page1.css'
 
 class Page1 extends Component{
@@ -13,6 +14,7 @@ class Page1 extends Component{
     }
 
     handleClick() {
+        createBrowserHistory().push('/page2')
         this.setState({
             count: ++this.state.count
         })

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { Form, Checkbox, Button, Input, Icon } from 'antd'
 import { LoginByPassword } from '@/redux/login/action'
 import styles from './index.less'
