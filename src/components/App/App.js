@@ -1,31 +1,20 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-// import Nav from '@/components/Nav/Nav'
 import * as d3 from 'd3'
 import { getRouter, getNoAppRouter } from '@/router/router'
-import screenfull from 'screenfull'
-import { Layout, Menu, Icon, Breadcrumb, Badge, Drawer } from 'antd'
-import avater from '../../static/images/avater.jpg';
-// import Login from '@/views/login'
-
+import { Layout, Icon } from 'antd'
 import { Cache } from '@/utils/'
-const { LocalStorage } = Cache
-const localStorage = new LocalStorage()
-
-import { Content as ContentProps } from '@/components/Layout/'
-console.log("=====================>", ContentProps)
+import { BreadcrumbCus, MenuCus, DrawerCus, TopRightCus } from '@/components/Layout/'
 
 const { Header, Sider, Footer, Content } = Layout
-const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.ItemGroup
+const { LocalStorage } = Cache
+const localStorage = new LocalStorage()
 
 class App extends Component{
     constructor(props) {
         super(props)
 
         this.state = {
-            collapsed: false,
-            drawerVisible: false
+            collapsed: false
         }
     }
 
@@ -54,7 +43,6 @@ class App extends Component{
             .on('end', function() {
 
                 const $container = document.getElementById('app')
-                // console.log('winHeight===========================>', winHeight)
                 const position = {
                     x: d3.event.sourceEvent.x - dragDeltaX - $container.offsetLeft,
                     y: d3.event.sourceEvent.y - dragDeltaY - $container.offsetTop
@@ -68,108 +56,44 @@ class App extends Component{
         item.attr('style', `transform:translate(${x}px, ${y}px)`)
     }
 
-    toggle = () => {
+    toggle() {
         this.setState({
             collapsed: !this.state.collapsed
         })
     }
 
-    fullScreen = () => {
-        if (screenfull.enabled) {
-            screenfull.toggle()
-        }
-    }
-
-    showDrawer = () => {
-        this.setState({
-            drawerVisible: true,
-        });
-    };
-
-    onClose = () => {
-        this.setState({
-            drawerVisible: false,
-        });
-    };
-
     render() {
         return(
             <div>
-                {
-
-                    Boolean(localStorage.get('isLogin')) ? (<Layout className="layout-style">
-                        <div className="drag-cursor">
-                            <Icon type="setting" onClick={this.showDrawer}/>
-                        </div>
-                        <Drawer
-                            width="300px"
-                            title="基础设置"
-                            placement="right"
-                            closable={true}
-                            onClose={this.onClose}
-                            visible={this.state.drawerVisible}
-                        >
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
-                        </Drawer>
+                {Boolean(localStorage.get('isLogin')) ? (
+                    <Layout className="layout-style">
+                        {/*抽屉盒自定义组件*/}
+                        <DrawerCus />
                         <Sider
                             trigger={null}
                             collapsible
                             collapsed={this.state.collapsed}
                         >
                             <div className="app-title">DanR2W</div>
-                            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                                <Menu.Item key="1">
-                                    <Icon type="dashboard" />
-                                    <span>dashboard</span>
-                                    <Link to="/dashboard"/>
-                                </Menu.Item>
-                                <Menu.Item key="2">
-                                    <Icon type="video-camera" />
-                                    <span>page2</span>
-                                    <Link to="/page2"/>
-                                </Menu.Item>
-                                <Menu.Item key="3">
-                                    <Icon type="upload" />
-                                    <span>page3</span>
-                                    <Link to="/page1"/>
-                                </Menu.Item>
-                            </Menu>
+                            {/*菜单自定义组件*/}
+                            <MenuCus />
                         </Sider>
                         <Layout>
                             <Header style={{ background: '#fff', padding: 0 }}>
                                 <Icon
                                     className="trigger-icon"
                                     type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                                    onClick={this.toggle}
+                                    onClick={this.toggle.bind(this)}
                                 />
-                                <Menu
-                                    mode="horizontal"
-                                    style={{ lineHeight: '64px', float: 'right', borderBottom: 'none' }}
-                                >
-                                    <Menu.Item key="full" className="border-bt-none-force">
-                                        <i className="iconfont icon-fullscreen" onClick={this.fullScreen}/>
-                                    </Menu.Item>
-                                    <SubMenu className="border-bt-none-force" title={<span className="avatar"><img src={avater} alt="头像"
-                                                                                                                   style={{height: 40, width: 40, borderRadius: '50%'}}/><i className="on bottom b-white" /></span>}>
-                                        <MenuItemGroup title="用户中心">
-                                            <Menu.Item key="setting:1">你好 - Daniel</Menu.Item>
-                                            <Menu.Item key="setting:2">个人信息</Menu.Item>
-                                            <Menu.Item key="logout"><span>退出登录</span></Menu.Item>
-                                        </MenuItemGroup>
-                                        <MenuItemGroup title="设置中心">
-                                            <Menu.Item key="setting:3">个人设置</Menu.Item>
-                                            <Menu.Item key="setting:4">系统设置</Menu.Item>
-                                        </MenuItemGroup>
-                                    </SubMenu>
-                                </Menu>
+                                {/*上侧导航栏右边自定义组件*/}
+                                <TopRightCus />
                             </Header>
                             <Content style={{ margin: '0 16px' }}>
-                                <div>
-                                    <ContentProps />
+                                {/*面包屑自定义组件*/}
+                                <BreadcrumbCus />
+                                <div className="content-style">
+                                    { getRouter() }
                                 </div>
-
                             </Content>
                             <Footer style={{ textAlign: 'center' }}>
                                 DanR2W ©2018 Created by Daniel
@@ -177,7 +101,6 @@ class App extends Component{
                         </Layout>
                     </Layout>) : getNoAppRouter()
                 }
-
             </div>
 
         )
