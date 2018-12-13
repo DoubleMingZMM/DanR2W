@@ -1,30 +1,49 @@
 import React, { Component } from 'react'
 import { Menu, Icon } from 'antd'
 import { Link } from 'react-router-dom'
+import { Cache } from '@/utils/'
+const { LocalStorage } = Cache
+const localStorage = new LocalStorage()
 
 class MenuCus extends Component{
     constructor(props) {
         super(props)
+        this.state = {
+            selectedKeys: ['dashboard'],
+            menus: localStorage.get('menus')
+        }
+    }
+
+    selectKeys(obj) {
+        this.setState({
+            selectedKeys: obj.selectedKeys
+        })
     }
 
     render() {
+        const { location } = this.props
+        const { selectedKeys, menus } = this.state
+
+        const memuProps = {
+            theme: 'dark',
+            mode: 'inline',
+            selectedKeys: selectedKeys,
+            onSelect: this.selectKeys.bind(this)
+        }
+
         return(
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                <Menu.Item key="1">
-                    <Icon type="dashboard" />
-                    <span>dashboard</span>
-                    <Link to="/dashboard"/>
-                </Menu.Item>
-                <Menu.Item key="2">
-                    <Icon type="video-camera" />
-                    <span>page2</span>
-                    <Link to="/page2"/>
-                </Menu.Item>
-                <Menu.Item key="3">
-                    <Icon type="upload" />
-                    <span>page3</span>
-                    <Link to="/page1"/>
-                </Menu.Item>
+            <Menu {...memuProps}>
+                {
+                    menus.map((v,k) => {
+                        return (
+                            <Menu.Item key={v.key}>
+                                <Icon type={v.icon} />
+                                <span>{v.title}</span>
+                                <Link to={'/' + v.path}/>
+                            </Menu.Item>
+                        )
+                    })
+                }
             </Menu>
         )
     }

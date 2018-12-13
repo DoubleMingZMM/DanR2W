@@ -6,7 +6,8 @@ import { LOGIN_SUCCESS, LOGIN_FAILED } from './action'
  */
 const initState = {
     isLogin: false,
-    user: ''
+    user: '',
+    menus: []
 }
 
 /*
@@ -22,7 +23,8 @@ export default function reducer (state = initState, action) {
         case LOGIN_FAILED:
             return {
                 isLogin: false,
-                user: ''
+                user: '',
+                menus: []
             }
         default:
             return state

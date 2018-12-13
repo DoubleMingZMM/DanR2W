@@ -32,11 +32,14 @@ export const LoginByPassword = (payload) => async (dispatch) => {
             payload: response.data
         })
         localStorage.put('isLogin', true)
+        localStorage.put('menus', response.data.menus)
         window.location.href = '/dashboard'
     } else {
+        localStorage.flush()
         dispatch({
             type: LOGIN_FAILED
         })
     }
 }
+
 

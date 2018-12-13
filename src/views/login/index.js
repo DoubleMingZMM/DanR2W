@@ -192,10 +192,6 @@ class Login extends Component{
             }
 
             this.props.LoginByPassword(values)
-
-            console.log("=======>context", this.context)
-            console.log("=======>props", this.props)
-
         })
     }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import * as d3 from 'd3'
 import { getRouter, getNoAppRouter } from '@/router/router'
 import { Layout, Icon } from 'antd'
@@ -106,6 +107,10 @@ class App extends Component{
         )
     }
 
+}
+
+App.contextTypes = {
+    router: PropTypes.object.isRequired
 }
 
 export default App
