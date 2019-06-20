@@ -30,13 +30,15 @@ const checkToken = (response) => {
 
 export default function request(uri, options, param) {
     const prefixUrl = 'api/v1/'
+    // const prefixUrl = '' // 起本地服务不需要前缀
     const url = prefixUrl + uri
     const method = (options.method).toUpperCase()
 
     let defaults = {
         method: method,
         headers: {
-            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/json', // 默认请求方式
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json',
             'X-Provider':'ccccc'
         }

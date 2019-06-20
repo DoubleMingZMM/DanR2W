@@ -34,6 +34,9 @@ commonConfig = {
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [{
+                    // 你会疑惑为什么只是使用url-loader，那是因为url-loader封装了file-loader
+                    // 1.文件大小小于limit参数，url-loader将会把文件转为DataURL；
+                    // 2.文件大小大于limit，url-loader会调用file-loader进行处理，参数也会直接传给file-loader。因此我们只需要安装url-loader即可。
                     loader: 'url-loader',
                     options: {
                         // 小于等于8K的图片会被转成base64编码，直接插入HTML中，减少HTTP请求。

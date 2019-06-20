@@ -31,4 +31,3 @@ if (module.hot) {
         renderWithHotReload(NextApp)
     })
 }
-
