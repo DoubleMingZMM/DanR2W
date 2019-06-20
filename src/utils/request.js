@@ -37,8 +37,8 @@ export default function request(uri, options, param) {
     let defaults = {
         method: method,
         headers: {
-            // 'Content-Type': 'application/json', // 默认请求方式
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json', // 默认请求方式
+            // 'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json',
             'X-Provider':'ccccc'
         }
