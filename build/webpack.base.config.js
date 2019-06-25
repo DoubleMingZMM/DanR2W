@@ -27,11 +27,14 @@ commonConfig = {
     module: {
         rules: [
             {
-                test: /\.js[x]?$/,
+                // 没有使用到jsx，可以不去正则jsx，会浪费性能
+                test: /\.js$/,
                 use: ['babel-loader?cacheDirectory=true'],
+                // 只编译src，减少文件搜索范围
                 include:  resolvePath('src')
             },
             {
+                // 对图片的使用png会更多，所以把png放在前面
                 test: /\.(png|jpg|gif)$/,
                 use: [{
                     // 你会疑惑为什么只是使用url-loader，那是因为url-loader封装了file-loader
@@ -61,7 +64,13 @@ commonConfig = {
     resolve: {
         alias: {
             '@':  resolvePath('src')
-        }
+        },
+        // 一般的第三方库的入口文件在main中，尽量不要去查找，使用main减少搜索性能
+        mainFields: ['main'],
+        // 加上node_modules前缀，表示在node_modules目录下查找第三方库，缩短文件路径，进行优化
+        // modules: [resolvePath('node_modules')],
+        // 列表长度要小，高频放在前面默认值就是js 和 json
+        extensions:['.js', '.json']
     }
 }
 
