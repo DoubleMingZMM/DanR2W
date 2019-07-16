@@ -23,7 +23,9 @@ yarn-error.log*
 # 这个package-lock.json 是在 `npm install`
 # 时候生成一份文件，用以记录当前状态下实际
 # 安装的各个npm package的具体来源和版本号。
-package-lock.json
+
+# 把它传到仓库中，在构建的时候下载依赖会快很多
+# package-lock.json
 
 
 
