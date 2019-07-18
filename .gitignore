@@ -19,7 +19,7 @@ yarn-error.log*
 *.log
 # 每次添加依赖或者更新包版本，yarn都会把
 # 相关版本信息写入yarn.lock文件。
-*.lock
+# *.lock
 # 这个package-lock.json 是在 `npm install`
 # 时候生成一份文件，用以记录当前状态下实际
 # 安装的各个npm package的具体来源和版本号。
