@@ -29,7 +29,7 @@ class Login extends Component{
         this.onResize()
         this.onMousemove()
 
-        this.resize() // trigger the event manually.
+        this.resize() // trigger the event manually
 
         window.requestAnimationFrame(this.step.bind(this))
     }
