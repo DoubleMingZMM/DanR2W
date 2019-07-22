@@ -16,6 +16,6 @@ export default class Index extends Component{
 }
 
 Index.childContextTypes = {
-    // 也可以写成静态方式
+    // 也可以写成静态方式.
     color: PropTypes.string
 }
