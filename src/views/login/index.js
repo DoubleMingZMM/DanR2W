@@ -189,8 +189,12 @@ class Login extends Component{
             if (!!err) {
                 return false
             }
-
-            this.props.LoginByPassword(values)
+            // 将 values 和 history 放在一起传给redux
+            const params = {
+                ...values,
+                history: this.props.history
+            };
+            this.props.LoginByPassword(params)
         })
     }
 

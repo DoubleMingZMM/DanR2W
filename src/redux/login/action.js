@@ -24,7 +24,11 @@ export const LOGIN_FAILED = 'login/LOGIN_FAILED'
     }
 }*/
 export const LoginByPassword = (payload) => async (dispatch) => {
-    const response  = await loginByPassword(payload)
+    const values = {
+        ...payload
+    };
+    delete values['history'];
+    const response  = await loginByPassword(values)
     if (response.code === 200) {
         dispatch({
             type: LOGIN_SUCCESS,
@@ -32,7 +36,7 @@ export const LoginByPassword = (payload) => async (dispatch) => {
         })
         localStorage.put('isLogin', true)
         localStorage.put('menus', response.data.menus)
-        // dispatch(push('/dashboard'))
+        payload.history.push('/dashboard');
     } else {
         localStorage.flush()
         dispatch({
