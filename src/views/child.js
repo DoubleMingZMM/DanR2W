@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DButton from '@/components/DButton/index';
+import DIcon from '@/components/DIcon/index';
 import { Button } from 'antd';
 
 export default class Child extends Component {
@@ -9,7 +10,9 @@ export default class Child extends Component {
         <div style={{ color: this.context.color }}>
           我是child
             <DButton />
+            
             <Button />
+            <DIcon />
         </div>
     );
   }

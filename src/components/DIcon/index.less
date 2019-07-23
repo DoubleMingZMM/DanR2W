@@ -1,0 +1,45 @@
+[class*=css-icon] {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    font-style: normal;
+    color: #000;
+    text-align: left;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+}
+[class*=css-icon]:before,[class*=css-icon]:after{
+  content: " ";
+  background-color: #000;
+  position: absolute;
+  box-sizing: border-box;
+}
+[class*=css-icon][class*=circle]{
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: transparent;
+}
+[class*=close]{
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+}
+[class*=close]:before{
+  width: 12px;
+  height: 2px;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+[class*=close]:after{
+  width: 2px;
+  height: 12px;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
