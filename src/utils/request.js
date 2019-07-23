@@ -21,7 +21,7 @@ const checkToken = (response) => {
     const error = new Error('token 已过期, 请重新登录！');
     error.response = response;
 
-    window.location.href('/login'); // todo
+    window.location.href('/login');
     throw error;
   }
   return response;

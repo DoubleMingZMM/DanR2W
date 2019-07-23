@@ -17,6 +17,6 @@ const store = createStore(combineReducers, composeEnhancers(
         const nextCombineReducers = require('./reducers').default
         store.replaceReducer(nextCombineReducers)
     })
-}*/
+} */
 
 export default store;

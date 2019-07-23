@@ -37,7 +37,7 @@ export default class Cookie extends CacheAbstract {
   }
 
   has(key) {
-    return this.get(key) !== undefined;
+    return this.get(key) != null;
   }
 
   flush() {

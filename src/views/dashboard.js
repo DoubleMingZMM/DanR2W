@@ -11,14 +11,14 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    var bgDiv = document.getElementById('main_bgt');
-    var w = window.innerWidth;// 屏幕分辨率，高
-    var h = window.innerHeight;// 屏幕分辨率，宽
+    let bgDiv = document.getElementById('main_bgt');
+    let w = window.innerWidth;// 屏幕分辨率，高
+    let h = window.innerHeight;// 屏幕分辨率，宽
     bgDiv.style.width = w + 'px';
     bgDiv.style.height = h + 'px';
     console.log(w);
     console.log(h);
-    var cl = document.getElementsByClassName('fixes');
+    let cl = document.getElementsByClassName('fixes');
     for (let i = 0; i < cl.length; i++) {
       if (i === 15) {
         cl[i].style.cssText += 'top:' + w / 3.467 + 'px;';
@@ -37,14 +37,14 @@ class Dashboard extends Component {
   }
 
   resize() {
-    var bgDiv = document.getElementById('main_bgt');
-    var w = window.innerWidth;// 屏幕分辨率，高
-    var h = window.innerHeight;// 屏幕分辨率，宽
+    let bgDiv = document.getElementById('main_bgt');
+    let w = window.innerWidth;// 屏幕分辨率，高
+    let h = window.innerHeight;// 屏幕分辨率，宽
     bgDiv.style.width = w + 'px';
     bgDiv.style.height = h + 'px';
     console.log(w);
     console.log(h);
-    var cl = document.getElementsByClassName('fixes');
+    let cl = document.getElementsByClassName('fixes');
     for (let i = 0; i < cl.length; i++) {
       if (i === 15) {
         cl[i].style.cssText += 'top:' + w / 3.467 + 'px;';
@@ -58,14 +58,14 @@ class Dashboard extends Component {
   }
 
   loginMain(val) {
-    alert(val);
+    console.log(val);
   }
 
   render() {
     const pics = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 
     return (
-      <div id='main_bgt' >
+      <div id="main_bgt" >
         {pics.map(v => {
           return <div key={v} className={`fixe_img${v}`} onClick={this.loginMain} />;
         })}

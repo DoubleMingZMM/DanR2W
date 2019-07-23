@@ -31,13 +31,13 @@ class Login extends Component {
   }
 
   constructNodes() {
-    for (var i = 0; i < 100; i++) {
-      var node = {
+    for (let i = 0; i < 100; i++) {
+      let node = {
         drivenByMouse: i === 0,
         x: Math.random() * canvasEl.width,
         y: Math.random() * canvasEl.height,
-        vx: Math.random() * 1 - 0.5,
-        vy: Math.random() * 1 - 0.5,
+        vx: Number(Math.random()) - 0.5,
+        vy: Number(Math.random()) - 0.5,
         radius: Math.random() > 0.9 ? 3 + Math.random() * 3 : 1 + Math.random() * 3
       };
 
@@ -50,7 +50,7 @@ class Login extends Component {
           return;
         }
 
-        var edge = {
+        let edge = {
           from: e,
           to: e2
         };
@@ -61,7 +61,7 @@ class Login extends Component {
   }
 
   addEdge(edge) {
-    var ignore = false;
+    let ignore = false;
 
     edges.forEach((e) => {
       if (e.from === edge.from && e.to === edge.to) {
@@ -127,8 +127,8 @@ class Login extends Component {
     ctx.fillRect(0, 0, canvasEl.width, canvasEl.height);
 
     edges.forEach((e) => {
-      var l = this.lengthOfEdge(e);
-      var threshold = canvasEl.width / 8;
+      let l = this.lengthOfEdge(e);
+      let threshold = canvasEl.width / 8;
 
       if (l > threshold) {
         return;
@@ -199,16 +199,16 @@ class Login extends Component {
 
     return (
       <div className={styles.login}>
-        <canvas height='620' width='1360' id='canvas'
+        <canvas height="620" width="1360" id="canvas"
           style={{ position: 'absolute', height: '100%', width: '100%' }} />
-        <div className='login-modal-form'>
-          <Form onSubmit={this.handleSubmit.bind(this)} className='login-form'>
+        <div className="login-modal-form">
+          <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
             <FormItem>
               {getFieldDecorator('name', {
                 initialValue: 'Daniel',
                 rules: [{ required: true, message: 'Please input your username!' }]
               })(
-                <Input prefix={<Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder='Username' />
+                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
               )}
             </FormItem>
             <FormItem>
@@ -216,7 +216,7 @@ class Login extends Component {
                 initialValue: 'Aa123456',
                 rules: [{ required: true, message: 'Please input your Password!' }]
               })(
-                <Input prefix={<Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />} type='password' placeholder='Password' />
+                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
               )}
             </FormItem>
             <FormItem>
@@ -226,11 +226,11 @@ class Login extends Component {
               })(
                 <Checkbox>Remember me</Checkbox>
               )}
-              <a className='float-r' href=''>Forgot password</a>
-              <Button type='primary' htmlType='submit' className='login-form-button'>
+              <a className="float-r" href="">Forgot password</a>
+              <Button type="primary" htmlType="submit" className="login-form-button">
                                 Log in
               </Button>
-                            Or <a href=''>register now!</a>
+                            Or <a href="">register now!</a>
             </FormItem>
           </Form>
         </div>

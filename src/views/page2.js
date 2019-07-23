@@ -5,8 +5,8 @@ import offShelf from '../static/images/offshelf.png';
 
 class Page2 extends Component {
     handleInfo = () => {
-      const { getInfo } = this.props;
-      getInfo();
+      const { getInfo: getInfoDetail } = this.props;
+      getInfoDetail();
     }
 
     render() {

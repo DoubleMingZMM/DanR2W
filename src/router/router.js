@@ -10,26 +10,26 @@ import Dashboard from 'bundle-loader?lazy&name=dashboard!@/views/Index';
 const createComponent = (component) => (props) => (
   <Bundle load={component}>
     {
-      (Component) => Component ? <Component {...props} /> : ''
+      (Component) => (Component ? <Component {...props} /> : '')
     }
   </Bundle>
 );
 
 const getRouter = () => (
-  /* A <Router> may have only one child element*/
+  /* A <Router> may have only one child element */
   <Switch>
-    <Route path='/dashboard' component={createComponent(Dashboard)}/>
-    <Route path='/page1' component={createComponent(Page1)}/>
-    <Route path='/page2' component={createComponent(Page2)}/>
-    <Route path='*' render={() => (<Redirect to='/dashboard'/>)}/>
+    <Route path="/dashboard" component={createComponent(Dashboard)}/>
+    <Route path="/page1" component={createComponent(Page1)}/>
+    <Route path="/page2" component={createComponent(Page2)}/>
+    <Route path="*" render={() => (<Redirect to="/dashboard"/>)}/>
   </Switch>
 );
 
 const getNoAppRouter = () => (
-  /* A <Router> may have only one child element*/
+  /* A <Router> may have only one child element */
   <Switch>
-    <Route path='/login' component={createComponent(Login)}/>
-    <Route path='*' render={() => (<Redirect to='/login'/>)}/>
+    <Route path="/login" component={createComponent(Login)}/>
+    <Route path="*" render={() => (<Redirect to="/login"/>)}/>
   </Switch>
 );
 

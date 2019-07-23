@@ -22,7 +22,7 @@ export const LOGIN_FAILED = 'login/LOGIN_FAILED';
             })
         }
     }
-}*/
+} */
 export const LoginByPassword = (payload) => async(dispatch) => {
   const values = {
     ...payload
