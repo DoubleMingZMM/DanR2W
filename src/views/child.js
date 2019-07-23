@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default class Child extends Component {
   render() {
     return (
-      <div style={{ color: this.context.color }}>我是child</div>
+        <div style={{ color: this.context.color }}>我是child</div>
     );
   }
 }

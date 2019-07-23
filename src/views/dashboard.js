@@ -65,11 +65,11 @@ class Dashboard extends Component {
     const pics = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 
     return (
-      <div id="main_bgt" >
-        {pics.map(v => {
+        <div id="main_bgt" >
+            {pics.map(v => {
           return <div key={v} className={`fixe_img${v}`} onClick={this.loginMain} />;
         })}
-      </div>
+        </div>
     );
   }
 }

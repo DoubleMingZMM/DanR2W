@@ -10,13 +10,13 @@ import './styles/index.less';
 
 function renderWithHotReload(RootElement) {
   ReactDom.render(
-    <AppContainer>
-      <Provider store={store}>
-        <BrowserRouter>
-          <RootElement/>
-        </BrowserRouter>
-      </Provider>
-    </AppContainer>,
+      <AppContainer>
+          <Provider store={store}>
+              <BrowserRouter>
+                  <RootElement />
+              </BrowserRouter>
+          </Provider>
+      </AppContainer>,
     document.getElementById('app')
   );
 }

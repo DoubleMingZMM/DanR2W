@@ -30,6 +30,7 @@
     "core-js": "^2.6.9",
     "css-loader": "^1.0.0",
     "eslint": "^6.1.0",
+    "eslint-config-daniel": "^1.0.4",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-react": "^7.14.3",
     "file-loader": "^2.0.0",

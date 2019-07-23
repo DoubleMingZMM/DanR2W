@@ -15,8 +15,9 @@ class Page1 extends Component {
 
   handleClick() {
     createBrowserHistory().push('/page2');
+    const count = this.state.count;
     this.setState({
-      count: ++this.state.count
+      count: count + 1
     });
   }
 
@@ -34,18 +35,18 @@ class Page1 extends Component {
 
   render() {
     return (
-      <div>
-        <Button type="primary">antd</Button>
-                page1里面的state计数为：{this.state.count}<br/>
-        <button onClick={() => this.handleClick()}>自增state</button>
+        <div>
+            <Button type="primary">antd</Button>
+            page1里面的state计数为：{this.state.count}<br />
+            <button onClick={() => this.handleClick()}>自增state</button>
 
-        <br/>page1里面的redux计数为：{this.props.page1.count}<br/>
-        <button onClick={() => this.handleReduxClick('increment')}>自增redux</button>
+            <br />page1里面的redux计数为：{this.props.page1.count}<br />
+            <button onClick={() => this.handleReduxClick('increment')}>自增redux</button>
 
-        <button onClick={() => this.handleReduxClick('decrement')}>自减redux</button>
+            <button onClick={() => this.handleReduxClick('decrement')}>自减redux</button>
 
-        <button onClick={() => this.handleReduxClick('reset')} className="red-style">重置222222redux</button>
-      </div>
+            <button onClick={() => this.handleReduxClick('reset')} className="red-style">重置222222redux</button>
+        </div>
     );
   }
 }

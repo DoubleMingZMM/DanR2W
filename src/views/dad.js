@@ -5,7 +5,7 @@ import Child from './child';
 export default class Dad extends Component {
   render() {
     return (
-      <Child />
+        <Child />
     );
   }
 }
