@@ -3,7 +3,10 @@ module.exports = {
     // 对应插件
     parser: 'babel-eslint',
     parserOptions: {
-        sourceType: 'module'
+        ecmaVersion: 7,
+        sourceType: 'module',
+        jsx: true,
+        modules: true
     },
     env: {
         browser: true,
@@ -13,8 +16,10 @@ module.exports = {
     extends: 'eslint:recommended',
     // required to lint *.vue files
     plugins: [
-        // 对应的插件eslint-plugin-html
-        'html'
+        // eslint 支持 html 所对应的插件（eslint-plugin-html）
+        'html',
+        // eslint 支持 react 所对应的插件（eslint-react-plugin）
+        'react'
     ],
     // check if imports actually resolve
     'settings': {
@@ -22,11 +27,23 @@ module.exports = {
             'webpack': {
                 'config': 'build/webpack.base.config.js'
             }
-        }
+        },
+        "html/report-bad-indent": "error",
+        "html/html-extensions": [".html", ".we"],
+        "html/indent": "0",   // code should start at the beginning of the line (no initial indentation).
+        "html/indent": "+2",  // indentation is the <script> indentation plus two spaces.
+        "html/indent": "tab", // indentation is one tab at the beginning of the line.
     },
     // add your custom rules here
     //it is base on https://github.com/vuejs/eslint-config-vue
     'rules': {
+        // react 配置
+        'strict': 0,
+        'valid-jsdoc': 2,
+        'react/jsx-uses-react': 2,
+        'react/jsx-uses-vars': 2,
+        'react/react-in-jsx-scope': 2,
+        // 常规配置项
         'accessor-pairs': 2,
         'arrow-spacing': [2, {
             'before': true,
@@ -168,7 +185,10 @@ module.exports = {
             'avoidEscape': true,
             'allowTemplateLiterals': true
         }],
-        'semi': [2, 'never'],
+        // 必须使用分号
+        'semi': 2,
+        // 禁止使用分号
+        // 'semi': [2, 'never'],
         'semi-spacing': [2, {
             'before': false,
             'after': true

@@ -1,21 +1,15 @@
-import React, { Component } from 'react'
-import { getRouter } from '@/router/router'
+import React, { Component } from 'react';
+import { Breadcrumb } from 'antd';
 
-import { Breadcrumb } from 'antd'
-
-class BreadcrumbCus extends Component{
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return(
-            <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>User</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-        )
-    }
+class BreadcrumbCus extends Component {
+  render() {
+    return (
+      <Breadcrumb style={{ margin: '16px 0' }}>
+        <Breadcrumb.Item>User</Breadcrumb.Item>
+        <Breadcrumb.Item>Bill</Breadcrumb.Item>
+      </Breadcrumb>
+    );
+  }
 }
 
-export default BreadcrumbCus
+export default BreadcrumbCus;

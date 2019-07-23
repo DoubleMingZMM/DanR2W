@@ -10,21 +10,17 @@
 
 'use strict';
 
-export default class CacheInterface{
-    constructor() {
+export default class CacheInterface {
+  // 这是几个接口方法，需要子类去实现
 
-    }
+  get(key) {}
 
-    // 这是几个接口方法，需要子类去实现
+  put(key, value, minutes) {}
 
-    get(key){}
+  forget(key) {}
 
-    put(key, value, minutes){}
+  has(key) {}
 
-    forget(key){}
-
-    has(key){}
-
-    flush() {}
+  flush() {}
 }
 

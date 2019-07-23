@@ -7,29 +7,29 @@
  */
 
 export default class Logger {
-    static print(level, ...message){
-        let globalLevel = window.LOG_LEVEL || 'debug'
-        let levels = ['debug', 'info', 'warn', 'error']
+  static print(level, ...message) {
+    const globalLevel = window.LOG_LEVEL || 'debug';
+    const levels = ['debug', 'info', 'warn', 'error'];
 
-        if(levels.indexOf(level) >= levels.indexOf(globalLevel)){
-            message.unshift('[DanR2W]')
-            if(level in console){
-                console[level](...message);
-            }else{
-                console.log(...message)
-            }
-        }
+    if (levels.indexOf(level) >= levels.indexOf(globalLevel)) {
+      message.unshift('[DanR2W]');
+      if (level in console) {
+        console[level](...message);
+      } else {
+        console.log(...message);
+      }
     }
-    static debug(...message){
-        return Logger.print('debug', ...message)
-    }
-    static info(...message){
-        Logger.print('info', ...message)
-    }
-    static warn(...message){
-        Logger.print('warn', ...message)
-    }
-    static error(...message){
-        Logger.print('error', ...message)
-    }
+  }
+  static debug(...message) {
+    return Logger.print('debug', ...message);
+  }
+  static info(...message) {
+    Logger.print('info', ...message);
+  }
+  static warn(...message) {
+    Logger.print('warn', ...message);
+  }
+  static error(...message) {
+    Logger.print('error', ...message);
+  }
 }

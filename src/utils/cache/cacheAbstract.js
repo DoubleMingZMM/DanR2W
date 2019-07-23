@@ -10,16 +10,16 @@
 
 'use strict';
 
-import CacheInterface from './cacheInterface'
+import CacheInterface from './cacheInterface';
 
-export default class CacheAbstract extends CacheInterface{
-    constructor() {
-        super();
+export default class CacheAbstract extends CacheInterface {
+  constructor() {
+    super();
 
-        this.prefix = 'DanR2W'
-    }
+    this.prefix = 'DanR2W';
+  }
 
-    static expires(time){
-        return + new Date() > parseInt(time, 10)
-    }
+  static expires(time) {
+    return +new Date() > parseInt(time, 10);
+  }
 }

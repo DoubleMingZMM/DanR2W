@@ -8,10 +8,10 @@
  * export
  */
 
-import Cookie from './cookie'
-import LocalStorage from './localStorage'
+import Cookie from './cookie';
+import LocalStorage from './localStorage';
 
 module.exports = {
-    Cookie,
-    LocalStorage
-}
+  Cookie,
+  LocalStorage
+};
