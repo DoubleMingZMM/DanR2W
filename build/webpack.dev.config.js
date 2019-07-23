@@ -1,13 +1,13 @@
-const path = require('path')
-const webpack = require('webpack')
-const merge = require('webpack-merge')
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
 
-const baseConfig = require('./webpack.base.config.js')
+const baseConfig = require('./webpack.base.config.js');
 
 
 // 解决相对路径的问题，否则下面很多地方都需要写../xxx/xxxx
 function resolvePath(dir) {
-    return path.join(__dirname, '..', dir)
+    return path.join(__dirname, '..', dir);
 }
 
 const devConfig = {
@@ -53,14 +53,14 @@ const devConfig = {
         new webpack.HotModuleReplacementPlugin()
     ],
     devtool: 'inline-source-map'
-}
+};
 
 module.exports = merge({
     customizeArray(a, b, key) {
-        /*entry.app不合并，全替换*/
+        /* entry.app不合并，全替换 */
         if (key === 'entry.app') {
-            return b
+            return b;
         }
-        return undefined
+        return null;
     }
-})(baseConfig, devConfig)
+})(baseConfig, devConfig);

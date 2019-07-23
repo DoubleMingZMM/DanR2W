@@ -67,8 +67,8 @@ class Dashboard extends Component {
     return (
         <div id="main_bgt" >
             {pics.map(v => {
-          return <div key={v} className={`fixe_img${v}`} onClick={this.loginMain} />;
-        })}
+              return <div key={v} className={`fixe_img${v}`} onClick={this.loginMain} />;
+            })}
         </div>
     );
   }

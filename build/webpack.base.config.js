@@ -1,14 +1,13 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 // 解决相对路径的问题，否则下面很多地方都需要写../xxx/xxxx
 function resolvePath(dir) {
-    return path.join(__dirname, '..', dir)
+    return path.join(__dirname, '..', dir);
 }
 
-commonConfig = {
+const commonConfig = {
     // 入口
     entry: {
         app: [
@@ -72,6 +71,6 @@ commonConfig = {
         // 列表长度要小，高频放在前面默认值就是js 和 json
         extensions:['.js', '.json']
     }
-}
+};
 
-module.exports = commonConfig
+module.exports = commonConfig;
