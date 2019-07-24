@@ -15,18 +15,27 @@ import classnames from 'classnames';
 import './index.less';
 
 class DButton extends Component {
+  constructor(props) {
+    super(props);
+    // todo 暂时不这么写，因为现在还不能理解为什么源码要把 loading 放在 state 中
+    this.state = {
+      loading: props.loading
+    }
+  }
 
   render() {
+    // todo 暂时不这么写，因为现在还不能理解为什么源码要把 loading 放在 state 中
+    const {  } = this.state;
     const { props } = this;
     // children 为 React 里面的固有属性，指的是标签之间的内容
-    const { loading, icon, children } = props;
+    const { loading, icon, children, className = '', type } = props;
     
     // 设置 iconType，如果设置 loading 状态，则默认使用 DIcon 中的 loading
     // 未设置 loading 的话则使用传过来的 type
     const iconType = loading ? 'loading' : icon;
     const iconNode = iconType ? (<DIcon
       className="mgr-5"
-      spin={true}
+      spin={loading}
       type={iconType}
     />) : null;
 
@@ -36,16 +45,25 @@ class DButton extends Component {
     };
 
     // 一开始进来，loading 为 true 的话，会禁用这个 button，可以直接加上 disabled 属性
-    buttonProps.disabled = true;
+    if (loading) {
+      buttonProps.disabled = true;
+    } else {
+      // 用来处理当 loading 为 false 时，如果 disabled 为 true，需要表现为 disabled
+      if (!buttonProps['disabled']) delete buttonProps['disabled'];
+    }
+    // setTimeout(() => {
+    //   delete buttonProps['disabled'];
+    //   console.log(buttonProps);
+    // }, 3000);
 
-    setTimeout(() => {
-      delete buttonProps['disabled'];
-      console.log(buttonProps);
-    }, 3000);
+    // 使用 classnames 将 d-button 以及自定义的 className 和 type 组成的样式 传入 button 标签
+    const classNames = classnames('d-button', className, {
+      [`d-button-${type}`]: true
+    });
     
     return (
       <button
-        className="DButton"
+        className={classNames}
         {...omit(buttonProps, ['icon','shape', 'size', 'ghost', 'href', 'htmlType', 'loading', 'target', 'block', 'style', 'className'])}
       >
         {/* 如果 icon 没传的话，设置成 null，jsx 不解析 */}

@@ -7,23 +7,45 @@ import { Button, Icon } from 'antd';
 export default class Child extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loading: true
+    };
     this.handleClick = this.handleClick.bind(this);
+    this.handleLoading = this.handleLoading.bind(this);
   }
 
   handleClick() {
     console.log(22222222222);
   }
 
+  handleLoading() {
+    this.setState({
+      loading: !this.state.loading
+    });
+  }
+
   render() {
+    const { loading } = this.state;
+
     return (
       <div style={{ color: this.context.color }}>
           我是child
         <DButton
-          loading={true}>
+          disabled={false}
+          icon="frown"
+          type="danger"
+          loading={false}
+          shape="round"
+        >
           <span>sdfgsdfg</span>
         </DButton>
         <Button
-          disabled
+          disabled={false}
+          loading={false}
+          icon="frown"
+          type="danger"
+          shape="round"
+          onClick={this.handleLoading}
         >
           <span>sdfgsdfg</span>
         </Button>
