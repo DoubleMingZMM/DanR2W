@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DButton from '@/components/DButton/index';
 import DIcon from '@/components/DIcon/index';
-import { Button } from 'antd';
+import { Button, Icon } from 'antd';
 
 export default class Child extends Component {
   render() {
@@ -10,9 +10,9 @@ export default class Child extends Component {
         <div style={{ color: this.context.color }}>
           我是child
             <DButton />
-            
             <Button />
-            <DIcon />
+            <DIcon type="frown" spin={true} title="Icon" rotate={90} />
+            <Icon type="home" spin={true} title="Icon" rotate={90} />
         </div>
     );
   }

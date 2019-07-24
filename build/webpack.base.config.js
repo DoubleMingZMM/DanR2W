@@ -47,6 +47,10 @@ const commonConfig = {
                 }]
             },
             {
+                test: /\.(ttf|eot|woff|woff2|svg)$/,
+                use: ['file-loader']
+            },
+            {
                 test: /\.less$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
             }
