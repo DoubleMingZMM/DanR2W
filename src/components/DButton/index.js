@@ -4,16 +4,17 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-24 19:48:03
+ * @LastEditTime: 2019-07-24 21:06:53
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DIcon from '@/components/DIcon/index.js';
+import omit from 'omit.js';
+import classnames from 'classnames';
 import './index.less';
 
 class DButton extends Component {
-
 
   render() {
     const { props } = this;
@@ -29,8 +30,24 @@ class DButton extends Component {
       type={iconType}
     />) : null;
 
+    // 扩展 props 属性，用变量 buttonProps 代替
+    const buttonProps = {
+      ...props
+    };
+
+    // 一开始进来，loading 为 true 的话，会禁用这个 button，可以直接加上 disabled 属性
+    buttonProps.disabled = true;
+
+    setTimeout(() => {
+      delete buttonProps['disabled'];
+      console.log(buttonProps);
+    }, 3000);
+    
     return (
-      <button className="DButton">
+      <button
+        className="DButton"
+        {...omit(buttonProps, ['icon','shape', 'size', 'ghost', 'href', 'htmlType', 'loading', 'target', 'block', 'style', 'className'])}
+      >
         {/* 如果 icon 没传的话，设置成 null，jsx 不解析 */}
         {iconNode}
         {children}

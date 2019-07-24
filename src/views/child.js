@@ -18,10 +18,13 @@ export default class Child extends Component {
     return (
       <div style={{ color: this.context.color }}>
           我是child
-        <DButton loading={true}>
+        <DButton
+          loading={true}>
           <span>sdfgsdfg</span>
         </DButton>
-        <Button loading={true}>
+        <Button
+          disabled
+        >
           <span>sdfgsdfg</span>
         </Button>
         {/* <DIcon
