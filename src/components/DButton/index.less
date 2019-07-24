@@ -7,6 +7,7 @@
   padding: 0 15px;
   height: 32px;
   outline: none;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   // transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   // animation: fadeEffect 2s cubic-bezier(0.08, 0.82, 0.17, 1), waveEffect, 0.4s, cubic-bezier(0.08, 0.82, 0.17, 1);
 
@@ -38,7 +39,7 @@
 }
 
 // type 设置为 primary 的时候样式
-.d-button-primary {
+.d-button-type-primary {
   color: #fff;
   background-color: #1890ff;
   border-color: #1890ff;
@@ -47,28 +48,28 @@
 }
 
 // type 设置为 primary 的时候鼠标悬浮样式
-.d-button-primary:hover {
+.d-button-type-primary:hover {
   color: #fff;
   background-color: #40a9ff;
   border-color: #40a9ff;
 }
 
 // type 设置为 primary 的时候 focus 样式
-.d-button-primary:focus {
+.d-button-type-primary:focus {
   color: #fff;
   background-color: #40a9ff;
   border-color: #40a9ff;
 }
 
 // type 设置为 primary 的时候 active 样式
-.d-button-primary:active {
+.d-button-type-primary:active {
   color: #fff;
   background-color: #096dd9;
   border-color: #096dd9;
 }
 
 // type 设置为 dashed 的时候样式
-.d-button-dashed {
+.d-button-type-dashed {
   color: rgba(0, 0, 0, 0.65);
   background-color: #fff;
   border-color: #d9d9d9;
@@ -76,28 +77,28 @@
 }
 
 // type 设置为 dashed 的时候鼠标悬浮样式
-.d-button-dashed:hover {
+.d-button-type-dashed:hover {
   color: #40a9ff;
   background-color: #fff;
   border-color: #40a9ff;
 }
 
 // type 设置为 dashed 的时候 focus 样式
-.d-button-dashed:focus {
+.d-button-type-dashed:focus {
   color: #40a9ff;
   background-color: #fff;
   border-color: #40a9ff;
 }
 
 // type 设置为 dashed 的时候 active 样式
-.d-button-dashed:active {
+.d-button-type-dashed:active {
   color: #096dd9;
   background-color: #fff;
   border-color: #096dd9;
 }
 
 // type 设置为 danger 的时候样式
-.d-button-danger {
+.d-button-type-danger {
   color: #fff;
   background-color: #ff4d4f;
   border-color: #ff4d4f;
@@ -106,28 +107,28 @@
 }
 
 // type 设置为 danger 的时候鼠标悬浮样式
-.d-button-danger:hover {
+.d-button-type-danger:hover {
   color: #fff;
   background-color: #ff7875;
   border-color: #ff7875;
 }
 
 // type 设置为 danger 的时候 focus 样式
-.d-button-danger:focus {
+.d-button-type-danger:focus {
   color: #fff;
   background-color: #ff7875;
   border-color: #ff7875;
 }
 
 // type 设置为 danger 的时候 active 样式
-.d-button-danger:active {
+.d-button-type-danger:active {
   color: #fff;
   background-color: #d9363e;
   border-color: #d9363e;
 }
 
 // type 设置为 link 的时候样式
-.d-button-link {
+.d-button-type-link {
   color: #1890ff;
   background-color: transparent;
   border-color: transparent;
@@ -135,24 +136,41 @@
 }
 
 // type 设置为 link 的时候鼠标悬浮样式
-.d-button-link:hover {
+.d-button-type-link:hover {
   color: #40a9ff;
   background-color: transparent;
   border-color: transparent;
 }
 
 // type 设置为 link 的时候 focus 样式
-.d-button-link:focus {
+.d-button-type-link:focus {
   color: #40a9ff;
   background-color: transparent;
   border-color: transparent;
 }
 
 // type 设置为 link 的时候 active 样式
-.d-button-link:active {
+.d-button-type-link:active {
   color: #096dd9;
   background-color: transparent;
   border-color: transparent;
+}
+
+// shape 设置为 round 的时候样式
+.d-button-shape-round{
+  height: 32px;
+  padding: 0 16px;
+  font-size: 16px;
+  border-radius: 32px;
+}
+
+// shape 设置为 circle 的时候样式
+.d-button-shape-circle{
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-size: 16px;
+  border-radius: 50%;
 }
 
 .mgr-5{

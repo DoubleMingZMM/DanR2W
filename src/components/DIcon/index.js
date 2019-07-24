@@ -38,7 +38,7 @@ class DIcon extends Component {
     const classNames = classnames('d-icon', className, {
       // 是否将 DIcon 无限旋转
       'd-icon-spin': spin,
-      [`d-icon-${type}`]: true
+      [`d-icon-${type}`]: type
     });
 
     return (

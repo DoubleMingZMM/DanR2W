@@ -28,7 +28,7 @@ class DButton extends Component {
     const {  } = this.state;
     const { props } = this;
     // children 为 React 里面的固有属性，指的是标签之间的内容
-    const { loading, icon, children, className = '', type } = props;
+    const { loading, icon, children, className = '', type, shape } = props;
     
     // 设置 iconType，如果设置 loading 状态，则默认使用 DIcon 中的 loading
     // 未设置 loading 的话则使用传过来的 type
@@ -58,7 +58,10 @@ class DButton extends Component {
 
     // 使用 classnames 将 d-button 以及自定义的 className 和 type 组成的样式 传入 button 标签
     const classNames = classnames('d-button', className, {
-      [`d-button-${type}`]: true
+      // 单纯只用 d-button-${type} 的形式，无法满足如多个条件同时处理的结果
+      // antd 就有这个问题，type 和 shape可以混用，因此多加一层样式处理不同类型
+      [`d-button-type-${type}`]: type,
+      [`d-button-shape-${shape}`]: type,
     });
     
     return (

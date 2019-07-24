@@ -33,30 +33,27 @@ export default class Child extends Component {
         <DButton
           disabled={false}
           icon="frown"
-          type="danger"
           loading={false}
-          shape="round"
+          type="primary"
         >
           <span>sdfgsdfg</span>
         </DButton>
         <Button
           disabled={false}
-          loading={false}
           icon="frown"
-          type="danger"
-          shape="round"
+          loading={false}
+          shape="circle"
           onClick={this.handleLoading}
         >
           <span>sdfgsdfg</span>
         </Button>
-        {/* <DIcon
+        <DIcon
           className="mgr-5"
           rotate={90}
           style={{marginRight: 5}}
           title="Icon"
-          type="frown"
           onClick={this.handleClick}
-        /> */}
+        />
       </div>
     );
   }
