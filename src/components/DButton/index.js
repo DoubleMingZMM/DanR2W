@@ -5,9 +5,9 @@ import './index.less';
 class DButton extends Component {
   render() {
     return (
-        <button className="DButton">
+      <button className="DButton">
           ffff
-        </button>
+      </button>
     );
   }
 }

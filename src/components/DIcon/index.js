@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-24 08:42:03
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-24 16:20:55
+ * @LastEditTime: 2019-07-24 17:13:43
  */
 
 import React, { Component } from 'react';
@@ -34,11 +34,11 @@ class DIcon extends Component {
     });
 
     return (
-        <i
-            style={rotateStyle}
-            className={classNames}
-            {...omit(props, ['type','spin', 'rotate'])}
-        />
+      <i
+        className={classNames}
+        style={rotateStyle}
+        {...omit(props, ['type','spin', 'rotate'])}
+      />
     );
   }
 }

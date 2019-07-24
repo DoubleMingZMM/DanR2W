@@ -23,23 +23,25 @@ class DrawerCus extends Component {
 
   render() {
     return (
-        <div>
-            <div className="drag-cursor">
-                <Icon type="setting" onClick={this.showDrawer.bind(this)} />
-            </div>
-            <Drawer
-                width="300px"
-                title="基础设置"
-                placement="right"
-                closable={true}
-                onClose={this.onClose.bind(this)}
-                visible={this.state.drawerVisible}
-        >
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-            </Drawer>
+      <div>
+        <div className="drag-cursor">
+          <Icon type="setting"
+            onClick={this.showDrawer.bind(this)}
+          />
         </div>
+        <Drawer
+          closable={true}
+          placement="right"
+          title="基础设置"
+          visible={this.state.drawerVisible}
+          width="300px"
+          onClose={this.onClose.bind(this)}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Drawer>
+      </div>
     );
   }
 }

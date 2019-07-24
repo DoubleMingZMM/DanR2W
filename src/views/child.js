@@ -7,13 +7,21 @@ import { Button, Icon } from 'antd';
 export default class Child extends Component {
   render() {
     return (
-        <div style={{ color: this.context.color }}>
+      <div style={{ color: this.context.color }}>
           我是child
-            <DButton />
-            <Button />
-            <DIcon type="frown" spin={true} title="Icon" rotate={90} />
-            <Icon type="home" spin={true} title="Icon" rotate={90} />
-        </div>
+        <DButton />
+        <Button />
+        <DIcon rotate={90}
+          spin={true}
+          title="Icon"
+          type="frown"
+        />
+        <Icon rotate={90}
+          spin={true}
+          title="Icon"
+          type="home"
+        />
+      </div>
     );
   }
 }

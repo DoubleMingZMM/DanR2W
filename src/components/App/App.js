@@ -64,44 +64,44 @@ class App extends Component {
 
     render() {
       return (
-          <div>
-              {localStorage.get('isLogin') ? (
-                  <Layout className="layout-style">
-                      {/* 抽屉盒自定义组件 */}
-                      <DrawerCus />
-                      <Sider
-                          trigger={null}
-                          collapsible
-                          collapsed={this.state.collapsed}
+        <div>
+          {localStorage.get('isLogin') ? (
+            <Layout className="layout-style">
+              {/* 抽屉盒自定义组件 */}
+              <DrawerCus />
+              <Sider
+                collapsible
+                collapsed={this.state.collapsed}
+                trigger={null}
               >
-                          <div className="app-title">DanR2W</div>
-                          {/* 菜单自定义组件 */}
-                          <MenuCus />
-                      </Sider>
-                      <Layout>
-                          <Header style={{ background: '#fff', padding: 0 }}>
-                              <Icon
-                                  className="trigger-icon"
-                                  type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                                  onClick={this.toggle.bind(this)}
-                              />
-                              {/* 上侧导航栏右边自定义组件 */}
-                              <TopRightCus />
-                          </Header>
-                          <Content style={{ margin: '0 16px' }}>
-                              {/* 面包屑自定义组件 */}
-                              <BreadcrumbCus />
-                              <div className="content-style">
-                                  {getRouter()}
-                              </div>
-                          </Content>
-                          <Footer style={{ textAlign: 'center' }}>
-                                DanR2W ©2018 Created by Daniel
-                          </Footer>
-                      </Layout>
-                  </Layout>) : getNoAppRouter()
+                <div className="app-title">DanR2W</div>
+                {/* 菜单自定义组件 */}
+                <MenuCus />
+              </Sider>
+              <Layout>
+                <Header style={{ background: '#fff', padding: 0 }}>
+                  <Icon
+                    className="trigger-icon"
+                    type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                    onClick={this.toggle.bind(this)}
+                  />
+                  {/* 上侧导航栏右边自定义组件 */}
+                  <TopRightCus />
+                </Header>
+                <Content style={{ margin: '0 16px' }}>
+                  {/* 面包屑自定义组件 */}
+                  <BreadcrumbCus />
+                  <div className="content-style">
+                    {getRouter()}
+                  </div>
+                </Content>
+                <Footer style={{ textAlign: 'center' }}>
+                  DanR2W ©2018 Created by Daniel
+                </Footer>
+              </Layout>
+            </Layout>) : getNoAppRouter()
           }
-          </div>
+        </div>
 
       );
     }

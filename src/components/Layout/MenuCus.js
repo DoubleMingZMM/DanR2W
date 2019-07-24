@@ -31,19 +31,19 @@ class MenuCus extends Component {
     };
 
     return (
-        <Menu {...memuProps}>
-            {
+      <Menu {...memuProps}>
+        {
           menus.map((v, k) => {
             return (
-                <Menu.Item key={v.key}>
-                    <Icon type={v.icon} />
-                    <span>{v.title}</span>
-                    <Link to={'/' + v.path} />
-                </Menu.Item>
+              <Menu.Item key={v.key}>
+                <Icon type={v.icon} />
+                <span>{v.title}</span>
+                <Link to={'/' + v.path} />
+              </Menu.Item>
             );
           })
         }
-        </Menu>
+      </Menu>
     );
   }
 }

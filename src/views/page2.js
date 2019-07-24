@@ -12,12 +12,12 @@ class Page2 extends Component {
     render() {
       const { name, age } = this.props.page2;
       return (
-          <div>
+        <div>
               my name is {name}, age is {age}.<br />
               array.from{Array.from([12, 4, 5])}
-              <img src={offShelf} />
-              <button onClick={this.handleInfo}>请求用户信息</button>
-          </div>
+          <img src={offShelf} />
+          <button onClick={this.handleInfo}>请求用户信息</button>
+        </div>
       );
     }
 }

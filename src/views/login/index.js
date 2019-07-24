@@ -198,44 +198,60 @@ class Login extends Component {
     const { getFieldDecorator } = this.props.form;
 
     return (
-        <div className={styles.login}>
-            <canvas height="620" width="1360" id="canvas"
-                style={{ position: 'absolute', height: '100%', width: '100%' }}
-            />
-            <div className="login-modal-form">
-                <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
-                    <FormItem>
-                        {getFieldDecorator('name', {
+      <div className={styles.login}>
+        <canvas height="620"
+          id="canvas"
+          style={{ position: 'absolute', height: '100%', width: '100%' }}
+          width="1360"
+        />
+        <div className="login-modal-form">
+          <Form className="login-form"
+            onSubmit={this.handleSubmit.bind(this)}>
+            <FormItem>
+              {getFieldDecorator('name', {
                           initialValue: 'Daniel',
                           rules: [{ required: true, message: 'Please input your username!' }]
                         })(
-                            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                          <Input placeholder="Username"
+                            prefix={<Icon style={{ color: 'rgba(0,0,0,.25)' }}
+                              type="user"
+                            />}
+                          />
                         )}
-                    </FormItem>
-                    <FormItem>
-                        {getFieldDecorator('password', {
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('password', {
                           initialValue: 'Aa123456',
                           rules: [{ required: true, message: 'Please input your Password!' }]
                         })(
-                            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                          <Input placeholder="Password"
+                            prefix={<Icon style={{ color: 'rgba(0,0,0,.25)' }}
+                              type="lock"
+                            />}
+                            type="password"
+                          />
                         )}
-                    </FormItem>
-                    <FormItem>
-                        {getFieldDecorator('remember', {
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('remember', {
                           valuePropName: 'checked',
                           initialValue: true
                         })(
-                            <Checkbox>Remember me</Checkbox>
+                          <Checkbox>Remember me</Checkbox>
                         )}
-                        <a className="float-r" href="">Forgot password</a>
-                        <Button type="primary" htmlType="submit" className="login-form-button">
+              <a className="float-r"
+                href="">Forgot password
+              </a>
+              <Button className="login-form-button"
+                htmlType="submit"
+                type="primary">
                             Log in
-                        </Button>
+              </Button>
                             Or <a href="">register now!</a>
-                    </FormItem>
-                </Form>
-            </div>
+            </FormItem>
+          </Form>
         </div>
+      </div>
     );
   }
 }
