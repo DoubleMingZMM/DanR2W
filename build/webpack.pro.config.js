@@ -1,12 +1,11 @@
-const path = require('path')
-const webpack = require('webpack')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin') webpack4放弃
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const merge = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const merge = require('webpack-merge');
 
-const baseConfig = require('./webpack.base.config.js')
+const baseConfig = require('./webpack.base.config.js');
 
 const proConfig = {
     // production 在webpack4.0会默认压缩，不用配置
@@ -21,7 +20,7 @@ const proConfig = {
             {
                 test: /\.css$/,
                 // 当使用mini-css-extract-plugin抽取css时，use中要去掉style-loader
-                use: [ MiniCssExtractPlugin.loader, 'css-loader']
+                use: [ MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
             }]
     },
     plugins: [
@@ -30,8 +29,8 @@ const proConfig = {
             root: path.resolve(__dirname, '../')
         }),
         // webpack4默认压缩代码，显示压缩可在cli中配置--mode production
-        /*,
-        new UglifyJSPlugin()*/
+        /* ,
+        new UglifyJSPlugin() */
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
@@ -40,6 +39,6 @@ const proConfig = {
         })
     ],
     devtool: 'cheap-module-source-map'
-}
+};
 
-module.exports = merge(baseConfig, proConfig)
+module.exports = merge(baseConfig, proConfig);
