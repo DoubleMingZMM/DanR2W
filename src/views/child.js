@@ -8,7 +8,7 @@ export default class Child extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false
+      loading: true
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleLoading = this.handleLoading.bind(this);
