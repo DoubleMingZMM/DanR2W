@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-25 14:03:54
+ * @LastEditTime: 2019-07-25 18:37:15
  */
 
 import React, { Component } from 'react';
@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 import DIcon from '@/components/DIcon/index.js';
 import omit from 'omit.js';
 import classnames from 'classnames';
-import { hasOwnProperty } from '@/utils/util.js';
 import './index.less';
 
 class DButton extends Component {
@@ -22,18 +21,47 @@ class DButton extends Component {
     this.state = {
       loading: props.loading
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
   /**
-   * @description 渲染 button 的函数
-   * @returns {DOM} DOM 节点
+   * @description 处理 button 和 a 标签的点击事件
+   * @memberof DButton
+   * @returns { false } 没有返回值，使用 bind 的形式
    */
-  
+  handleClick() {
+    const {loading, onClick} = this.props;
+    // 其实可以不需要判断，因为我们这里 loading 会往原生组件写入 disabled 所以会禁用 onClick
+    if (onClick && !loading) {
+      onClick();
+    }
+    return false;
+  }
+
+  /**
+   * @description 渲染 button 的函数
+   * @returns {DOM} DOM 节点，箭头函数，不需要 bind
+   */
   renderButton = () => {
     const { props } = this;
     // children 为 React 里面的固有属性，指的是标签之间的内容
-    const { loading, icon, children, className = '', type, shape, htmlType = 'button' } = props;
+    const { loading, icon, children, className = '', type, shape,
+    htmlType = 'button', size = 'default', ghost = false, block = false } = props;
+
+    // large => lg
+    // small => sm
+    let sizeSuffix = '';
+    switch (size) {
+      case 'large':
+        sizeSuffix = 'lg';
+        break;
+      case 'small':
+        sizeSuffix = 'sm';
+        break;
+      default:
+        break;
+    }
     
     // 使用 classnames 将 d-button 以及自定义的 className 和 type 组成的样式 传入 button 标签
     const classNames = classnames('d-button', className, {
@@ -41,6 +69,9 @@ class DButton extends Component {
       // antd 就有这个问题，type 和 shape可以混用，因此多加一层样式处理不同类型
       [`d-button-type-${type}`]: type,
       [`d-button-shape-${shape}`]: shape,
+      [`d-button-size-${sizeSuffix}`]: sizeSuffix,
+      'd-button-ghost': ghost,
+      'd-button-block': block
     });
 
     // 设置 iconType，如果设置 loading 状态，则默认使用 DIcon 中的 loading
@@ -70,6 +101,7 @@ class DButton extends Component {
       return (
         <a
           className={classNames}
+          onClick={this.handleClick}
           // 保留 style、href、target 属性
           {...omit(buttonProps, ['icon','shape', 'size', 'type', 'ghost', 'htmlType', 'loading', 'block', 'className'])}
         >
@@ -85,6 +117,7 @@ class DButton extends Component {
         className={classNames}
         // 处理 button 原生的类型 默认为 button，还有 submit 和 reset
         type={htmlType}
+        onClick={this.handleClick}
         // 保留 disabled 属性
         {...omit(buttonProps, ['icon','shape', 'size', 'type', 'ghost', 'href', 'htmlType', 'loading', 'target', 'block', 'style', 'className'])}
       >

@@ -8,7 +8,7 @@ export default class Child extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleLoading = this.handleLoading.bind(this);
@@ -20,7 +20,8 @@ export default class Child extends Component {
 
   handleLoading() {
     this.setState({
-      loading: !this.state.loading
+      // loading: !this.state.loading
+      loading: {delay: 5}
     });
   }
 
@@ -32,20 +33,16 @@ export default class Child extends Component {
           我是child
         <DButton
           disabled={false}
-          href="asdgfasd"
-          icon="frown"
-          loading={false}
-          target="_blank"
-          type="round"
+          loading={loading}
+          type="primary"
+          onClick={this.handleClick}
         >
           <span>sdfgsdfg</span>
         </DButton>
         <Button
+          // block={true}
           disabled={false}
-          href="as"
-          loading={false}
-          style={{color: 'red'}}
-          target="_blank"
+          loading={{delay: 5000}}
           type="primary"
           onClick={this.handleLoading}
         >

@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-24 12:21:59
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-25 13:56:50
+ * @LastEditTime: 2019-07-25 14:12:03
  */
 
 // 是否是字符串
@@ -61,10 +61,11 @@ const isDate = (value) => {
 // 这个方法只会判断存在对象自身属性
 // 不包括原型链上的属性，in 操作符
 // 就是会包括原型链上的属性
-const hasOwnProperty = (value) => {
-    const self = this;
-    return self.hasOwnProperty(value);
-};
+
+// const hasOwnProperty = (value) => {
+//     const self = this;
+//     return self.hasOwnProperty(value);
+// };
 
 export {
   isString,
@@ -76,6 +77,5 @@ export {
   isFunction,
   isObject,
   isRegExp,
-  isDate,
-  hasOwnProperty
+  isDate
 };

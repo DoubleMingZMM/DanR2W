@@ -1,3 +1,5 @@
+@import '../../styles/variable.less';
+
 .d-button{
   cursor: pointer;
   background: white;
@@ -11,7 +13,7 @@
   // transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   // animation: fadeEffect 2s cubic-bezier(0.08, 0.82, 0.17, 1), waveEffect, 0.4s, cubic-bezier(0.08, 0.82, 0.17, 1);
 
-  margin-right: 20px;
+  margin-right: @mgd;
 }
 
 .d-button:hover{
@@ -171,6 +173,37 @@
   padding: 0;
   font-size: 16px;
   border-radius: 50%;
+}
+
+// size 设置为 small 的时候样式
+.d-button-size-sm{
+  height: 24px;
+  line-height: 22px;
+  padding: 0 7px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+// size 设置为 large 的时候样式
+.d-button-size-lg{
+  height: 40px;
+  line-height: 38px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+// ghost 设置为 true 的时候样式
+.d-button-ghost{
+  color: #fff;
+  background: transparent !important;
+  border-color: #fff;
+  text-shadow: none;
+}
+
+// block 设置为 true 的时候样式
+.d-button-block{
+  width: 100%;
 }
 
 // 设置 href 属性的时候，a 标签表现为的性状

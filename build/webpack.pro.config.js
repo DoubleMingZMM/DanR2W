@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const ExtractTextPlugin = require('extract-text-webpack-plugin') webpack4放弃
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
+const WebpackBuildLogPlugin = require('webpack-build-log-plugin');
 
 const baseConfig = require('./webpack.base.config.js');
 
@@ -36,6 +37,11 @@ const proConfig = {
             // both options are optional
             filename: '[name].[chunkhash].css',
             chunkFilename: '[name].[chunkhash].css'
+        }),
+        new WebpackBuildLogPlugin({
+            path: path.resolve(__dirname, '../', 'log'),
+            filename: 'compile-log.md',
+            deleteFile: process.env.NODE_ENV === 'production'
         })
     ],
     devtool: 'cheap-module-source-map'
