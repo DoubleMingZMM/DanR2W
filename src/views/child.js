@@ -32,17 +32,21 @@ export default class Child extends Component {
           我是child
         <DButton
           disabled={false}
+          href="asdgfasd"
           icon="frown"
           loading={false}
-          type="primary"
+          target="_blank"
+          type="round"
         >
           <span>sdfgsdfg</span>
         </DButton>
         <Button
           disabled={false}
-          icon="frown"
+          href="as"
           loading={false}
-          shape="circle"
+          style={{color: 'red'}}
+          target="_blank"
+          type="primary"
           onClick={this.handleLoading}
         >
           <span>sdfgsdfg</span>

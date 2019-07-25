@@ -4,8 +4,9 @@
  * @Author: Daniel
  * @Date: 2019-07-24 12:21:59
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-24 12:30:19
+ * @LastEditTime: 2019-07-25 13:56:50
  */
+
 // 是否是字符串
 const isString = (value) => {
     return Object.prototype.toString.call(value) === '[object String]';
@@ -56,6 +57,15 @@ const isDate = (value) => {
     return Object.prototype.toString.call(value) === '[object Date]';
 };
 
+// 判断某个对象里面是否包含某个属性
+// 这个方法只会判断存在对象自身属性
+// 不包括原型链上的属性，in 操作符
+// 就是会包括原型链上的属性
+const hasOwnProperty = (value) => {
+    const self = this;
+    return self.hasOwnProperty(value);
+};
+
 export {
   isString,
   isNumber,
@@ -66,5 +76,6 @@ export {
   isFunction,
   isObject,
   isRegExp,
-  isDate
+  isDate,
+  hasOwnProperty
 };
