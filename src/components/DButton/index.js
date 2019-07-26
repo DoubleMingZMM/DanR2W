@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 17:07:01
+ * @LastEditTime: 2019-07-26 19:50:40
  */
 
 import React, { Component } from 'react';
@@ -47,7 +47,7 @@ class DButton extends Component {
    * @description 渲染 button 的函数
    * @returns {DOM} DOM 节点，箭头函数，不需要 bind
    */
-  renderButton = () => {
+  renderDButton = () => {
     const { loading } = this.state;
     const { props } = this;
     // children 为 React 里面的固有属性，指的是标签之间的内容
@@ -135,7 +135,7 @@ class DButton extends Component {
   }
 
   render() {
-    return this.renderButton();
+    return this.renderDButton();
   }
 }
 

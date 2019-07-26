@@ -66,4 +66,42 @@
       border-right-width: 1px !important;
     }
   }
+
+  // 当有 prefix 或者 suffix 的时候 wraper 的样式
+  &-affix-wraper {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    font-feature-settings: 'tnum', "tnum";
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    // 当有 prefix suffix 时候的共同样式
+    & .d-input-prefix, & .d-input-suffix {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      color: rgba(0, 0, 0, 0.65);
+      line-height: 0;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    // 当有 prefix 的时候独有的样式
+    & .d-input-prefix {
+      left: 12px;
+    }
+
+    // 当有 suffix 的时候独有的样式
+    & .d-input-suffix {
+      right: 12px;
+    }
+  }
 }

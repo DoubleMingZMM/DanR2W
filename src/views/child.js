@@ -35,13 +35,16 @@ export default class Child extends Component {
         <div style={{width: 400}}>
           <DInput
             disabled={true}
+            prefix={(<div>prefix</div>)}
             size="large"
+            suffix={(<div>suffix</div>)}
           />
           <div style={{marginBottom: 20}} />
           <Input
             disabled={true}
             placeholder="Basic usage"
-            size="small"
+            prefix={(<div>prefix</div>)}
+            suffix={(<div>suffix</div>)}
           />
         </div>
       </div>
