@@ -173,6 +173,17 @@
   padding: 0;
   font-size: 16px;
   border-radius: 50%;
+  // 解决了 antd circle 属性的时候文字溢出
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// loading 设置为 true 的时候样式
+.d-button-loading{
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #fff;
+  border-color: #d9d9d9;
 }
 
 // size 设置为 small 的时候样式
@@ -191,6 +202,49 @@
   padding: 0 15px;
   font-size: 16px;
   border-radius: 4px;
+}
+
+// size 为 large 且 shape 为 circle 的时候样式
+.d-button-shape-circle.d-button-size-lg{
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 18px;
+  border-radius: 50%;
+}
+
+// size 为 small 且 shape 为 circle 的时候样式
+.d-button-shape-circle.d-button-size-sm{
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 14px;
+  border-radius: 50%;
+}
+
+// size 为 large 且 shape 为 round 的时候样式
+.d-button-shape-round.d-button-size-lg{
+  height: 40px;
+  padding: 0 20px;
+  font-size: 18px;
+  border-radius: 40px;
+}
+
+// size 为 small 且 shape 为 round 的时候样式
+.d-button-shape-round.d-button-size-sm{
+  height: 24px;
+  padding: 0 12px;
+  font-size: 14px;
+  border-radius: 24px;
+}
+
+// type 为 link 且 shape 为 circle 的时候样式(不限制溢出)
+// 不要后面两个是因为 图标和文字不在同一行
+// 需要把 white-space 设置为 nowrap
+.d-button-type-link.d-button-shape-circle{
+  overflow: unset!important;
+  // text-overflow: unset!important;
+  // white-space: unset!important;
 }
 
 // ghost 设置为 true 的时候样式

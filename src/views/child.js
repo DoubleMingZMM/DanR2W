@@ -32,29 +32,36 @@ export default class Child extends Component {
       <div style={{ color: this.context.color }}>
           我是child
         <DButton
-          disabled={false}
-          loading={loading}
-          type="primary"
+          // disabled={true}
+          // loading={true}
+          icon="frown"
+          shape="circle"
+          size="large"
+          type="link"
           onClick={this.handleClick}
         >
-          <span>sdfgsdfg</span>
+          <span>Aqewr</span>
         </DButton>
         <Button
           // block={true}
-          disabled={false}
-          loading={{delay: 5000}}
-          type="primary"
+          // disabled={true}
+          // loading={true}
+          icon="frown"
+          shape="circle"
+          size="small"
+          type="link"
           onClick={this.handleLoading}
         >
           <span>sdfgsdfg</span>
         </Button>
-        <DIcon
+        {/* <DIcon
           className="mgr-5"
           rotate={90}
           style={{marginRight: 5}}
           title="Icon"
+          type="close-circle"
           onClick={this.handleClick}
-        />
+        /> */}
       </div>
     );
   }

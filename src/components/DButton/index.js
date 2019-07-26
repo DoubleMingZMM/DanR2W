@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-25 18:37:15
+ * @LastEditTime: 2019-07-26 09:14:32
  */
 
 import React, { Component } from 'react';
@@ -17,7 +17,9 @@ import './index.less';
 class DButton extends Component {
   constructor(props) {
     super(props);
-    // todo 暂时不这么写，因为现在还不能理解为什么源码要把 loading 放在 state 中
+    // 之前不理解为什么要把 loading 放在 state 中
+    // 但是现在大概知道了，放在 state 中是因为，涉及到
+    // 我们对它的修改，比如 loading delay 的需求
     this.state = {
       loading: props.loading
     };
@@ -31,7 +33,8 @@ class DButton extends Component {
    * @returns { false } 没有返回值，使用 bind 的形式
    */
   handleClick() {
-    const {loading, onClick} = this.props;
+    const { loading } = this.state;
+    const { onClick} = this.props;
     // 其实可以不需要判断，因为我们这里 loading 会往原生组件写入 disabled 所以会禁用 onClick
     if (onClick && !loading) {
       onClick();
@@ -44,9 +47,10 @@ class DButton extends Component {
    * @returns {DOM} DOM 节点，箭头函数，不需要 bind
    */
   renderButton = () => {
+    const { loading } = this.state;
     const { props } = this;
     // children 为 React 里面的固有属性，指的是标签之间的内容
-    const { loading, icon, children, className = '', type, shape,
+    const { icon, children, className = '', type, shape,
     htmlType = 'button', size = 'default', ghost = false, block = false } = props;
 
     // large => lg
@@ -70,6 +74,7 @@ class DButton extends Component {
       [`d-button-type-${type}`]: type,
       [`d-button-shape-${shape}`]: shape,
       [`d-button-size-${sizeSuffix}`]: sizeSuffix,
+      'd-button-loading': loading,
       'd-button-ghost': ghost,
       'd-button-block': block
     });
