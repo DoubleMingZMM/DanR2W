@@ -34,12 +34,12 @@ export default class Child extends Component {
           我是child
         <div style={{width: 400}}>
           <DInput
-            disabled
-            size="largeqqqq"
+            disabled={true}
+            size="large"
           />
           <div style={{marginBottom: 20}} />
           <Input
-            disabled
+            disabled={true}
             placeholder="Basic usage"
             size="small"
           />
