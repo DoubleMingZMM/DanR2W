@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-24 08:42:03
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-24 20:12:57
+ * @LastEditTime: 2019-07-26 11:21:00
  */
 
 import React, { Component } from 'react';
@@ -16,7 +16,7 @@ import './index.less';
 class DIcon extends Component {
   render() {
     const { props } = this;
-    const {className = '', type, spin, rotate = 0, style = {} } = props;
+    const {className, type, spin, rotate, style } = props;
 
     // 当 spin 为 true 的时候，设置 rotate 为 0，没有旋转角度
     const rotateDeg = spin ? 0 : rotate;
@@ -53,7 +53,15 @@ class DIcon extends Component {
   }
 }
 
-DIcon.contextTypes = {
+// 默认值，不在解构赋值中做，解耦分离
+DIcon.defaultProps = {
+  className: '',
+  rotate: 0,
+  style: {}
+};
+
+// 对外提供的接口需要做类型检查
+DIcon.propTypes = {
   // 暴露出去的接口，其中 I 标签是没哟 spin、rotate 和 type 的，需要过滤掉
   type: PropTypes.string,
   spin: PropTypes.bool,

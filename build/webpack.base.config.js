@@ -72,8 +72,8 @@ const commonConfig = {
         mainFields: ['main'],
         // 加上node_modules前缀，表示在node_modules目录下查找第三方库，缩短文件路径，进行优化
         // modules: [resolvePath('node_modules')],
-        // 列表长度要小，高频放在前面默认值就是js 和 json
-        extensions:['.js', '.json']
+        // 列表长度要小，高频放在前面默认值就是js 、less、css和 json
+        extensions:['.js', '.less', '.css', '.json']
     }
 };
 

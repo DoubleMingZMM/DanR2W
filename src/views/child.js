@@ -34,10 +34,11 @@ export default class Child extends Component {
         <DButton
           // disabled={true}
           // loading={true}
+          htmlType="button"
           icon="frown"
-          shape="circle"
-          size="large"
-          type="link"
+          // shape="default"
+          // size="default"
+          type="default"
           onClick={this.handleClick}
         >
           <span>Aqewr</span>
@@ -46,10 +47,11 @@ export default class Child extends Component {
           // block={true}
           // disabled={true}
           // loading={true}
+          htmlType="button"
           icon="frown"
-          shape="circle"
-          size="small"
-          type="link"
+          // shape="default"
+          type="default"
+          // size="default"
           onClick={this.handleLoading}
         >
           <span>sdfgsdfg</span>

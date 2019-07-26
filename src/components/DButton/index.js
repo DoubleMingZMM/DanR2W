@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 09:14:32
+ * @LastEditTime: 2019-07-26 11:58:13
  */
 
 import React, { Component } from 'react';
@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import DIcon from '@/components/DIcon/index.js';
 import omit from 'omit.js';
 import classnames from 'classnames';
+import { HtmlTypeProps, ShapeProps, TypeProps, SizeProps } from './config/index.js';
 import './index.less';
 
 class DButton extends Component {
@@ -50,8 +51,8 @@ class DButton extends Component {
     const { loading } = this.state;
     const { props } = this;
     // children 为 React 里面的固有属性，指的是标签之间的内容
-    const { icon, children, className = '', type, shape,
-    htmlType = 'button', size = 'default', ghost = false, block = false } = props;
+    const { icon, children, className, type, shape,
+    htmlType, size, ghost, block } = props;
 
     // large => lg
     // small => sm
@@ -138,15 +139,27 @@ class DButton extends Component {
   }
 }
 
-DButton.contextTypes = {
+// 默认值，不在解构赋值中做，解耦分离
+DButton.defaultProps = {
+  className: '',
+  htmlType: 'button',
+  size: 'default',
+  type: 'default',
+  shape: 'default',
+  ghost: false,
+  block: false
+};
+
+// 类型检查
+DButton.propTypes = {
   icon: PropTypes.string,
-  shape: PropTypes.string,
-  size: PropTypes.string,
-  type: PropTypes.string,
+  shape: PropTypes.oneOf(ShapeProps),
+  size: PropTypes.oneOf(SizeProps),
+  type: PropTypes.oneOf(TypeProps),
   disabled: PropTypes.bool,
   ghost: PropTypes.bool,
   href: PropTypes.string,
-  htmlType: PropTypes.string,
+  htmlType: PropTypes.oneOf(HtmlTypeProps),
   loading: PropTypes.bool,
   target: PropTypes.string,
   block: PropTypes.bool,
