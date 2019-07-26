@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DButton from '@/components/DButton/index';
-import DIcon from '@/components/DIcon/index';
-import { Button, Icon } from 'antd';
+// import DButton from '@/components/DButton/index';
+// import DIcon from '@/components/DIcon/index';
+import DInput from '@/components/DInput/index';
+import { Input } from 'antd';
 
 export default class Child extends Component {
   constructor(props) {
@@ -31,39 +32,11 @@ export default class Child extends Component {
     return (
       <div style={{ color: this.context.color }}>
           我是child
-        <DButton
-          disabled={true}
-          htmlType="button"
-          // icon="frown"
-          loading={true}
-          // shape="circle"
-          // size="large"
-          type="primary"
-          onClick={this.handleClick}
-        >
-          <span>Aqewr</span>
-        </DButton>
-        <Button
-          // block={true}
-          disabled={true}
-          htmlType="button"
-          // icon="frown"
-          loading={true}
-          // shape="circle"
-          // size="default"
-          type="primary"
-          onClick={this.handleLoading}
-        >
-          <span>sdfgsdfg</span>
-        </Button>
-        {/* <DIcon
-          className="mgr-5"
-          rotate={90}
-          style={{marginRight: 5}}
-          title="Icon"
-          type="close-circle"
-          onClick={this.handleClick}
-        /> */}
+        <div style={{width: 400}}>
+          <DInput />
+          <div style={{marginBottom: 20}} />
+          <Input placeholder="Basic usage" />
+        </div>
       </div>
     );
   }

@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 16:45:09
+ * @LastEditTime: 2019-07-26 17:07:01
  */
 
 import React, { Component } from 'react';
@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import DIcon from '@/components/DIcon/index.js';
 import omit from 'omit.js';
 import classnames from 'classnames';
-import { HtmlTypeProps, ShapeProps, TypeProps, SizeProps } from './config/index.js';
+import { HtmlTypeProps, ShapeProps, TypeProps, SizeProps } from './propConfig/index.js';
 import './index.less';
 
 class DButton extends Component {
