@@ -10,276 +10,238 @@
   height: 32px;
   outline: none;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  // transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  // animation: fadeEffect 2s cubic-bezier(0.08, 0.82, 0.17, 1), waveEffect, 0.4s, cubic-bezier(0.08, 0.82, 0.17, 1);
 
   margin-right: @mgd;
+
+  // d-button 在鼠标 hover focus active 时的样式
+  &:hover,&:focus,&:active{
+    border-color: @blue-2;
+    color: @blue-2;
+  }
+
+  // type 设置为 primary 的时候样式
+  &-type-primary {
+    color: @white-1;
+    background-color: @blue-4;
+    border-color: @blue-4;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+    // type 设置为 primary 的时候鼠标 hover 和 focus 样式
+    &:hover,&:focus{
+      color: @white-1;
+      background-color: @blue-2;
+      border-color: @blue-2;
+    }
+
+    // type 设置为 primary 的时候 active 样式
+    &:active{
+      color: @white-1;
+      background-color: @blue-3;
+      border-color: @blue-3;
+    }
+  }
+
+  // type 设置为 dashed 的时候样式
+  &-type-dashed {
+    color: rgba(0, 0, 0, 0.65);
+    background-color: @white-1;
+    border-color: @white-2;
+    border-style: dashed;
+
+    // type 设置为 dashed 的时候鼠标 hover 和 focus 样式
+    &:hover,&:focus{
+      color: @blue-2;
+      background-color: @white-1;
+      border-color: @blue-2;
+    }
+
+    // type 设置为 dashed 的时候 active 样式
+    &:active{
+      color: @blue-3;
+      background-color: @white-1;
+      border-color: @blue-3;
+    }
+  }
+
+  // type 设置为 danger 的时候样式
+  &-type-danger {
+    color: @white-1;
+    background-color: @red-2;
+    border-color: @red-2;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+    // type 设置为 danger 的时候鼠标 hover 和 focus 样式
+    &:hover,&:focus{
+      color: @white-1;
+      background-color: @red-3;
+      border-color: @red-3;
+    }
+
+    // type 设置为 danger 的时候 active 样式
+    &:active{
+      color: @white-1;
+      background-color: @red-4;
+      border-color: @red-4;
+    }
+  }
+
+  // type 设置为 link 的时候样式
+  &-type-link {
+    color: @blue-4;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+
+    // type 设置为 link 的时候鼠标 hover 和 focus 样式
+    &:hover,&:focus{
+      color: @blue-2;
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    // type 设置为 link 的时候 active 样式
+    &:active{
+      color: @blue-3;
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    // type 为 link 且 shape 为 circle 的时候样式(不限制溢出)
+    // 不要后面两个是因为 图标和文字不在同一行
+    // 需要把 white-space 设置为 nowrap
+    &.d-button-shape-circle{
+      overflow: unset!important;
+      // text-overflow: unset!important;
+      // white-space: unset!important;
+    }
+  }
+
+  // shape 设置为 round 的时候样式
+  &-shape-round{
+    height: 32px;
+    padding: 0 16px;
+    font-size: 16px;
+    border-radius: 32px;
+
+    // size 为 large 且 shape 为 round 的时候样式
+    &.d-button-size-lg{
+      height: 40px;
+      padding: 0 20px;
+      font-size: 18px;
+      border-radius: 40px;
+    }
+
+    // size 为 small 且 shape 为 round 的时候样式
+    &.d-button-size-sm{
+      height: 24px;
+      padding: 0 12px;
+      font-size: 14px;
+      border-radius: 24px;
+    }
+  }
+
+  // shape 设置为 circle 的时候样式
+  &-shape-circle{
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 16px;
+    border-radius: 50%;
+    // 解决了 antd circle 属性的时候文字溢出
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    // size 为 large 且 shape 为 circle 的时候样式
+    &.d-button-size-lg{
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      font-size: 18px;
+      border-radius: 50%;
+    }
+
+    // size 为 small 且 shape 为 circle 的时候样式
+    &.d-button-size-sm{
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      font-size: 14px;
+      border-radius: 50%;
+    }
+  }
+
+  // loading 设置为 true 的时候样式
+  &-loading{
+    color: rgba(0, 0, 0, 0.65);
+    background-color: @white-1;
+    border-color: @white-2;
+  }
+
+  // size 设置为 small 的时候样式
+  &-size-sm{
+    height: 24px;
+    line-height: 22px;
+    padding: 0 7px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  // size 设置为 large 的时候样式
+  &-size-lg{
+    height: 40px;
+    line-height: 38px;
+    padding: 0 15px;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
+  // ghost 设置为 true 的时候样式
+  &-ghost{
+    color: @white-1;
+    background: transparent !important;
+    border-color: @white-1;
+    text-shadow: none;
+  }
+
+  // block 设置为 true 的时候样式
+  &-block{
+    width: 100%;
+  }
+
+  &[disabled]{
+    // disabled 为 true 单独设置
+    color: rgba(0, 0, 0, 0.25);
+    background-color: @white-3;
+    cursor: not-allowed;
+    border-color: @white-2;
+
+    // disabled 为 true 的情况下对 primary danger dashed 这几个类型的 hover focus active 进行设置
+    &.d-button-type-primary,&.d-button-type-danger,&.d-button-type-dashed{
+      &,&:hover,&:focus,&:active{
+        color: rgba(0, 0, 0, 0.25);
+        background-color: @white-3;
+        cursor: not-allowed;
+        border-color: @white-2;
+      }
+    }
+
+    // disabled 为 true 的情况下对 link 这个类型的 hover focus active 进行设置
+    &.d-button-type-link{
+      &,&:hover,&:focus,&:active{
+        color: rgba(0, 0, 0, 0.25);
+        background-color: transparent;
+        border-color: transparent;
+        text-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
 }
 
-.d-button:hover{
-  border-color: @blue-2;
-  color: @blue-2;
-}
 
-.d-button:active{
-  border-color: @blue-2;
-  color: @blue-2;
-}
-
-.d-button:focus{
-  border-color: @blue-2;
-  color: @blue-2;
-}
-
-// 只要原生的 button 这个标签的属性为 disabled 就会触发
-// 这样的话，和原生 button 的 disabled 属性保持一致
-.d-button[disabled],
-.d-button[disabled].d-button-type-primary:hover,
-.d-button[disabled].d-button-type-primary:focus,
-.d-button[disabled].d-button-type-primary:active,
-.d-button[disabled].d-button-type-danger:hover,
-.d-button[disabled].d-button-type-danger:focus,
-.d-button[disabled].d-button-type-danger:active,
-.d-button[disabled].d-button-type-dashed:hover,
-.d-button[disabled].d-button-type-dashed:focus,
-.d-button[disabled].d-button-type-dashed:active{
-  color: rgba(0, 0, 0, 0.25);
-  background-color: @white-3;
-  cursor: not-allowed;
-  border-color: @white-2;
-}
-
-// type 为 link 的时候 disabled 会有点不同于上面
-.d-button[disabled].d-button-type-link,
-.d-button[disabled].d-button-type-link:hover,
-.d-button[disabled].d-button-type-link:focus,
-.d-button[disabled].d-button-type-link:active{
-  color: rgba(0, 0, 0, 0.25);
-  background-color: transparent;
-  border-color: transparent;
-  text-shadow: none;
-  box-shadow: none;
-}
-
-// type 设置为 primary 的时候样式
-.d-button-type-primary {
-  color: @white-1;
-  background-color: @blue-4;
-  border-color: @blue-4;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-}
-
-// type 设置为 primary 的时候鼠标悬浮样式
-.d-button-type-primary:hover {
-  color: @white-1;
-  background-color: @blue-2;
-  border-color: @blue-2;
-}
-
-// type 设置为 primary 的时候 focus 样式
-.d-button-type-primary:focus {
-  color: @white-1;
-  background-color: @blue-2;
-  border-color: @blue-2;
-}
-
-// type 设置为 primary 的时候 active 样式
-.d-button-type-primary:active {
-  color: @white-1;
-  background-color: @blue-3;
-  border-color: @blue-3;
-}
-
-// type 设置为 dashed 的时候样式
-.d-button-type-dashed {
-  color: rgba(0, 0, 0, 0.65);
-  background-color: @white-1;
-  border-color: @white-2;
-  border-style: dashed;
-}
-
-// type 设置为 dashed 的时候鼠标悬浮样式
-.d-button-type-dashed:hover {
-  color: @blue-2;
-  background-color: @white-1;
-  border-color: @blue-2;
-}
-
-// type 设置为 dashed 的时候 focus 样式
-.d-button-type-dashed:focus {
-  color: @blue-2;
-  background-color: @white-1;
-  border-color: @blue-2;
-}
-
-// type 设置为 dashed 的时候 active 样式
-.d-button-type-dashed:active {
-  color: @blue-3;
-  background-color: @white-1;
-  border-color: @blue-3;
-}
-
-// type 设置为 danger 的时候样式
-.d-button-type-danger {
-  color: @white-1;
-  background-color: @red-2;
-  border-color: @red-2;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-}
-
-// type 设置为 danger 的时候鼠标悬浮样式
-.d-button-type-danger:hover {
-  color: @white-1;
-  background-color: @red-3;
-  border-color: @red-3;
-}
-
-// type 设置为 danger 的时候 focus 样式
-.d-button-type-danger:focus {
-  color: @white-1;
-  background-color: @red-3;
-  border-color: @red-3;
-}
-
-// type 设置为 danger 的时候 active 样式
-.d-button-type-danger:active {
-  color: @white-1;
-  background-color: @red-4;
-  border-color: @red-4;
-}
-
-// type 设置为 link 的时候样式
-.d-button-type-link {
-  color: @blue-4;
-  background-color: transparent;
-  border-color: transparent;
-  box-shadow: none;
-}
-
-// type 设置为 link 的时候鼠标悬浮样式
-.d-button-type-link:hover {
-  color: @blue-2;
-  background-color: transparent;
-  border-color: transparent;
-}
-
-// type 设置为 link 的时候 focus 样式
-.d-button-type-link:focus {
-  color: @blue-2;
-  background-color: transparent;
-  border-color: transparent;
-}
-
-// type 设置为 link 的时候 active 样式
-.d-button-type-link:active {
-  color: @blue-3;
-  background-color: transparent;
-  border-color: transparent;
-}
-
-// shape 设置为 round 的时候样式
-.d-button-shape-round{
-  height: 32px;
-  padding: 0 16px;
-  font-size: 16px;
-  border-radius: 32px;
-}
-
-// shape 设置为 circle 的时候样式
-.d-button-shape-circle{
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  font-size: 16px;
-  border-radius: 50%;
-  // 解决了 antd circle 属性的时候文字溢出
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-// loading 设置为 true 的时候样式
-.d-button-loading{
-  color: rgba(0, 0, 0, 0.65);
-  background-color: @white-1;
-  border-color: @white-2;
-}
-
-// size 设置为 small 的时候样式
-.d-button-size-sm{
-  height: 24px;
-  line-height: 22px;
-  padding: 0 7px;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-// size 设置为 large 的时候样式
-.d-button-size-lg{
-  height: 40px;
-  line-height: 38px;
-  padding: 0 15px;
-  font-size: 16px;
-  border-radius: 4px;
-}
-
-// size 为 large 且 shape 为 circle 的时候样式
-.d-button-shape-circle.d-button-size-lg{
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  font-size: 18px;
-  border-radius: 50%;
-}
-
-// size 为 small 且 shape 为 circle 的时候样式
-.d-button-shape-circle.d-button-size-sm{
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  font-size: 14px;
-  border-radius: 50%;
-}
-
-// size 为 large 且 shape 为 round 的时候样式
-.d-button-shape-round.d-button-size-lg{
-  height: 40px;
-  padding: 0 20px;
-  font-size: 18px;
-  border-radius: 40px;
-}
-
-// size 为 small 且 shape 为 round 的时候样式
-.d-button-shape-round.d-button-size-sm{
-  height: 24px;
-  padding: 0 12px;
-  font-size: 14px;
-  border-radius: 24px;
-}
-
-// type 为 link 且 shape 为 circle 的时候样式(不限制溢出)
-// 不要后面两个是因为 图标和文字不在同一行
-// 需要把 white-space 设置为 nowrap
-.d-button-type-link.d-button-shape-circle{
-  overflow: unset!important;
-  // text-overflow: unset!important;
-  // white-space: unset!important;
-}
-
-// ghost 设置为 true 的时候样式
-.d-button-ghost{
-  color: @white-1;
-  background: transparent !important;
-  border-color: @white-1;
-  text-shadow: none;
-}
-
-// block 设置为 true 的时候样式
-.d-button-block{
-  width: 100%;
-}
 
 // 设置 href 属性的时候，a 标签表现为的性状
 a{

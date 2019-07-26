@@ -35,10 +35,10 @@ export default class Child extends Component {
           // disabled={true}
           htmlType="button"
           icon="frown"
-          loading={true}
+          // loading={true}
           // shape="circle"
-          // size="default"
-          // type="primary"
+          size="large"
+          type="primary"
           onClick={this.handleClick}
         >
           <span>Aqewr</span>
@@ -48,7 +48,7 @@ export default class Child extends Component {
           // disabled={true}
           htmlType="button"
           icon="frown"
-          loading={true}
+          // loading={true}
           // shape="circle"
           // size="default"
           // type="primary"
