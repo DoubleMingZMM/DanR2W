@@ -4,8 +4,9 @@
  * @Author: Daniel
  * @Date: 2019-07-24 12:21:59
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-25 14:12:03
+ * @LastEditTime: 2019-07-26 12:14:02
  */
+import {Logger} from '@/utils';
 
 // 是否是字符串
 const isString = (value) => {
@@ -67,6 +68,23 @@ const isDate = (value) => {
 //     return self.hasOwnProperty(value);
 // };
 
+// 判断某个数组里面是否包含某个值
+const isHasType = (type, types) => {
+if (!isString(type)) {
+    Logger.error(`${type} is not string!`);
+    return false;
+}
+if (!isArray(types)) {
+    Logger.error(`${types} is not Array!`);
+    return false;
+}
+if (type === '') {
+    Logger.error(`${type} is blank, must be valid!`);
+    return false;
+}
+return types.indexOf(type) !== -1;
+};
+
 export {
   isString,
   isNumber,
@@ -77,5 +95,6 @@ export {
   isFunction,
   isObject,
   isRegExp,
-  isDate
+  isDate,
+  isHasType
 };
