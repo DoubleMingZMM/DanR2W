@@ -4,14 +4,14 @@
  * @Author: Daniel
  * @Date: 2019-07-26 10:35:25
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 12:01:33
+ * @LastEditTime: 2019-07-26 13:24:38
  */
 
 // htmlType 的指定 props
 const HtmlTypeProps = ['button', 'reset', 'submit'];
 
 // shape 的指定 props
-const ShapeProps = ['default', 'circle', 'round'];
+const ShapeProps = ['circle', 'round'];
 
 // size 的指定 props
 const SizeProps = ['default', 'large', 'small'];

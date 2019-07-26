@@ -2,10 +2,10 @@
 
 .d-button{
   cursor: pointer;
-  background: white;
+  background: @white-1;
   border: 1px solid transparent;
   border-radius: 4px;
-  border-color: #d9d9d9;
+  border-color: @white-2;
   padding: 0 15px;
   height: 32px;
   outline: none;
@@ -17,121 +17,142 @@
 }
 
 .d-button:hover{
-  border-color: #40a9ff;
-  color: #40a9ff;
+  border-color: @blue-2;
+  color: @blue-2;
 }
 
 .d-button:active{
-  border-color: #40a9ff;
-  color: #40a9ff;
+  border-color: @blue-2;
+  color: @blue-2;
 }
 
 .d-button:focus{
-  border-color: #40a9ff;
-  color: #40a9ff;
+  border-color: @blue-2;
+  color: @blue-2;
 }
 
 // 只要原生的 button 这个标签的属性为 disabled 就会触发
 // 这样的话，和原生 button 的 disabled 属性保持一致
-.d-button[disabled]{
+.d-button[disabled],
+.d-button[disabled].d-button-type-primary:hover,
+.d-button[disabled].d-button-type-primary:focus,
+.d-button[disabled].d-button-type-primary:active,
+.d-button[disabled].d-button-type-danger:hover,
+.d-button[disabled].d-button-type-danger:focus,
+.d-button[disabled].d-button-type-danger:active,
+.d-button[disabled].d-button-type-dashed:hover,
+.d-button[disabled].d-button-type-dashed:focus,
+.d-button[disabled].d-button-type-dashed:active{
   color: rgba(0, 0, 0, 0.25);
-  background-color: #f5f5f5;
+  background-color: @white-3;
   cursor: not-allowed;
-  border-color: #d9d9d9;
+  border-color: @white-2;
+}
+
+// type 为 link 的时候 disabled 会有点不同于上面
+.d-button[disabled].d-button-type-link,
+.d-button[disabled].d-button-type-link:hover,
+.d-button[disabled].d-button-type-link:focus,
+.d-button[disabled].d-button-type-link:active{
+  color: rgba(0, 0, 0, 0.25);
+  background-color: transparent;
+  border-color: transparent;
+  text-shadow: none;
+  box-shadow: none;
 }
 
 // type 设置为 primary 的时候样式
 .d-button-type-primary {
-  color: #fff;
-  background-color: #1890ff;
-  border-color: #1890ff;
+  color: @white-1;
+  background-color: @blue-4;
+  border-color: @blue-4;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 }
 
 // type 设置为 primary 的时候鼠标悬浮样式
 .d-button-type-primary:hover {
-  color: #fff;
-  background-color: #40a9ff;
-  border-color: #40a9ff;
+  color: @white-1;
+  background-color: @blue-2;
+  border-color: @blue-2;
 }
 
 // type 设置为 primary 的时候 focus 样式
 .d-button-type-primary:focus {
-  color: #fff;
-  background-color: #40a9ff;
-  border-color: #40a9ff;
+  color: @white-1;
+  background-color: @blue-2;
+  border-color: @blue-2;
 }
 
 // type 设置为 primary 的时候 active 样式
 .d-button-type-primary:active {
-  color: #fff;
-  background-color: #096dd9;
-  border-color: #096dd9;
+  color: @white-1;
+  background-color: @blue-3;
+  border-color: @blue-3;
 }
 
 // type 设置为 dashed 的时候样式
 .d-button-type-dashed {
   color: rgba(0, 0, 0, 0.65);
-  background-color: #fff;
-  border-color: #d9d9d9;
+  background-color: @white-1;
+  border-color: @white-2;
   border-style: dashed;
 }
 
 // type 设置为 dashed 的时候鼠标悬浮样式
 .d-button-type-dashed:hover {
-  color: #40a9ff;
-  background-color: #fff;
-  border-color: #40a9ff;
+  color: @blue-2;
+  background-color: @white-1;
+  border-color: @blue-2;
 }
 
 // type 设置为 dashed 的时候 focus 样式
 .d-button-type-dashed:focus {
-  color: #40a9ff;
-  background-color: #fff;
-  border-color: #40a9ff;
+  color: @blue-2;
+  background-color: @white-1;
+  border-color: @blue-2;
 }
 
 // type 设置为 dashed 的时候 active 样式
 .d-button-type-dashed:active {
-  color: #096dd9;
-  background-color: #fff;
-  border-color: #096dd9;
+  color: @blue-3;
+  background-color: @white-1;
+  border-color: @blue-3;
 }
 
 // type 设置为 danger 的时候样式
 .d-button-type-danger {
-  color: #fff;
-  background-color: #ff4d4f;
-  border-color: #ff4d4f;
+  color: @white-1;
+  background-color: @red-2;
+  border-color: @red-2;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 }
 
 // type 设置为 danger 的时候鼠标悬浮样式
 .d-button-type-danger:hover {
-  color: #fff;
-  background-color: #ff7875;
-  border-color: #ff7875;
+  color: @white-1;
+  background-color: @red-3;
+  border-color: @red-3;
 }
 
 // type 设置为 danger 的时候 focus 样式
 .d-button-type-danger:focus {
-  color: #fff;
-  background-color: #ff7875;
-  border-color: #ff7875;
+  color: @white-1;
+  background-color: @red-3;
+  border-color: @red-3;
 }
 
 // type 设置为 danger 的时候 active 样式
 .d-button-type-danger:active {
-  color: #fff;
-  background-color: #d9363e;
-  border-color: #d9363e;
+  color: @white-1;
+  background-color: @red-4;
+  border-color: @red-4;
 }
 
 // type 设置为 link 的时候样式
 .d-button-type-link {
-  color: #1890ff;
+  color: @blue-4;
   background-color: transparent;
   border-color: transparent;
   box-shadow: none;
@@ -139,21 +160,21 @@
 
 // type 设置为 link 的时候鼠标悬浮样式
 .d-button-type-link:hover {
-  color: #40a9ff;
+  color: @blue-2;
   background-color: transparent;
   border-color: transparent;
 }
 
 // type 设置为 link 的时候 focus 样式
 .d-button-type-link:focus {
-  color: #40a9ff;
+  color: @blue-2;
   background-color: transparent;
   border-color: transparent;
 }
 
 // type 设置为 link 的时候 active 样式
 .d-button-type-link:active {
-  color: #096dd9;
+  color: @blue-3;
   background-color: transparent;
   border-color: transparent;
 }
@@ -182,8 +203,8 @@
 // loading 设置为 true 的时候样式
 .d-button-loading{
   color: rgba(0, 0, 0, 0.65);
-  background-color: #fff;
-  border-color: #d9d9d9;
+  background-color: @white-1;
+  border-color: @white-2;
 }
 
 // size 设置为 small 的时候样式
@@ -249,9 +270,9 @@
 
 // ghost 设置为 true 的时候样式
 .d-button-ghost{
-  color: #fff;
+  color: @white-1;
   background: transparent !important;
-  border-color: #fff;
+  border-color: @white-1;
   text-shadow: none;
 }
 

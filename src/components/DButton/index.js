@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 11:58:13
+ * @LastEditTime: 2019-07-26 13:25:39
  */
 
 import React, { Component } from 'react';
@@ -75,7 +75,7 @@ class DButton extends Component {
       [`d-button-type-${type}`]: type,
       [`d-button-shape-${shape}`]: shape,
       [`d-button-size-${sizeSuffix}`]: sizeSuffix,
-      'd-button-loading': loading,
+      // 'd-button-loading': loading,
       'd-button-ghost': ghost,
       'd-button-block': block
     });
@@ -145,7 +145,6 @@ DButton.defaultProps = {
   htmlType: 'button',
   size: 'default',
   type: 'default',
-  shape: 'default',
   ghost: false,
   block: false
 };

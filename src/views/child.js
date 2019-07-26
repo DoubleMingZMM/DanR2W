@@ -33,12 +33,12 @@ export default class Child extends Component {
           我是child
         <DButton
           // disabled={true}
-          // loading={true}
           htmlType="button"
           icon="frown"
-          // shape="default"
+          loading={true}
+          // shape="circle"
           // size="default"
-          type="default"
+          // type="primary"
           onClick={this.handleClick}
         >
           <span>Aqewr</span>
@@ -46,12 +46,12 @@ export default class Child extends Component {
         <Button
           // block={true}
           // disabled={true}
-          // loading={true}
           htmlType="button"
           icon="frown"
-          // shape="default"
-          type="default"
+          loading={true}
+          // shape="circle"
           // size="default"
+          // type="primary"
           onClick={this.handleLoading}
         >
           <span>sdfgsdfg</span>
