@@ -32,12 +32,12 @@ export default class Child extends Component {
       <div style={{ color: this.context.color }}>
           我是child
         <DButton
-          // disabled={true}
+          disabled={true}
           htmlType="button"
-          icon="frown"
-          // loading={true}
+          // icon="frown"
+          loading={true}
           // shape="circle"
-          size="large"
+          // size="large"
           type="primary"
           onClick={this.handleClick}
         >
@@ -45,13 +45,13 @@ export default class Child extends Component {
         </DButton>
         <Button
           // block={true}
-          // disabled={true}
+          disabled={true}
           htmlType="button"
-          icon="frown"
-          // loading={true}
+          // icon="frown"
+          loading={true}
           // shape="circle"
           // size="default"
-          // type="primary"
+          type="primary"
           onClick={this.handleLoading}
         >
           <span>sdfgsdfg</span>

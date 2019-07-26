@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 13:25:39
+ * @LastEditTime: 2019-07-26 16:45:09
  */
 
 import React, { Component } from 'react';
@@ -75,7 +75,7 @@ class DButton extends Component {
       [`d-button-type-${type}`]: type,
       [`d-button-shape-${shape}`]: shape,
       [`d-button-size-${sizeSuffix}`]: sizeSuffix,
-      // 'd-button-loading': loading,
+      'd-button-loading': loading,
       'd-button-ghost': ghost,
       'd-button-block': block
     });
@@ -95,12 +95,12 @@ class DButton extends Component {
     };
 
     // 一开始进来，loading 为 true 的话，会禁用这个 button，可以直接加上 disabled 属性
-    if (loading) {
-      buttonProps.disabled = true;
-    } else {
-      // 用来处理当 loading 为 false 时，如果 disabled 为 true，需要表现为 disabled
-      if (!buttonProps['disabled']) delete buttonProps['disabled'];
-    }
+    // if (loading) {
+    //   // buttonProps.disabled = true;
+    // } else {
+    //   // 用来处理当 loading 为 false 时，如果 disabled 为 true，需要表现为 disabled
+    //   // if (!buttonProps['disabled']) delete buttonProps['disabled'];
+    // }
 
     // 如果有 href 标签，则渲染 a 标签
     if (buttonProps.hasOwnProperty('href')) {

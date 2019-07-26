@@ -1,4 +1,5 @@
 @import '../../styles/variable.less';
+@import './mixin.less';
 
 .d-button{
   cursor: pointer;
@@ -9,9 +10,27 @@
   padding: 0 15px;
   height: 32px;
   outline: none;
+  color: rgba(0, 0, 0, 0.65);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   margin-right: @mgd;
+
+  // 微元素 before 的时候样式
+  &::before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    display: none;
+    background: @white-1;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
 
   // d-button 在鼠标 hover focus active 时的样式
   &:hover,&:focus,&:active{
@@ -175,9 +194,13 @@
 
   // loading 设置为 true 的时候样式
   &-loading{
-    color: rgba(0, 0, 0, 0.65);
-    background-color: @white-1;
-    border-color: @white-2;
+    position: relative;
+    pointer-events: none;
+
+    // 用它来显示 DButton 的 before 伪元素
+    &::before{
+      display: block;
+    }
   }
 
   // size 设置为 small 的时候样式
