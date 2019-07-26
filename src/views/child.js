@@ -33,16 +33,23 @@ export default class Child extends Component {
       <div style={{ color: this.context.color }}>
           我是child
         <div style={{width: 400}}>
-          <DInput />
+          <DInput
+            disabled
+            size="largeqqqq"
+          />
           <div style={{marginBottom: 20}} />
-          <Input placeholder="Basic usage" />
+          <Input
+            disabled
+            placeholder="Basic usage"
+            size="small"
+          />
         </div>
       </div>
     );
   }
 }
 
-Child.contextTypes = {
+Child.propTypes = {
   // 也可以写成静态方式
   color: PropTypes.string
 };
