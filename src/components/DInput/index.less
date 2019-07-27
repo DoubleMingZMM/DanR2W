@@ -21,7 +21,6 @@
   background-image: none;
   border: 1px solid @white-2;
   border-radius: 4px;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 
   // DInput 鼠标 hover 的时候样式
@@ -89,8 +88,6 @@
       z-index: 2;
       color: rgba(0, 0, 0, 0.65);
       line-height: 0;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
 
@@ -102,6 +99,18 @@
     // 当有 suffix 的时候独有的样式
     & .d-input-suffix {
       right: 12px;
+    }
+
+    // wraper 下面的 input 的右 padding
+    // (这个牛逼，一共三个元素,当最后一个元素是 d-input 时，不会使用该样式)
+    & .d-input:not(:last-child) {
+      padding-right: 30px;
+    }
+
+    // wraper 下面的 input 的左 padding
+    // (这个牛逼，一共三个元素,当第一个元素是 d-input 时，不会使用该样式)
+    & .d-input:not(:first-child) {
+      padding-left: 30px;
     }
   }
 
