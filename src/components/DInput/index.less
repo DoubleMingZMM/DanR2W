@@ -176,5 +176,10 @@
       border-bottom-right-radius: 0;
     }
 
+    // 解决当有 d-input-addon-wraper 的时候，鼠标 focus 的时候 z-index 的值为1，
+    // 保证 box-shadow 不被后面的元素覆盖
+    & .d-input:focus {
+      z-index: 1;
+    }
   }
 }

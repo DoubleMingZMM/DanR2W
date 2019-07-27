@@ -9,7 +9,8 @@ export default class Child extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
+      value: 'value'
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleLoading = this.handleLoading.bind(this);
@@ -26,8 +27,14 @@ export default class Child extends Component {
     });
   }
 
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value
+    });
+  };
+
   render() {
-    const { loading } = this.state;
+    const { loading, value } = this.state;
 
     return (
       <div style={{ color: this.context.color }}>
@@ -36,20 +43,25 @@ export default class Child extends Component {
           <DInput
             addonAfter={(<DButton type="primary">addonAfter</DButton>)}
             addonBefore={(<div>addonBefore</div>)}
-            disabled={true}
-            prefix={(<div>prefix</div>)}
+            // defaultValue="default"
+            // disabled={true}
             size="large"
             suffix="asdfg"
+            // value={value}
+            onChange={this.handleChange}
           />
           <div style={{marginBottom: 20}} />
           <Input
+            allowClear
             addonAfter={(<Button type="primary">addonAfter</Button>)}
+            // defaultValue="default"
+            // disabled={true}
             addonBefore={(<div>addonBefore</div>)}
-            disabled={true}
             placeholder="Basic usage"
-            prefix="qw"
             size="large"
-            suffix="asdfg"
+            // value={value}
+            // onChange={this.handleChange}
+            suffix="fg"
           />
         </div>
       </div>
