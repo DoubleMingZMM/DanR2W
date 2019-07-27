@@ -104,4 +104,54 @@
       right: 12px;
     }
   }
+
+  // 当有 addonBefore 或者 adonAfter 的时候 wraper 的样式
+  &-addon-wraper {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    font-feature-settings: 'tnum', "tnum";
+    position: relative;
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    // 设置 class 带有 d-input-addon- 属性的样式如此
+    & [class^=d-input-addon-] {
+      position: relative;
+      padding: 0 11px;
+      color: rgba(0, 0, 0, 0.65);
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 1;
+      text-align: center;
+      background-color: #fafafa;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      transition: all 0.3s;
+      display: table-cell;
+    }
+
+    // 单独设置 .d-input-addon-before 的样式如此
+    & .d-input-addon-before {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: none;
+    }
+    
+    // 单独设置 .d-input-addon-after 的样式如此
+    & .d-input-addon-after {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: none;
+    }
+
+    & 
+  }
 }

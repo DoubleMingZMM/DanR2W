@@ -34,6 +34,8 @@ export default class Child extends Component {
           我是child
         <div style={{width: 400}}>
           <DInput
+            addonAfter={(<div>addonAfter</div>)}
+            addonBefore={(<div>addonBefore</div>)}
             disabled={true}
             prefix={(<div>prefix</div>)}
             size="large"
@@ -41,6 +43,8 @@ export default class Child extends Component {
           />
           <div style={{marginBottom: 20}} />
           <Input
+            addonAfter={(<div>addonAfter</div>)}
+            addonBefore={(<div>addonBefore</div>)}
             disabled={true}
             placeholder="Basic usage"
             prefix={(<div>prefix</div>)}

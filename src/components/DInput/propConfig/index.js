@@ -4,12 +4,12 @@
  * @Author: Daniel
  * @Date: 2019-07-26 10:35:25
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 19:56:23
+ * @LastEditTime: 2019-07-27 15:44:24
  */
 import PropTypes from 'prop-types';
 
-// prefix 和 suffix 的指定 props
-const AffixProps = [
+// prefix 和 suffix 、addonBefore、addonAfter 的指定 props
+const AffixAddonProps = [
   PropTypes.string,
   PropTypes.element
 ];
@@ -17,6 +17,6 @@ const AffixProps = [
 const SizeProps = ['default', 'large', 'small'];
 
 export {
-  AffixProps,
+  AffixAddonProps,
   SizeProps
 };
