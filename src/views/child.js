@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import DButton from '@/components/DButton/index';
+import DButton from '@/components/DButton/index';
 import DIcon from '@/components/DIcon/index';
 import DInput from '@/components/DInput/index';
-import { Input,Icon,Tooltip } from 'antd';
+import { Input,Button } from 'antd';
 
 export default class Child extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ export default class Child extends Component {
           我是child
         <div style={{width: 400}}>
           <DInput
-            addonAfter={(<div>addonAfter</div>)}
+            addonAfter={(<DButton type="primary">addonAfter</DButton>)}
             addonBefore={(<div>addonBefore</div>)}
             disabled={true}
             prefix={(<div>prefix</div>)}
@@ -43,7 +43,7 @@ export default class Child extends Component {
           />
           <div style={{marginBottom: 20}} />
           <Input
-            addonAfter={(<div>addonAfter</div>)}
+            addonAfter={(<Button type="primary">addonAfter</Button>)}
             addonBefore={(<div>addonBefore</div>)}
             disabled={true}
             placeholder="Basic usage"
