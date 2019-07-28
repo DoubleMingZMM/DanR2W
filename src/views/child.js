@@ -43,25 +43,22 @@ export default class Child extends Component {
           <DInput
             addonAfter={(<DButton type="primary">addonAfter</DButton>)}
             addonBefore={(<div>addonBefore</div>)}
-            // defaultValue="default"
+            defaultValue="default"
             // disabled={true}
             size="large"
-            suffix="asdfg"
             // value={value}
-            onChange={this.handleChange}
+            // onChange={this.handleChange}
           />
           <div style={{marginBottom: 20}} />
           <Input
-            allowClear
             addonAfter={(<Button type="primary">addonAfter</Button>)}
-            // defaultValue="default"
-            // disabled={true}
             addonBefore={(<div>addonBefore</div>)}
+            // disabled={true}
+            defaultValue="default"
             placeholder="Basic usage"
             size="large"
             // value={value}
             // onChange={this.handleChange}
-            suffix="fg"
           />
         </div>
       </div>

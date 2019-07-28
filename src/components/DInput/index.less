@@ -165,13 +165,13 @@
     }
 
     // 这个相当牛逼，当下面有三个元素时，自己不是第一个元素时，下面的 d-input 应用这个样式
-    & .d-input-affix-wraper:not(:first-child) .d-input {
+    & .d-input:not(:first-child) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
     // 这个相当牛逼，当下面有三个元素时，自己不是最后一个元素时，下面的 d-input 应用这个样式
-    & .d-input-affix-wraper:not(:last-child) .d-input {
+    & .d-input:not(:last-child) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }

@@ -18,7 +18,10 @@ import './index.less';
 
 // 判断是否是有 value 值，有的话就用 value,没有的话是 undefined 则使用 defaultValue
 const decideValueToUse = (props) => {
-  return isUndefined(props.value) ? props.defaultValue : props.value;
+  // 解决只有 onChange 没有 value 和 defaultValue 的情况
+  // 因为会报 A component is changing an uncontrolled input of type undefined to be controlled.
+  const defaultVal = props.defaultValue || '';
+  return isUndefined(props.value) ? defaultVal : props.value;
 };
 
 
