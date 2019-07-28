@@ -165,13 +165,13 @@
     }
 
     // 这个相当牛逼，当下面有三个元素时，自己不是第一个元素时，下面的 d-input 应用这个样式
-    & .d-input:not(:first-child) {
+    & .d-input-affix-wraper:not(:first-child) .d-input {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
     // 这个相当牛逼，当下面有三个元素时，自己不是最后一个元素时，下面的 d-input 应用这个样式
-    & .d-input:not(:last-child) {
+    & .d-input-affix-wraper:not(:last-child) .d-input {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
@@ -182,4 +182,8 @@
       z-index: 1;
     }
   }
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

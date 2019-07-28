@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 // import DIcon from '@/components/DIcon/index.js';
 import omit from 'omit.js';
 import classnames from 'classnames';
+import DIcon from '../DIcon/index';
 import { SizeProps, AffixAddonProps } from './propConfig/index.js';
 import { isBoolean, isUndefined } from '@/utils/util';
 import './index.less';
@@ -31,16 +32,28 @@ class DInput extends Component {
     this.state = {
       value: decideValueToUse(props)
     };
+    this.inputRef = React.createRef();
   }
-  
+
   /**
-   * @param {node} e is first
-   * @param {function} callback is second,主要是解决在 handleReset 中传来回调，用来聚焦
-   * @description 为了解耦调用 this.setStateValue,因为 handleReset 也会调用，这样就不会写很多代码
+   * @description 为了重新聚焦的问题
    * @memberof AddonDInput
    * @returns { null } 没有返回
    */
-  setStateValue = (e, callback) => {
+  handleFocus = () => {
+    // 注意：我们通过 "current" 来访问 DOM 节点
+    this.inputRef.current.focus();
+  };
+  
+  /**
+   * @param {node} e is first
+   * @param {string} value is second,主要是兼容 handleReset 和 handleChange
+   * @param {function} callback is third,主要是解决在 handleReset 中传来回调，用来聚焦
+   * @description 为了解耦调用 this.handleSetValue,因为 handleReset 也会调用，这样就不会写很多代码
+   * @memberof AddonDInput
+   * @returns { null } 没有返回
+   */
+  handleSetValue = (e, value, callback) => {
     // 这让我想起 promise 中的失败和成功的回调
     const cb = callback || (v => v);
     // DInput 也遵循 React 的规范，比如当只传了 value，没有 onChange 毁掉的时候
@@ -50,38 +63,36 @@ class DInput extends Component {
     const { onChange } = this.props;
     if (!this.props.hasOwnProperty('value')) {
       // 这个 cb 不是传入组件的回调，现在只是特定用于 handleReset 的回调
-      this.setState({
-        value: e.target.value
-      }, cb);
+      this.setState({ value }, cb);
     }
     if (onChange) {
       // 因为传过来的 value 在 state 中保存了一份，所以说我只是执行回调只能更改传过来的属性值
       // 但是下次进来就不走 constructor 这个构造函数了，所以手动把 state 更新过来
-      this.setState({
-        value: e.target.value
-      }, onChange(e));
+      this.setState({ value }, onChange(e));
     }
   };
 
   /**
    * @param {node} e is first
-   * @description 为了解耦调用 this.setStateValue,因为 handleReset 也会调用，这样就不会写很多代码
+   * @description 为了解耦调用 this.handleSetValue,因为 handleReset 也会调用，这样就不会写很多代码
    * @memberof AddonDInput
    * @returns { null } 没有返回
    */
-  handleReset = () => {
-    
+  handleReset = (e) => {
+    this.handleSetValue(e, '', () => {
+      this.handleFocus();
+    });
   };
   
   /**
    * @param {node} e is first
-   * @description 为了解耦调用 this.setStateValue,因为 handleReset 也会调用，这样就不会写很多代码
+   * @description 为了解耦调用 this.handleSetValue,因为 handleReset 也会调用，这样就不会写很多代码
    * @memberof AddonDInput
    * @returns { null } 没有返回
    */
   handleChange = (e) => {
-    // 调用 setStateValue 方法，解耦
-    this.setStateValue(e);
+    // 调用 handleSetValue 方法，解耦
+    this.handleSetValue(e, e.target.value);
   };
   
   /**
@@ -116,21 +127,35 @@ class DInput extends Component {
    * @param {element} children is first
    * @param {string | element} prefix is second
    * @param {string | element} suffix is third
+   * @param {string | element} allowClear is forth
    * @description 渲染一定会返回的 AffixDInput 组件
    * @memberof AffixDInput
    * @returns { AffixDInput} 返回 AffixDInput 组件
    */
-  renderAffixDInput = (children, prefix, suffix) => {
+  renderAffixDInput = (children, prefix, suffix, allowClear) => {
+    // 当 allowClear 是 true 并且 value 有值的时候，才会显示这个关闭按钮
+    const { value } = this.state;
+    const allowClearElem = (allowClear && value) && (
+      <DIcon
+        className="cursor-pointer"
+        type="close-circle-fill"
+        onClick={this.handleReset}
+      />
+    );
+
     // 当有 prefix 的时候，返回 span，没有的时候返回 null,jsx 不解析
     const prefixElem = prefix && (
       <span className="d-input-prefix">{prefix}</span>
     );
 
-    // 当有 suffix 的时候，返回 span，没有的时候返回 null,jsx 不解析
-    const suffixElem = suffix && (
-      <span className="d-input-suffix">{suffix}</span>
+    // 当有 suffix 或者 allowClear 的时候，返回 span，没有的时候返回 null,jsx 不解析
+    const suffixElem = (suffix || allowClear) && (
+      <span className="d-input-suffix">
+        {allowClearElem}
+        {suffix}
+      </span>
     );
-    
+
     return (
       <span className="d-input-affix-wraper">
         {prefixElem}
@@ -150,11 +175,13 @@ class DInput extends Component {
   renderSpecificDInput = (classNames, props) => {
     const { value } = this.state;
     return (
-      <input className={classNames}
+      <input
+        className={classNames}
+        ref={this.inputRef}
         value={value}
         // 执行的时候才去调用，不要加括号，因为在 render 函数中，会栈溢出
         onChange={this.handleChange}
-        {...omit(props, ['prefix', 'size', 'suffix', 'addonBefore', 'addonAfter', 'value', 'defaultValue', 'onChange' ])}
+        {...omit(props, ['prefix', 'size', 'suffix', 'addonBefore', 'addonAfter', 'value', 'defaultValue', 'onChange', 'allowClear' ])}
       />
     );
   };
@@ -166,7 +193,7 @@ class DInput extends Component {
    */
   renderDInput = () => {
     const {props} = this;
-    const {className, size, disabled, prefix, suffix, addonBefore, addonAfter} = props;
+    const {className, size, disabled, prefix, suffix, addonBefore, addonAfter, allowClear} = props;
 
     // 供返回使用
     let children = null;
@@ -202,10 +229,10 @@ class DInput extends Component {
     // 这样的好处是可以不用 return 两遍 input 组件的封装组件，直接cloneElement
     children = this.renderSpecificDInput(classNames, props);
 
-    // 当有 prefix 或者 suffix 其中的一个时候，返回新的节点
-    if (prefix || suffix) {
+    // 当有 prefix 、 suffix 或者 allowClear 其中的一个时候，返回新的节点
+    if (prefix || suffix || allowClear) {
       // 执行 affixDinput 的输出函数
-      children = this.renderAffixDInput(children, prefix, suffix);
+      children = this.renderAffixDInput(children, prefix, suffix, allowClear);
     }
 
     // 当有 addonAfter 或者 addonBefore 其中一个的时候，返回新的节点
@@ -226,7 +253,8 @@ class DInput extends Component {
 // 默认值，不在解构赋值中做，解耦分离
 DInput.defaultProps = {
   disabled: false,
-  size: 'default'
+  size: 'default',
+  allowClear: false
 };
 
 // 类型检查
@@ -240,6 +268,7 @@ DInput.propTypes = {
   defaultValue: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  allowClear: PropTypes.bool
 };
 
 export default DInput;
