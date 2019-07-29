@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DButton from '@/components/DButton/index';
-import DIcon from '@/components/DIcon/index';
+// import DButton from '@/components/DButton/index';
+// import DIcon from '@/components/DIcon/index';
 import DInput from '@/components/DInput/index';
-import { Input,Button } from 'antd';
+import { Input } from 'antd';
+const TextArea = Input.TextArea;
+const DTextArea = DInput.DTextArea;
 
 export default class Child extends Component {
   constructor(props) {
@@ -45,36 +47,12 @@ export default class Child extends Component {
       <div style={{ color: this.context.color }}>
           我是child
         <div style={{width: 400}}>
-          <DInput
-            allowClear
-            addonAfter={(<DButton type="primary">addonAfter</DButton>)}
-            // addonBefore={(<div>addonBefore</div>)}
-            defaultValue="default"
-            // disabled={true}
-            size="large"
-            suffix="d"
-            // value={value}
-            // onChange={this.handleChange}
-            onKeyDown={this.handleEnter}
-            onPressEnter={this.handleEnter}
+          <DTextArea
+            value={value}
           />
-          <div
-            style={{marginBottom: 20}}
-          />
-          <Input
-            allowClear
-            addonAfter={(<Button type="primary">addonAfter</Button>)}
-            addonBefore={(<div>addonBefore</div>)}
-            // disabled={true}
-            defaultValue="default"
-            placeholder="Basic usage"
-            size="large"
-            suffix="d"
-            // value={value}
-            // onChange={this.handleChange}
-            type="textarea4"
-            onKeyDown={this.handleEnter}
-            onPressEnter={this.handleEnter}
+          <div style={{marginBottom: 20}} />
+          <TextArea
+            value={value}
           />
         </div>
       </div>

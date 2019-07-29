@@ -418,3 +418,27 @@ textarea {
     -webkit-appearance: button; /* 1 */
     font: inherit; /* 2 */
 }
+
+/**
+ * 1. new style css of scrollbar
+ */
+/*滚动条的宽度*/
+::-webkit-scrollbar {
+    width:9px;
+    height:9px;
+}
+
+/*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果*/
+::-webkit-scrollbar-track {
+    width: 6px;
+    background-color:white;
+    border-radius:2em;
+}
+
+/*滚动条的设置*/
+::-webkit-scrollbar-thumb {
+    background-color:#9da1a2;
+    background-clip:padding-box;
+    min-height:28px;
+    border-radius:2em;
+}
