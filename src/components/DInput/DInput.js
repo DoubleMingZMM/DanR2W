@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-29 15:34:45
+ * @LastEditTime: 2019-07-29 16:46:56
  */
 
 import React, { Component } from 'react';
@@ -206,7 +206,8 @@ class DInput extends Component {
       'onChange',
       'allowClear',
       'onPressEnter',
-      'style'
+      'style',
+      'className'
     ];
     
     return (
@@ -309,7 +310,8 @@ DInput.propTypes = {
   onChange: PropTypes.func,
   allowClear: PropTypes.bool,
   onPressEnter: PropTypes.func,
-  style: PropTypes.object
+  style: PropTypes.object,
+  className: PropTypes.string
 };
 
 export default DInput;

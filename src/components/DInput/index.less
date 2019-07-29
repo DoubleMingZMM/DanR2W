@@ -176,12 +176,44 @@
       border-bottom-right-radius: 0;
     }
 
+    & .d-input:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    & .d-input:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
     // 解决当有 d-input-addon-wraper 的时候，鼠标 focus 的时候 z-index 的值为1，
     // 保证 box-shadow 不被后面的元素覆盖
     & .d-input:focus {
       z-index: 1;
     }
+
+    // 设置 当有 d-input-search 这个属性的时候，不需要外面的 border
+    & .d-input-search + .d-input-addon-after {
+      border: 0;
+      padding: 0;
+    }
   }
+}
+
+.border-left-radius {
+  border-top-left-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+  white-space: nowrap;
+  border-left: 0!important;
+}
+
+.d-button[disabled],.border-left-radius {
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.mgl-5 {
+  margin-left: 5px;
 }
 
 textarea[class*=d-input] {

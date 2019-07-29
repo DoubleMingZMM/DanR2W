@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-29 15:32:04
+ * @LastEditTime: 2019-07-29 16:04:35
  */
 
 import React, { Component } from 'react';
@@ -31,6 +31,10 @@ class DTextArea extends Component {
       value: decideValueToUse(props)
     };
     this.textareaRef = React.createRef();
+  }
+
+  componentDidMount() {
+    // console.log(this.textareaRef.current && this.textareaRef.current.scrollTop);
   }
 
   /**
@@ -99,12 +103,18 @@ class DTextArea extends Component {
   renderDTextArea = () => {
     const { value } = this.state;
     const {props} = this;
-    const {className, disabled, style} = props;
+    const {className, disabled, style, autosize} = props;
+
+    // 当 autosize 为 true 的时候，计算输入域内的高度，
+    const calculateHeightStyle = autosize ? {
+      
+    } : {};
+
 
     // 合并 自身的 style 和 参数传过来的 style
     const mergeStyle = {
       ...style,
-      // ...calculateHeightStyle
+      ...calculateHeightStyle
     };
 
     // 处理所有的 className，将他们合并起来得到一个样式列表

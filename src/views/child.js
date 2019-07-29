@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 // import DIcon from '@/components/DIcon/index';
 import DInput from '@/components/DInput/index';
 import { Input } from 'antd';
-const TextArea = Input.TextArea;
-const DTextArea = DInput.DTextArea;
+const Search = Input.Search;
+const DSearch = DInput.DSearch;
 
 export default class Child extends Component {
   constructor(props) {
@@ -47,21 +47,46 @@ export default class Child extends Component {
       <div style={{ color: this.context.color }}>
           我是child
         <div style={{width: 400}}>
-          <DTextArea
-            autosize
-            disabled={false}
+          <DSearch
+            // disabled
+            // addonAfter="addonAfter"
+            addonBefore="addonBefore"
+            // searchIconType="close-circle"
+            // enterButton="Search"
+            // searchText="搜索"
+            // size="small"
+            // style={{color: 'red'}}
+            // value={value}
+            // onChange={this.handleChange}
+            // type="link"
+            defaultValue={value}
+            placeholder="input search text"
+            // prefix="prefix"
+            size="large"
             style={{color: 'red'}}
-            value={value}
-            onChange={this.handleChange}
+            // suffix="suffix"
+            onSearch={value => console.log(value)}
           />
           <div style={{marginBottom: 20}} />
-          <DInput value={value} />
+          <DInput
+            value={value}
+          />
           <div style={{marginBottom: 20}} />
-          <TextArea
-            autosize
-            disabled
+          <Search
+            // disabled
+            addonAfter="addonAfter"
+            addonBefore="addonBefore"
+            className="aaaaa"
+            defaultValue={value}
+            enterButton="Searcsh"
+            placeholder="input search text"
+            prefix="prefix"
+            size="large"
+            style={{color: 'red'}}
+            suffix="suffix"
             value={value}
             onChange={this.handleChange}
+            onSearch={value => console.log(value)}
           />
         </div>
       </div>
