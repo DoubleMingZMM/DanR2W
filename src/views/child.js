@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import DButton from '@/components/DButton/index';
 // import DIcon from '@/components/DIcon/index';
-import DInput from '@/components/DInput/index';
-import { Input } from 'antd';
-const Search = Input.Search;
-const DSearch = DInput.DSearch;
+// import DInput from '@/components/DInput/index';
+import DSelect from '@/components/DSelect/index';
+
+import { Select } from 'antd';
+// const Search = Input.Search;
+// const DSearch = DInput.DSearch;
+const DOption = DSelect.DOption;
+const Option = Select.Option;
 
 export default class Child extends Component {
   constructor(props) {
@@ -47,47 +51,17 @@ export default class Child extends Component {
       <div style={{ color: this.context.color }}>
           我是child
         <div style={{width: 400}}>
-          <DSearch
-            // disabled
-            // addonAfter="addonAfter"
-            addonBefore="addonBefore"
-            // searchIconType="close-circle"
-            // enterButton="Search"
-            // searchText="搜索"
-            // size="small"
-            // style={{color: 'red'}}
-            // value={value}
-            // onChange={this.handleChange}
-            // type="link"
-            defaultValue={value}
-            placeholder="input search text"
-            // prefix="prefix"
-            size="large"
-            style={{color: 'red'}}
-            // suffix="suffix"
-            onSearch={value => console.log(value)}
-          />
+          <DSelect>
+            <DOption />
+          </DSelect>
           <div style={{marginBottom: 20}} />
-          <DInput
-            value={value}
-          />
-          <div style={{marginBottom: 20}} />
-          <Search
-            // disabled
-            addonAfter="addonAfter"
-            addonBefore="addonBefore"
-            className="aaaaa"
-            defaultValue={value}
-            enterButton="Searcsh"
-            placeholder="input search text"
-            prefix="prefix"
-            size="large"
-            style={{color: 'red'}}
-            suffix="suffix"
-            value={value}
-            onChange={this.handleChange}
-            onSearch={value => console.log(value)}
-          />
+          <Select defaultValue="lucy"
+            style={{ width: 120 }}
+          >
+            <Option value="jack">Jack</Option>
+            <Option value="lucy">Lucy</Option>
+            <Option value="Yiminghe">yiminghe</Option>
+          </Select>
         </div>
       </div>
     );
