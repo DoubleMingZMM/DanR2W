@@ -50,6 +50,7 @@ export default class Child extends Component {
           <DTextArea
             autosize
             disabled={false}
+            style={{color: 'red'}}
             value={value}
             onChange={this.handleChange}
           />

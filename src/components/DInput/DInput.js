@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-29 15:05:47
+ * @LastEditTime: 2019-07-29 15:34:45
  */
 
 import React, { Component } from 'react';
@@ -192,15 +192,33 @@ class DInput extends Component {
    */
   renderSpecificDInput = (classNames, props) => {
     const { value } = this.state;
+    const { style } = this.props;
+
+    // 删除的 props 属性
+    const removeProps = [
+      'prefix',
+      'size',
+      'suffix',
+      'addonBefore',
+      'addonAfter',
+      'value',
+      'defaultValue',
+      'onChange',
+      'allowClear',
+      'onPressEnter',
+      'style'
+    ];
+    
     return (
       <input
         className={classNames}
         ref={this.inputRef}
+        style={style}
         value={value}
         onChange={this.handleChange}
         // 执行的时候才去调用，不要加括号，因为在 render 函数中，会栈溢出
         onKeyDown={this.handleKeyDown}
-        {...omit(props, ['prefix', 'size', 'suffix', 'addonBefore', 'addonAfter', 'value', 'defaultValue', 'onChange', 'allowClear', 'onPressEnter' ])}
+        {...omit(props, removeProps)}
       />
     );
   };
@@ -239,7 +257,6 @@ class DInput extends Component {
     // 处理所有的 className，将他们合并起来得到一个样式列表
     const classNames = classnames('d-input', className, {
       [`d-input-size-${sizeSuffix}`]: sizeSuffix,
-      // 'd-input-prefix': prefix,
       'd-input-disabled': isDisabled,
       }
     );
@@ -274,7 +291,8 @@ DInput.defaultProps = {
   type: 'text',
   disabled: false,
   size: 'default',
-  allowClear: false
+  allowClear: false,
+  style: {}
 };
 
 // 类型检查
@@ -290,7 +308,8 @@ DInput.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   allowClear: PropTypes.bool,
-  onPressEnter: PropTypes.func
+  onPressEnter: PropTypes.func,
+  style: PropTypes.object
 };
 
 export default DInput;

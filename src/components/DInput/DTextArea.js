@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-29 15:18:03
+ * @LastEditTime: 2019-07-29 15:32:04
  */
 
 import React, { Component } from 'react';
@@ -64,7 +64,6 @@ class DTextArea extends Component {
     this.handleSetValue(e, e.target.value);
   };
 
-    
   /**
    * @param {node} e is first
    * @param {string} value is second,主要是兼容 handleReset 和 handleChange
@@ -100,7 +99,13 @@ class DTextArea extends Component {
   renderDTextArea = () => {
     const { value } = this.state;
     const {props} = this;
-    const {className, disabled} = props;
+    const {className, disabled, style} = props;
+
+    // 合并 自身的 style 和 参数传过来的 style
+    const mergeStyle = {
+      ...style,
+      // ...calculateHeightStyle
+    };
 
     // 处理所有的 className，将他们合并起来得到一个样式列表
     const classNames = classnames('d-input', className, {
@@ -108,15 +113,27 @@ class DTextArea extends Component {
       }
     );
 
+    // 删除的 props 属性
+    const removeProps = [
+      'value',
+      'defaultValue',
+      'onChange',
+      'onPressEnter',
+      'onKeyDown',
+      'autosize',
+      'style'
+    ];
+
     return (
       <textarea
         className={classNames}
         ref={this.textareaRef}
+        style={mergeStyle}
         value={value}
         onChange={this.handleChange}
         // 执行的时候才去调用，不要加括号，因为在 render 函数中，会栈溢出
         onKeyDown={this.handleKeyDown}
-        {...omit(props, [ 'value', 'defaultValue', 'onChange', 'onPressEnter', 'onKeyDown', 'autosize' ])}
+        {...omit(props, removeProps)}
       />
     );
   };
@@ -130,7 +147,8 @@ class DTextArea extends Component {
 // 默认值，不在解构赋值中做，解耦分离
 DTextArea.defaultProps = {
   disabled: false,
-  autosize: false
+  autosize: false,
+  style: {}
 };
 
 // 类型检查
@@ -140,7 +158,8 @@ DTextArea.propTypes = {
   onChange: PropTypes.func,
   onPressEnter: PropTypes.func,
   disabled: PropTypes.bool,
-  autosize: PropTypes.bool
+  autosize: PropTypes.bool,
+  style: PropTypes.object,
 };
 
 export default DTextArea;

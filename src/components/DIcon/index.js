@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-24 08:42:03
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 11:21:00
+ * @LastEditTime: 2019-07-29 15:32:45
  */
 
 import React, { Component } from 'react';
@@ -41,13 +41,22 @@ class DIcon extends Component {
       [`d-icon-${type}`]: type
     });
 
+    // 删除的 props 属性
+    const removeProps = [
+      'type',
+      'spin',
+      'rotate',
+      'style',
+      'className'
+    ];
+
     return (
       <i
         className={classNames}
         // 把 style 放在这里处理，将下面的给去掉，因为会存在覆盖的问题
         style={mergeStyle}
         // 去掉 style 和 className 是因为这两个上面需要合并组件传过来的值，故去掉
-        {...omit(props, ['type','spin', 'rotate', 'style', 'className'])}
+        {...omit(props, removeProps)}
       />
     );
   }
