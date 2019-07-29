@@ -4,16 +4,15 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-27 19:13:44
+ * @LastEditTime: 2019-07-29 10:04:10
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import DIcon from '@/components/DIcon/index.js';
 import omit from 'omit.js';
 import classnames from 'classnames';
 import DIcon from '../DIcon/index';
-import { SizeProps, AffixAddonProps } from './propConfig/index.js';
+import { SizeProps, AffixAddonProps, TypeProps } from './propConfig/index.js';
 import { isBoolean, isUndefined } from '@/utils/util';
 import './index.less';
 
@@ -25,7 +24,6 @@ const decideValueToUse = (props) => {
   return isUndefined(props.value) ? defaultVal : props.value;
 };
 
-
 class DInput extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +32,26 @@ class DInput extends Component {
     };
     this.inputRef = React.createRef();
   }
+
+  /**
+   * @param {node} e is first
+   * @description 按键按下时触发，可以通过判断按键的 keycode 来判断
+   * @memberof AddonDInput
+   * @returns { null } 没有返回
+   */
+  handleKeyDown = (e) => {
+    const { onPressEnter, onKeyDown } = this.props;
+    // 使用 keyDown 而不是用 keyPress 的原因在于，后者不能对系统按键做出响应
+    if (e.keyCode === 13 && onPressEnter) {
+      // 因为在组件使用的时候需要这个事件对象
+      onPressEnter(e);
+    }
+    // onKeyDown 是原生事件，所以可以保留在 input 中
+    // 不过事件是不会存在于 html  中的
+    if (onKeyDown) {
+      onKeyDown(e);
+    }
+  };
 
   /**
    * @description 为了重新聚焦的问题
@@ -179,9 +197,10 @@ class DInput extends Component {
         className={classNames}
         ref={this.inputRef}
         value={value}
-        // 执行的时候才去调用，不要加括号，因为在 render 函数中，会栈溢出
         onChange={this.handleChange}
-        {...omit(props, ['prefix', 'size', 'suffix', 'addonBefore', 'addonAfter', 'value', 'defaultValue', 'onChange', 'allowClear' ])}
+        // 执行的时候才去调用，不要加括号，因为在 render 函数中，会栈溢出
+        onKeyDown={this.handleKeyDown}
+        {...omit(props, ['prefix', 'size', 'suffix', 'addonBefore', 'addonAfter', 'value', 'defaultValue', 'onChange', 'allowClear', 'onPressEnter' ])}
       />
     );
   };
@@ -252,6 +271,7 @@ class DInput extends Component {
 
 // 默认值，不在解构赋值中做，解耦分离
 DInput.defaultProps = {
+  type: 'text',
   disabled: false,
   size: 'default',
   allowClear: false
@@ -259,6 +279,7 @@ DInput.defaultProps = {
 
 // 类型检查
 DInput.propTypes = {
+  type: PropTypes.oneOf(TypeProps),
   disabled: PropTypes.bool,
   prefix: PropTypes.oneOfType(AffixAddonProps),
   size: PropTypes.oneOf(SizeProps),
@@ -268,7 +289,8 @@ DInput.propTypes = {
   defaultValue: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
-  allowClear: PropTypes.bool
+  allowClear: PropTypes.bool,
+  onPressEnter: PropTypes.func
 };
 
 export default DInput;

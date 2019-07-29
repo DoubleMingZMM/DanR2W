@@ -14,6 +14,7 @@ export default class Child extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleLoading = this.handleLoading.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
   }
 
   handleClick() {
@@ -26,6 +27,10 @@ export default class Child extends Component {
       loading: {delay: 5}
     });
   }
+
+  handleEnter = (e) => {
+    console.log(e.keyCode);
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -50,8 +55,12 @@ export default class Child extends Component {
             suffix="d"
             // value={value}
             // onChange={this.handleChange}
+            onKeyDown={this.handleEnter}
+            onPressEnter={this.handleEnter}
           />
-          <div style={{marginBottom: 20}} />
+          <div
+            style={{marginBottom: 20}}
+          />
           <Input
             allowClear
             addonAfter={(<Button type="primary">addonAfter</Button>)}
@@ -63,6 +72,9 @@ export default class Child extends Component {
             suffix="d"
             // value={value}
             // onChange={this.handleChange}
+            type="textarea4"
+            onKeyDown={this.handleEnter}
+            onPressEnter={this.handleEnter}
           />
         </div>
       </div>

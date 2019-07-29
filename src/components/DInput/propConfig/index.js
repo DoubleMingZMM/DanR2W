@@ -4,9 +4,23 @@
  * @Author: Daniel
  * @Date: 2019-07-26 10:35:25
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-27 15:44:24
+ * @LastEditTime: 2019-07-29 10:05:30
  */
 import PropTypes from 'prop-types';
+
+// 原生 input 支持的类型
+const TypeProps = [
+  'button',
+  'checkbox',
+  'file',
+  'hidden',
+  'image',
+  'password',
+  'radio',
+  'reset',
+  'submit',
+  'text'
+];
 
 // prefix 和 suffix 、addonBefore、addonAfter 的指定 props
 const AffixAddonProps = [
@@ -17,6 +31,7 @@ const AffixAddonProps = [
 const SizeProps = ['default', 'large', 'small'];
 
 export {
+  TypeProps,
   AffixAddonProps,
   SizeProps
 };
