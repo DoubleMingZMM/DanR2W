@@ -48,11 +48,19 @@ export default class Child extends Component {
           我是child
         <div style={{width: 400}}>
           <DTextArea
+            autosize
+            disabled={false}
             value={value}
+            onChange={this.handleChange}
           />
           <div style={{marginBottom: 20}} />
+          <DInput value={value} />
+          <div style={{marginBottom: 20}} />
           <TextArea
+            autosize
+            disabled
             value={value}
+            onChange={this.handleChange}
           />
         </div>
       </div>

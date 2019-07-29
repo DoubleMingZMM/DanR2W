@@ -4,16 +4,16 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-29 11:27:26
+ * @LastEditTime: 2019-07-29 15:18:03
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import omit from 'omit.js';
 import classnames from 'classnames';
-import DIcon from '../DIcon/index';
-import { SizeProps, AffixAddonProps, TypeProps } from './propConfig/index.js';
-import { isBoolean, isUndefined } from '@/utils/util';
+// import DIcon from '../DIcon/index';
+// import { SizeProps, AffixAddonProps, TypeProps } from './propConfig/index.js';
+import { isUndefined } from '@/utils/util';
 import './index.less';
 
 // 判断是否是有 value 值，有的话就用 value,没有的话是 undefined 则使用 defaultValue
@@ -30,7 +30,7 @@ class DTextArea extends Component {
     this.state = {
       value: decideValueToUse(props)
     };
-    this.inputRef = React.createRef();
+    this.textareaRef = React.createRef();
   }
 
   /**
@@ -100,24 +100,23 @@ class DTextArea extends Component {
   renderDTextArea = () => {
     const { value } = this.state;
     const {props} = this;
-    const {className} = props;
+    const {className, disabled} = props;
 
     // 处理所有的 className，将他们合并起来得到一个样式列表
     const classNames = classnames('d-input', className, {
-      // 'd-input-prefix': prefix,
-      // 'd-input-disabled': isDisabled,
+      'd-input-disabled': disabled,
       }
     );
 
     return (
       <textarea
         className={classNames}
-        ref={this.inputRef}
+        ref={this.textareaRef}
         value={value}
         onChange={this.handleChange}
         // 执行的时候才去调用，不要加括号，因为在 render 函数中，会栈溢出
         onKeyDown={this.handleKeyDown}
-        {...omit(props, [ 'value', 'defaultValue', 'onChange', 'onPressEnter' ])}
+        {...omit(props, [ 'value', 'defaultValue', 'onChange', 'onPressEnter', 'onKeyDown', 'autosize' ])}
       />
     );
   };
@@ -130,15 +129,18 @@ class DTextArea extends Component {
 
 // 默认值，不在解构赋值中做，解耦分离
 DTextArea.defaultProps = {
-  defaultValue: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  onPressEnter: PropTypes.func
+  disabled: false,
+  autosize: false
 };
 
 // 类型检查
 DTextArea.propTypes = {
-
+  defaultValue: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onPressEnter: PropTypes.func,
+  disabled: PropTypes.bool,
+  autosize: PropTypes.bool
 };
 
 export default DTextArea;
