@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-29 20:32:13
+ * @LastEditTime: 2019-07-30 18:24:09
  */
 
 import React, { Component } from 'react';
@@ -26,7 +26,10 @@ class DOption extends Component {
    */
   renderDOption = () => {
     return (
-      <div value="volvo">Volvo</div>
+      <React.Fragment>
+        <div value="volvo">Volvo</div>
+        <div value="fute">fute</div>
+      </React.Fragment>
     );
   };
 

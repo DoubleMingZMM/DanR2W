@@ -65,11 +65,11 @@ export default class Child extends Component {
           按钮
           </DButton>
           <div style={{width: 400}}>
-            {/* <DSelect value={value}>
+            <DSelect value={value}>
               <DOption />
             </DSelect>
             <div style={{marginBottom: 20}} />
-            <Select defaultValue="lucy"
+            {/* <Select defaultValue="lucy"
               style={{ width: 120 }}
           >
               <Option value="jack">Jack</Option>
@@ -77,11 +77,11 @@ export default class Child extends Component {
               <Option value="Yiminghe">yiminghe</Option>
             </Select> */}
 
-            <DInput
+            {/* <DInput
               defaultValue="default"
               value={value}
               onChange={this.handleChange}
-            />
+            /> */}
           </div>
         </div>
       </DErrorBoundary>
