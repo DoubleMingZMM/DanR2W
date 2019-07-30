@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-30 15:07:37
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-30 16:48:40
+ * @LastEditTime: 2019-07-30 18:01:49
  */
 import React from 'react';
 
@@ -22,7 +22,6 @@ class DErrorBoundary extends React.Component {
   }
 
   componentDidCatch (error, info) {
-    // console.error(info);
     this.setState({
       error,
       info

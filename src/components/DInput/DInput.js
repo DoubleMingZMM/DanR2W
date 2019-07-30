@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-30 16:51:05
+ * @LastEditTime: 2019-07-30 17:22:58
  */
 
 import React, { Component } from 'react';
@@ -41,6 +41,11 @@ class DInput extends Component {
       };
     }
     return null;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // 做性能优化，不是只要父组件更新我就跟新，我会根据判断依据看自己要不要更新
+    return nextState.value !== this.state.value;
   }
 
   // componentWillReceiveProps(nextProps) {
