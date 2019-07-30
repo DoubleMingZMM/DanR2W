@@ -4,6 +4,7 @@ import DButton from '@/components/DButton/index';
 // import DIcon from '@/components/DIcon/index';
 import DInput from '@/components/DInput/index';
 import DSelect from '@/components/DSelect/index';
+import Pure from './pure';
 import DErrorBoundary from '@/components/DErrorBoundary/index';
 
 import { Select } from 'antd';
@@ -18,16 +19,26 @@ export default class Child extends Component {
     this.state = {
       loading: true,
       value: 'value',
-      className: 'aaaaaa'
+      className: 'aaaaaa',
+      age: 26,
+      relation: ['double', 'zmm']
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleClick1 = this.handleClick1.bind(this);
     this.handleLoading = this.handleLoading.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
   }
 
   handleClick() {
     this.setState({
-      className: 'ssss'
+      age: this.state.age - 1
+    });
+  }
+
+  handleClick1() {
+    this.state.relation.push('sssss');
+    this.setState({
+      relation: this.state.relation
     });
   }
 
@@ -49,11 +60,18 @@ export default class Child extends Component {
   };
 
   render() {
-    const { loading, value, className } = this.state;
+    const { loading, value, className, age, relation } = this.state;
+    
+    // if (value === 'ddd') {
+    //   throw new Error('I crashed!');
+    // }
+    const pureProps = {
+      name: 'daniel',
+      age,
+      sex: 'male',
+      relation
+    };
 
-    if (value === 'ddd') {
-      throw new Error('I crashed!');
-    }
     return (
       <DErrorBoundary>
         <div style={{ color: this.context.color }}>
@@ -61,13 +79,19 @@ export default class Child extends Component {
           <DButton
             type="primary"
             onClick={this.handleClick}
-        >
-          按钮
+          >
+          按钮age
+          </DButton>
+          <DButton
+            type="primary"
+            onClick={this.handleClick1}
+          >
+          按钮relation
           </DButton>
           <div style={{width: 400}}>
-            <DSelect value={value}>
+            {/* <DSelect value={value}>
               <DOption />
-            </DSelect>
+            </DSelect> */}
             <div style={{marginBottom: 20}} />
             {/* <Select defaultValue="lucy"
               style={{ width: 120 }}
@@ -82,6 +106,7 @@ export default class Child extends Component {
               value={value}
               onChange={this.handleChange}
             /> */}
+            <Pure {...pureProps} />
           </div>
         </div>
       </DErrorBoundary>
