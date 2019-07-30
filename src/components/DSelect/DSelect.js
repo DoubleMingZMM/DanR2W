@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-30 13:10:04
+ * @LastEditTime: 2019-07-30 15:51:14
  */
 
 import React, { Component } from 'react';
@@ -27,8 +27,6 @@ class DSelect extends Component {
   // }
 
   static getDerivedStateFromProps(nextProps, preState) {
-    console.log('nextProps=====》', nextProps);
-    console.log('preState=====》', preState);
     if (nextProps.value !== preState.value) {
       return {
         value: nextProps.value

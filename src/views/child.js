@@ -74,7 +74,7 @@ export default class Child extends Component {
 
           <DInput
             defaultValue="default"
-            // value={value}
+            value={value}
             onChange={this.handleChange}
           />
         </div>
