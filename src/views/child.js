@@ -4,6 +4,7 @@ import DButton from '@/components/DButton/index';
 // import DIcon from '@/components/DIcon/index';
 import DInput from '@/components/DInput/index';
 import DSelect from '@/components/DSelect/index';
+import DErrorBoundary from '@/components/DErrorBoundary/index';
 
 import { Select } from 'antd';
 // const Search = Input.Search;
@@ -50,35 +51,40 @@ export default class Child extends Component {
   render() {
     const { loading, value, className } = this.state;
 
+    if (value === 'ddd') {
+      throw new Error('I crashed!');
+    }
     return (
-      <div style={{ color: this.context.color }}>
+      <DErrorBoundary>
+        <div style={{ color: this.context.color }}>
           我是child
-        <DButton
-          type="primary"
-          onClick={this.handleClick}
+          <DButton
+            type="primary"
+            onClick={this.handleClick}
         >
           按钮
-        </DButton>
-        <div style={{width: 400}}>
-          <DSelect value={value}>
-            <DOption />
-          </DSelect>
-          <div style={{marginBottom: 20}} />
-          <Select defaultValue="lucy"
-            style={{ width: 120 }}
+          </DButton>
+          <div style={{width: 400}}>
+            {/* <DSelect value={value}>
+              <DOption />
+            </DSelect>
+            <div style={{marginBottom: 20}} />
+            <Select defaultValue="lucy"
+              style={{ width: 120 }}
           >
-            <Option value="jack">Jack</Option>
-            <Option value="lucy">Lucy</Option>
-            <Option value="Yiminghe">yiminghe</Option>
-          </Select>
+              <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="Yiminghe">yiminghe</Option>
+            </Select> */}
 
-          <DInput
-            defaultValue="default"
-            value={value}
-            onChange={this.handleChange}
-          />
+            <DInput
+              defaultValue="default"
+              value={value}
+              onChange={this.handleChange}
+            />
+          </div>
         </div>
-      </div>
+      </DErrorBoundary>
     );
   }
 }

@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-30 15:52:01
+ * @LastEditTime: 2019-07-30 16:51:05
  */
 
 import React, { Component } from 'react';
@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 import omit from 'omit.js';
 import classnames from 'classnames';
 import DIcon from '../DIcon/index';
-import DErrorBoundary from '../DErrorBoundary/index';
 import { SizeProps, AffixAddonProps, TypeProps } from './propConfig/index.js';
 import { isBoolean, isUndefined } from '@/utils/util';
 import './index.less';
@@ -231,7 +230,7 @@ class DInput extends Component {
       'style',
       'className'
     ];
-    
+
     return (
       <input
         className={classNames}
@@ -305,11 +304,7 @@ class DInput extends Component {
   };
 
   render() {
-    return (
-      <DErrorBoundary>
-        {this.renderDInput()}
-      </DErrorBoundary>
-    );
+    return this.renderDInput();
   }
 }
 
