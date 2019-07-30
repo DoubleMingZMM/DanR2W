@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import DButton from '@/components/DButton/index';
+import DButton from '@/components/DButton/index';
 // import DIcon from '@/components/DIcon/index';
-// import DInput from '@/components/DInput/index';
+import DInput from '@/components/DInput/index';
 import DSelect from '@/components/DSelect/index';
 
 import { Select } from 'antd';
@@ -16,7 +16,8 @@ export default class Child extends Component {
     super(props);
     this.state = {
       loading: true,
-      value: 'value'
+      value: 'value',
+      className: 'aaaaaa'
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleLoading = this.handleLoading.bind(this);
@@ -24,7 +25,9 @@ export default class Child extends Component {
   }
 
   handleClick() {
-    console.log(22222222222);
+    this.setState({
+      className: 'ssss'
+    });
   }
 
   handleLoading() {
@@ -45,13 +48,19 @@ export default class Child extends Component {
   };
 
   render() {
-    const { loading, value } = this.state;
+    const { loading, value, className } = this.state;
 
     return (
       <div style={{ color: this.context.color }}>
           我是child
+        <DButton
+          type="primary"
+          onClick={this.handleClick}
+        >
+          按钮
+        </DButton>
         <div style={{width: 400}}>
-          <DSelect>
+          <DSelect value={value}>
             <DOption />
           </DSelect>
           <div style={{marginBottom: 20}} />
@@ -62,6 +71,12 @@ export default class Child extends Component {
             <Option value="lucy">Lucy</Option>
             <Option value="Yiminghe">yiminghe</Option>
           </Select>
+
+          <DInput
+            defaultValue="default"
+            // value={value}
+            onChange={this.handleChange}
+          />
         </div>
       </div>
     );

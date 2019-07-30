@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-29 16:46:56
+ * @LastEditTime: 2019-07-30 13:22:45
  */
 
 import React, { Component } from 'react';
@@ -17,21 +17,41 @@ import { isBoolean, isUndefined } from '@/utils/util';
 import './index.less';
 
 // 判断是否是有 value 值，有的话就用 value,没有的话是 undefined 则使用 defaultValue
-const decideValueToUse = (props) => {
-  // 解决只有 onChange 没有 value 和 defaultValue 的情况
-  // 因为会报 A component is changing an uncontrolled input of type undefined to be controlled.
-  const defaultVal = props.defaultValue || '';
-  return isUndefined(props.value) ? defaultVal : props.value;
-};
+// const decideValueToUse = (props) => {
+//   // 解决只有 onChange 没有 value 和 defaultValue 的情况
+//   // 因为会报 A component is changing an uncontrolled input of type undefined to be controlled.
+//   const defaultVal = props.defaultValue || '';
+//   return isUndefined(props.value) ? defaultVal : props.value;
+// };
 
 class DInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: decideValueToUse(props)
+      value: props.defaultValue || ''
     };
     this.inputRef = React.createRef();
   }
+
+  static getDerivedStateFromProps (nextProps, preState) {
+    // 简化了代码，第一次和更新的时候都会调用
+    if (!isUndefined(nextProps.value) && (nextProps.value !== preState.value)) {
+      return {
+        value: nextProps.value
+      };
+    }
+    return null;
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   // 如果没有 value 有 onChange 的时候，以前的做法需要做两次 setState
+  //   // 但是现在需要只做了一次
+  //   if (nextProps.value !== this.props.value) {
+  //     this.setState({
+  //       value: nextProps.value
+  //     });
+  //   }
+  // }
 
   /**
    * @param {node} e is first
@@ -86,7 +106,8 @@ class DInput extends Component {
     if (onChange) {
       // 因为传过来的 value 在 state 中保存了一份，所以说我只是执行回调只能更改传过来的属性值
       // 但是下次进来就不走 constructor 这个构造函数了，所以手动把 state 更新过来
-      this.setState({ value }, onChange(e));
+      // this.setState({ value }, onChange(e));
+      onChange(e);
     }
   };
 

@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-29 20:50:15
+ * @LastEditTime: 2019-07-30 13:10:04
  */
 
 import React, { Component } from 'react';
@@ -17,7 +17,34 @@ import './index.less';
 class DSelect extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: 'value'
+    };
   }
+
+  // componentWillMount() {
+  //   console.log(77777777777777777777);
+  // }
+
+  static getDerivedStateFromProps(nextProps, preState) {
+    console.log('nextProps=====》', nextProps);
+    console.log('preState=====》', preState);
+    if (nextProps.value !== preState.value) {
+      return {
+        value: nextProps.value
+      };
+    }
+    return null;
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   // console.log('nextProps=====》', nextProps);
+  //   // if (nextProps.className === 'ssss') {
+  //   //   this.setState({
+  //   //     value: 'value1'
+  //   //   });
+  //   // }
+  // }
 
   handleClick = () => {
     console.log(9999);
@@ -32,6 +59,7 @@ class DSelect extends Component {
   renderDSelect = () => {
     const { props } = this;
     const { className } = this.props;
+    const { value } = this.state;
 
     // 处理所有的 className，将他们合并起来得到一个样式列表
     const classNames = classnames('d-select', className, {
@@ -51,7 +79,7 @@ class DSelect extends Component {
         {...omit(props, removeProps)}
       >
         <div className="d-select-selected-wraper" >
-          <div className="d-select-selected-value">sadfasd</div>
+          <div className="d-select-selected-value">{value}</div>
           <DIcon type="down" />
         </div>
         {this.props.children}

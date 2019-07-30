@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-23 18:59:24
  * @LastEditors: Daniel
- * @LastEditTime: 2019-07-26 19:50:40
+ * @LastEditTime: 2019-07-30 11:43:19
  */
 
 import React, { Component } from 'react';
@@ -26,7 +26,6 @@ class DButton extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
-
 
   /**
    * @description 处理 button 和 a 标签的点击事件
