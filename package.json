@@ -26,6 +26,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "bundle-loader": "^0.5.6",
     "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^5.0.4",
     "core-js": "^2.6.9",
     "css-loader": "^1.0.0",
     "eslint": "^6.1.0",
@@ -51,6 +52,7 @@
   "dependencies": {
     "antd": "^3.20.5",
     "d3": "^5.7.0",
+    "immutable": "^4.0.0-rc.12",
     "js-cookie": "^2.2.0",
     "omit.js": "^1.0.2",
     "prop-types": "^15.6.2",

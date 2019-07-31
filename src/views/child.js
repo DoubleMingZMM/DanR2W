@@ -6,6 +6,7 @@ import DInput from '@/components/DInput/index';
 import DSelect from '@/components/DSelect/index';
 import Pure from './pure';
 import DErrorBoundary from '@/components/DErrorBoundary/index';
+// const { Map } = require('immutable');
 
 import { Select } from 'antd';
 // const Search = Input.Search;

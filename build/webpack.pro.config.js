@@ -13,7 +13,7 @@ const proConfig = {
     mode: 'production',
     // 出口 输出的文件名叫bundle.js,在项目根目录dist文件夹中
     output: {
-        filename: '[name].[chunkhash].js'
+        filename: 'js/[name].[chunkhash].js'
     },
     module: {
         rules: [
@@ -34,11 +34,11 @@ const proConfig = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: '[name].[chunkhash].css',
-            chunkFilename: '[name].[chunkhash].css'
+            filename: 'css/[name].[chunkhash].css',
+            chunkFilename: 'css/[name].[chunkhash].css'
         })
     ],
-    devtool: 'cheap-module-source-map'
+    devtool: 'inline-source-map' // 替换了 cheap-module-source-map
 };
 
 module.exports = merge(baseConfig, proConfig);

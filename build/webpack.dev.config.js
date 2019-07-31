@@ -22,7 +22,7 @@ const devConfig = {
     },
     // 出口 输出的文件名叫bundle.js,在项目根目录dist文件夹中
     output: {
-        filename: '[name].[hash].js'
+        filename: 'js/[name].[hash].js'
     },
     module: {
         rules: [

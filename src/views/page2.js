@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getInfo } from '@/redux/page2/action';
-import offShelf from '../static/images/offshelf.png';
+import offShelf from '../../static/images/offshelf.png';
 
 class Page2 extends Component {
     handleInfo = () => {

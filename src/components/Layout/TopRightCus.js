@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
-import avater from '../../static/images/avater.jpg';
+import avater from '../../../static/images/avater.jpg';
 import screenfull from 'screenfull';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;

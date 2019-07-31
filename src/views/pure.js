@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Component } from 'react';
 import PropTypes from 'prop-types';
 import PureChild from './pureChild';
 
@@ -20,7 +20,7 @@ export default class Pure extends PureComponent {
         <div>{name}</div>
         <div>{age}</div>
         <div>{sex}</div>
-        <div>{relation.join()}</div>
+        <div>{relation && relation.join()}</div>
         <PureChild />
       </div>
     );

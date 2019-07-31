@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 // 解决相对路径的问题，否则下面很多地方都需要写../xxx/xxxx
@@ -21,7 +22,7 @@ const commonConfig = {
         // filename: '[name].[hash].js',
         path:  resolvePath('dist'),
         // 区别按需加载的名字，否则只是1,2,3,不好区分
-        chunkFilename: '[name].[chunkhash].js'
+        chunkFilename: 'js/[name].[chunkhash].js'
     },
     module: {
         rules: [
@@ -33,6 +34,7 @@ const commonConfig = {
                 include:  resolvePath('src')
             },
             {
+                // 页面使用了，才会使用 webpack 处理
                 // 对图片的使用png会更多，所以把png放在前面
                 test: /\.(png|jpg|gif)$/,
                 use: [{
@@ -59,10 +61,17 @@ const commonConfig = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template:  resolvePath('src/index.html'),
-            favicon: resolvePath('favicon.ico'),
+            template:  resolvePath('public/index.html'),
+            favicon: resolvePath('public/favicon.ico'),
             title: 'DanR2W'
-        })
+        }),
+        // 拷贝static静态文件
+        new CopyWebpackPlugin([
+            {
+                from: resolvePath('static'),
+                to: 'static'
+            },
+        ]),
     ],
     resolve: {
         alias: {
