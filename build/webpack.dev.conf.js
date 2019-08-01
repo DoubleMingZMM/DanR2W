@@ -4,14 +4,19 @@
  * @Author: Daniel
  * @Date: 2019-08-01 13:25:23
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-01 17:54:56
+ * @LastEditTime: 2019-08-01 19:01:12
  */
 // 导入 webpack-merge 包中的 merge 函数，合并配置
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const HappyPack = require('happypack');
 
 const baseConfig = require('./webpack.base.conf');
+
 const { resolvePath } = require('./utils');
+
+// 创建 happypack 共享进程池，其中包含 6 个子进程
+const happyThreadPool = HappyPack.ThreadPool({ size: 6 });
 
 const devConfig = {
   /**
@@ -71,7 +76,10 @@ const devConfig = {
     rules: [
       {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader']
+          // use: ['style-loader', 'css-loader', 'postcss-loader'],
+          // 现在用下面的方式替换成 happypack/loader，并使用 id 指定创建的 HappyPack 插件
+          use: ['happypack/loader?id=css'],
+          include: resolvePath('src')
       }
     ]
   },
@@ -84,7 +92,20 @@ const devConfig = {
     // webpack 自带 HotModuleReplacementPlugin 插件，可以和 hot 结合配置热更
     // 但是单独使用这个插件无效，效果类似于直接使用 DevServer 自带的刷新功能一致
     // 也可以去掉这个插件的配置
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // happypack 实现
+    new HappyPack({
+      /*
+      * 必须配置项
+      */
+      // id 标识符，要和 rules 中指定的 id 对应起来
+      id: 'css',
+      // 需要使用的 loader，用法和 rules 中 Loader 配置一样
+      // 可以直接是字符串，也可以是对象形式
+      loaders: ['style-loader', 'css-loader', 'postcss-loader'],
+      // 使用共享进程池中的进程处理任务
+      threadPool: happyThreadPool
+    }),
   ],
 
   /**
