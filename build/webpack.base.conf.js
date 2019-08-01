@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 09:58:20
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-01 15:43:23
+ * @LastEditTime: 2019-08-01 18:15:29
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -91,6 +91,7 @@ module.exports = {
           favicon: resolvePath('public', 'favicon.ico'),
           title: 'DanR2W'
       }),
+      // happypack 实现
   ],
 
   /**
