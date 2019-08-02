@@ -4,8 +4,9 @@
  * @Author: Daniel
  * @Date: 2019-08-01 09:58:20
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-02 11:04:14
+ * @LastEditTime: 2019-08-02 14:32:54
  */
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
 
@@ -120,6 +121,10 @@ module.exports = {
             loaders: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
             // 使用共享进程池中的进程处理任务
             threadPool: happyThreadPool
+        }),
+        new webpack.DllReferencePlugin({
+            context: resolvePath('static', 'dll'),
+            manifest: require('./vendor-manifest.json')
         })
   ],
 
