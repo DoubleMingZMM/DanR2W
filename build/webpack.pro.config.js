@@ -1,5 +1,6 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// webpack 4 中已经内置了 UglifyJSPlugin 这个插件
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin') webpack4放弃
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

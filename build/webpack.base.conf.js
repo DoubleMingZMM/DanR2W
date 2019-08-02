@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 09:58:20
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-02 10:21:32
+ * @LastEditTime: 2019-08-02 11:04:14
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
