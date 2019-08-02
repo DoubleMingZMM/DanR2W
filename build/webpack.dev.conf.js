@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 13:25:23
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-01 19:01:12
+ * @LastEditTime: 2019-08-02 10:23:59
  */
 // 导入 webpack-merge 包中的 merge 函数，合并配置
 const merge = require('webpack-merge');
@@ -78,8 +78,7 @@ const devConfig = {
           test: /\.css$/,
           // use: ['style-loader', 'css-loader', 'postcss-loader'],
           // 现在用下面的方式替换成 happypack/loader，并使用 id 指定创建的 HappyPack 插件
-          use: ['happypack/loader?id=css'],
-          include: resolvePath('src')
+          use: ['happypack/loader?id=css']
       }
     ]
   },

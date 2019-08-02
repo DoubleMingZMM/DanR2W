@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 09:58:20
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-01 19:01:54
+ * @LastEditTime: 2019-08-02 10:21:32
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
@@ -50,6 +50,7 @@ module.exports = {
           {
               // 没有使用到jsx，可以不去正则jsx，会浪费性能
               test: /\.js$/,
+              // use: ['babel-loader?cacheDirectory=true'],
               // 使用 happypack 将 ['babel-loader?cacheDirectory=true'] 替换成以下配置
               use: ['happypack/loader?id=babel'],
               // 只编译src，减少文件搜索范围
@@ -76,10 +77,10 @@ module.exports = {
           },
           {
               test: /\.less$/,
-              //   use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+              // use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
               // 现在用下面的方式替换成 happypack/loader，并使用 id 指定创建的 HappyPack 插件
               use: ['happypack/loader?id=less'],
-              include: resolvePath('src')
+              // include: resolvePath('src')
           }
       ]
   },
