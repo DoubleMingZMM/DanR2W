@@ -4,10 +4,11 @@
  * @Author: Daniel
  * @Date: 2019-08-01 09:58:20
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-02 14:32:54
+ * @LastEditTime: 2019-08-03 15:03:54
  */
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HappyPack = require('happypack');
 
 const { resolvePath } = require('./utils');
@@ -27,8 +28,7 @@ module.exports = {
         app: [
             'babel-polyfill',
             resolvePath('src', 'index')
-        ],
-        // vendor: []
+        ]
   },
 
   /**
@@ -97,6 +97,13 @@ module.exports = {
             favicon: resolvePath('public', 'favicon.ico'),
             title: 'DanR2W'
         }),
+        // 是对 HtmlWebpackPlugin 插件的扩展
+        // 将 dll 打包出来的 *.dll.js 插入到 HTML 中
+        new AddAssetHtmlPlugin({
+            filepath: resolvePath('static', 'dll', '*.dll.js'),
+            outputPath: 'static/dll',
+            publicPath: '/static/dll'
+        }),
         // happypack 实现
         new HappyPack({
             /*
@@ -122,9 +129,25 @@ module.exports = {
             // 使用共享进程池中的进程处理任务
             threadPool: happyThreadPool
         }),
+        // 引用 react 的 dll 库
         new webpack.DllReferencePlugin({
-            context: resolvePath('static', 'dll'),
-            manifest: require('./vendor-manifest.json')
+            manifest: require('../static/dll/react-manifest.json')
+        }),
+        // 引用 antd 的 dll 库
+        new webpack.DllReferencePlugin({
+            manifest: require('../static/dll/antd-manifest.json')
+        }),
+        // 引用 d3 的 dll 库
+        new webpack.DllReferencePlugin({
+            manifest: require('../static/dll/d3-manifest.json')
+        }),
+        // 引用 redux 的 dll 库
+        new webpack.DllReferencePlugin({
+            manifest: require('../static/dll/redux-manifest.json')
+        }),
+        // 引用 immutable 的 dll 库
+        new webpack.DllReferencePlugin({
+            manifest: require('../static/dll/immutable-manifest.json')
         })
   ],
 

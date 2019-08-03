@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-07-15 19:48:04
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-02 14:11:04
+ * @LastEditTime: 2019-08-03 13:07:13
  */
 
 const webpack = require('webpack');
@@ -17,7 +17,12 @@ module.exports = {
     
     // 你想要打包的模块的数组
     entry: {
-        vendor: ['react', 'antd', 'd3', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
+        // 三个单独的依赖库，避免放在一起，太大，对应在 DllReferencePlugin 插件分开引用
+        react: ['react'],
+        antd: ['antd'],
+        d3: ['d3'],
+        redux: ['redux'],
+        immutable: ['immutable']
     },
     output: {
         path: resolvePath('static', 'dll'), // 打包后文件输出的位置
@@ -33,9 +38,8 @@ module.exports = {
             root: resolvePath()
         }),
         new webpack.DllPlugin({
-          path: resolvePath('static', 'dll', '[name]-manifest.json'),
-          name: '[name]_library',
-        //   context: __dirname
+            path: resolvePath('static', 'dll', '[name]-manifest.json'),
+            name: '[name]_library'
         }),
         // 压缩打包的文件，与该文章主线无关
         // new webpack.optimize.UglifyJsPlugin({

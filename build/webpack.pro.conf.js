@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 13:25:23
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-02 11:35:35
+ * @LastEditTime: 2019-08-03 14:28:49
  */
 // 导入 webpack-merge 包中的 merge 函数，合并配置
 const merge = require('webpack-merge');
@@ -79,7 +79,8 @@ const proConfig = {
     new CopyWebpackPlugin([
         {
             from: resolvePath('static'),
-            to: 'static'
+            to: 'static',
+            ignore: ['dll/*'],
         }
     ]),
     // happypack 实现
