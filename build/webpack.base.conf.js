@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 09:58:20
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-03 15:03:54
+ * @LastEditTime: 2019-08-03 17:46:03
  */
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -39,7 +39,8 @@ module.exports = {
   output: {
         path: resolvePath('dist'),
         // 区别按需加载的名字，否则只是1,2,3,不好区分
-        chunkFilename: 'js/[name].[chunkhash].js'
+        chunkFilename: 'js/[name].[chunkhash].js',
+        // publicPath: '//js.cdn.com/id/',
   },
 
   /**

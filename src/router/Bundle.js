@@ -7,7 +7,7 @@ class Bundle extends Component {
       mod: null
     }
 
-    componentWillMount() {
+    componentDidMount() {
       this.load(this.props);
     }
 
