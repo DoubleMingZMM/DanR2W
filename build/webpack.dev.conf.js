@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 13:25:23
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-02 10:23:59
+ * @LastEditTime: 2019-08-05 10:16:20
  */
 // 导入 webpack-merge 包中的 merge 函数，合并配置
 const merge = require('webpack-merge');
@@ -112,7 +112,7 @@ const devConfig = {
    * devtool 配置项
    * 
    */
-  devtool: 'inline-source-map'
+  devtool: 'cheap-eval-source-map'
 };
 
 module.exports = merge({

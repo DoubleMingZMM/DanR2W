@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 09:58:20
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-03 17:46:03
+ * @LastEditTime: 2019-08-05 09:41:32
  */
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -69,7 +69,10 @@ module.exports = {
                   loader: 'url-loader',
                   options: {
                       // 小于等于8K的图片会被转成base64编码，直接插入HTML中，减少HTTP请求。
-                      limit: 8192
+                      // 将图片也打包成 chunk 的形式
+                      limit: 8192,
+                      outputPath: 'imgs',
+                      name: '[name]-[hash:6].[ext]'
                   }
               }]
           },
