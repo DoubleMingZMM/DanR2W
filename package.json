@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "antd": "^3.20.5",
+    "babel-preset-env": "^1.7.0",
     "d3": "^5.7.0",
     "immutable": "^4.0.0-rc.12",
     "js-cookie": "^2.2.0",

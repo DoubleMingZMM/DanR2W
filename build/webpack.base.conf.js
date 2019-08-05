@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-01 09:58:20
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-05 09:41:32
+ * @LastEditTime: 2019-08-05 17:29:49
  */
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -25,6 +25,7 @@ module.exports = {
    * 
    */
   entry: {
+        // babel-polyfill 直接引入，改造浏览器
         app: [
             'babel-polyfill',
             resolvePath('src', 'index')

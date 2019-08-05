@@ -4,6 +4,7 @@ import { Button } from 'antd';
 import { increment, decrement, reset } from '@/redux/page1/action';
 import { createBrowserHistory } from 'history';
 import './page1.css';
+import getname from './test';
 
 class Page1 extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class Page1 extends Component {
   }
 
   render() {
+    getname(1,2);
     return (
       <div>
         <Button type="primary">antd</Button>
