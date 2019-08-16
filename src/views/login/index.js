@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 1.0.0
+ * @Author: Daniel
+ * @Date: 2019-07-15 19:48:04
+ * @LastEditors: Daniel
+ * @LastEditTime: 2019-08-09 19:43:53
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
